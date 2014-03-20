@@ -8,7 +8,7 @@ The _source tree_ is where your project lives. For example,
 {{{
 $ pwd
 /home/ich/source
-$ svn co http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/projects/hello-project-monolithic/trunk hello-project-monolithic
+$ svn co http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/projects/hello-project-monolithic
 }}}
 
 Gives you a directory {{{/home/ich/source/hello-project-monolithic}}}. This directory is called the _project root directory_. (If you hadn't given the {{{hello-project-monolithic}}} argument, then SVN creates the basename of the path instead - this would be {{{trunk}}} in this case.}}}
@@ -61,7 +61,7 @@ The "Monolithic" project has been very simple, in that it consists of only two f
 I tried to "simulate" complexity by overengineering the "Monolithic" project a bit. The enhanced version not only outputs the program's argument vector, but also its environment variables. Check out the enhanced project like so,
 
 {{{
-$ svn co http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/projects/hello-project-overengineered/trunk hello-project-overengineered
+$ svn co http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/projects/hello-project-overengineered
 }}}
 
 As you browse through the tree of the "Overengineered" project, you'll notice the following.
