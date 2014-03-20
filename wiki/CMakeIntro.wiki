@@ -11,7 +11,7 @@ $ pwd
 $ svn co http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/cmake-demo/hello-project-monolithic
 }}}
 
-Gives you a directory {{{/home/ich/source/hello-project-monolithic}}}. This directory is called the _project root directory_. (If you hadn't given the {{{hello-project-monolithic}}} argument, then SVN creates the basename of the path instead - this would be {{{trunk}}} in this case.}}}
+Gives you a directory {{{/home/ich/source/hello-project-monolithic}}}. This directory is called the _project root directory_. (If you hadn't given the {{{hello-project-monolithic}}} argument, then SVN creates the basename of the path instead - this would be {{{trunk}}} in this case.
 
 Look in there,
 
