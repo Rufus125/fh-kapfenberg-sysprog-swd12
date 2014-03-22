@@ -43,12 +43,14 @@ int main(int argc, char** argv)
     	if (bytes < 0)
     	{
     		cerr << "Read failed" << endl;
+    		result = EXIT_FAILURE;
     		break;
     	}
 
     	if (write(fdOut, buffer, bytes) < 0)
     	{
     		cerr << "Write failed" << endl;
+    		result = EXIT_FAILURE;
     		break;
     	}
     }
