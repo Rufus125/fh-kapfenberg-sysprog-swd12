@@ -1,6 +1,4 @@
 #summary First Project, a "cp" clone.
-<wiki:toc />
-
 = Schon wieder ein Kopierprogramm =
 
 Schreiben Sie ein Programm, das ein File auf ein anderes kopiert, und
