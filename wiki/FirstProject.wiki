@@ -1,6 +1,8 @@
 #summary First Project, a "cp" clone.
 = Schon wieder ein Kopierprogramm =
 
+== Aufgabenstellung ==
+
 Schreiben Sie ein Programm, das ein File auf ein anderes kopiert, und
 dazu die Systemcalls open/read/write/close benützt.
 
@@ -16,7 +18,16 @@ so, wie im Kurs erläutert wurde.
 
 Bitte legen Sie sich eigene Arbeitsbereiche in
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/file-copy
-an, Gruppen zu maximal zwei Mitgliedern sind erlaubt. Jeder
-Arbeitsbereich enthält ein eigenes CMake-Projekt; als Beispiel sollte
+an, Gruppen zu maximal zwei Mitgliedern sind erlaubt. Der
+Arbeitsbereich sollte so heissen, wie der Teilnehmer oder die
+Gruppe, zum Beispiel {{{Mitteregger.Christoph}}}, oder {{{Mitteregger.Christoph-Mayer.Michael}}}.
+Jeder Arbeitsbereich enthält ein eigenes CMake-Projekt; als
+Beispiel sollte
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/cmake-demo/hello-project-monolithic
 genügen.
+
+== Abgabe ==
+
+Als Abgabeordner fungiert der obige Arbeitsbereich, ein
+Directory. Stichtag, sagen wir 3.April, bei unserer nächsten
+Veranstaltung.
