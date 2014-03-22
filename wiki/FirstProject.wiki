@@ -1,0 +1,24 @@
+#summary First Project, a "cp" clone.
+<wiki:toc />
+
+= Schon wieder ein Kopierprogramm =
+
+Schreiben Sie ein Programm, das ein File auf ein anderes kopiert, und
+dazu die Systemcalls open/read/write/close benützt.
+
+Das Programm erhält zwei Commandline-Argumente (sehen Sie dazu das
+grössere CMake-Demoprojekt im SVN), SOURCE und DESTINATION. Wenn
+SOURCE existiert und DESTINATION nicht existiert, kopiert es den
+Inhalt von SOURCE auf DESTINATION (das zuvor angelegt wird).
+
+Die "Challenge" dabei ist, open() zu verstehen, und da vor allem das
+{{{flags}}} Argument. Bitte lesen Sie die Manpage genau, vor allem die
+Bedeutung von {{{O_CREAT}}}. Machen Sie die Fehlerbehandlung ungefähr
+so, wie im Kurs erläutert wurde.
+
+Bitte legen Sie sich eigene Arbeitsbereiche in
+https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/file-copy
+an, Gruppen zu maximal zwei Mitgliedern sind erlaubt. Jeder
+Arbeitsbereich enthält ein eigenes CMake-Projekt; als Beispiel sollte
+https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/cmake-demo/hello-project-monolithic
+genügen.

@@ -103,7 +103,7 @@ On the CMake front,
 
   * The toplevel {{{CMakeLists.txt}}} file only registers the subdirectories {{{args}}}, {{{anviron}}}, {{{output}}} and {{{hello}}}, and does boilerplate build machinery.
   * The other {{{CMakeLists.txt}}} files define the _nodes_ of the above picture.
-    * Libraries are defined in {{{args}}}, {{{anviron}}}, {{{output}}} using {{{ADD_LIBRARY}}}. For example, the {{{args}}} library (defined in {{{args/CMakeLists.txt}}}) consists of {{{hello_args.h}}} and {{{hello_args.cc}}}.
+    * Libraries are defined in {{{args}}}, {{{environ}}}, {{{output}}} using {{{ADD_LIBRARY}}}. For example, the {{{args}}} library (defined in {{{args/CMakeLists.txt}}}) consists of {{{hello_args.h}}} and {{{hello_args.cc}}}.
     * An executable is defined in {{{hello/CMakeLists.txt}}}, using {{{ADD_EXECUTABLE}}}.
   * The arrows of the picture are defined using {{{TARGET_LINK_LIBRARIES}}}. {{{hello}}} has two such _dependencies_, {{{args}}} and {{{environ}}}. {{{args}}} and {{{environ}}} each depend on the {{{output}}} functionality. {{{output}}} is at the basis and depends on nothing at all.
 
