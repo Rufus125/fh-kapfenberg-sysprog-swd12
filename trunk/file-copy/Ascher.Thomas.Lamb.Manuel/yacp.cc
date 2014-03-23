@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    if (argc < 3)
+    if (argc != 3)
     {
     	cerr << "Usage: yacp <source> <destination>" << endl;
     	return EXIT_SUCCESS;
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     	return EXIT_FAILURE;
     }
 
-    char buffer[READ_BUFFER_SIZE];
+    char buffer[READ_BUFFER_SIZE] = "";
 
     ssize_t bytes = 0;
     int result = EXIT_SUCCESS;
