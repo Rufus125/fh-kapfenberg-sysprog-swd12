@@ -6,11 +6,15 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <string>
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
 
 using namespace std;
 #define ERROR -1
 #define READWRITE 0600
+
+int closeFileWithError(int source, int destination);
 
 int main (int argc, char** argv)
 {
@@ -25,7 +29,7 @@ int main (int argc, char** argv)
   // if source file is same as destination file
   if(string(argv[1]) == string(argv[2]))
   {
-    cout << "source file cannot be the same as destination file" << endl;
+    cout << "source file cannot be the same as destination file: try again" << endl;
     return EXIT_SUCCESS;
   }
 
@@ -33,7 +37,8 @@ int main (int argc, char** argv)
   int sourceFile = open(argv[1], O_RDONLY);
   if(sourceFile == ERROR)
   {
-    cout << "ERROR: File to read could not be opened" << endl;
+    cout << "ERROR: File to read could not be opened: ";
+    cout << strerror(errno) << endl;
     return EXIT_FAILURE;
   }
 
@@ -43,7 +48,8 @@ int main (int argc, char** argv)
   int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, READWRITE);
   if(destinationFile == ERROR)
   {
-    cout << "ERROR: File to write to could not be opened" << endl;
+    cout << "ERROR: File to write to could not be opened: ";
+    cout << strerror(errno) << endl;
     close(sourceFile);
     return EXIT_FAILURE;
   }
@@ -53,8 +59,9 @@ int main (int argc, char** argv)
   struct stat source;
   if(fstat(sourceFile, &source) == ERROR)
   {
-    cout << "ERROR: Getting Information of source file failed" << endl;
-    return EXIT_FAILURE;
+    cout << "ERROR: Getting Information of source file failed: ";
+    cout << strerror(errno) << endl;
+    return closeFileWithError(sourceFile, destinationFile);
   }
 
   // if the source file is empty, a warning will be displayed
@@ -69,32 +76,42 @@ int main (int argc, char** argv)
   // read from source
   if((byte = read(sourceFile, buffer, source.st_size)) == ERROR)
   {
-    cout << "ERROR: while reading file" << endl;
-    return EXIT_FAILURE;
+    cout << "ERROR: while reading file: ";
+    cout << strerror(errno) << endl;
+    return closeFileWithError(sourceFile, destinationFile);
   }
   // write to destination
   if(write(destinationFile, buffer, byte) == ERROR)
   {
-    cout << "ERROR: while writing file" << endl;
-    return EXIT_FAILURE;
+    cout << "ERROR: while writing file: ";
+    cout << strerror(errno) << endl;
+    return closeFileWithError(sourceFile, destinationFile);
   }
 
   //filling struct with information of destination file
   struct stat destination;
   if(fstat(destinationFile, &destination) == ERROR)
   {
-    cout << "ERROR: Getting Information of destination file failed" << endl;
-    return EXIT_FAILURE;
+    cout << "ERROR: Getting Information of destination file failed: ";
+    cout << strerror(errno) << endl;
+    return closeFileWithError(sourceFile, destinationFile);
   }
 
   //if size of source and destination mismatch
   if(source.st_size != destination.st_size)
   {
     cout << "ERROR: source and destination file size mismatch" << endl;
-    return EXIT_FAILURE;
+    return closeFileWithError(sourceFile, destinationFile);
   }
 
   close(sourceFile);
   close(destinationFile);
   return EXIT_SUCCESS;
+}
+
+int closeFileWithError(int source, int destination)
+{
+  close(source);
+  close(destination);
+  return EXIT_FAILURE;
 }
