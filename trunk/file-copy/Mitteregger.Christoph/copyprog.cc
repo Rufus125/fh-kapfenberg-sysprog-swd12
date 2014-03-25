@@ -37,8 +37,7 @@ int main (int argc, char** argv)
   int sourceFile = open(argv[1], O_RDONLY);
   if(sourceFile == ERROR)
   {
-    cout << "ERROR: File to read could not be opened: ";
-    cout << strerror(errno) << endl;
+    cerr << "ERROR while opening source file: " << strerror(errno) << endl;
     return EXIT_FAILURE;
   }
 
@@ -48,8 +47,7 @@ int main (int argc, char** argv)
   int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, READWRITE);
   if(destinationFile == ERROR)
   {
-    cout << "ERROR: File to write to could not be opened: ";
-    cout << strerror(errno) << endl;
+    cerr << "ERROR while opening destination file: " << strerror(errno) << endl;
     close(sourceFile);
     return EXIT_FAILURE;
   }
@@ -59,7 +57,7 @@ int main (int argc, char** argv)
   struct stat source;
   if(fstat(sourceFile, &source) == ERROR)
   {
-    cout << "ERROR: Getting Information of source file failed: ";
+    cerr << "ERROR getting Information of source file failed: ";
     cout << strerror(errno) << endl;
     return closeFileWithError(sourceFile, destinationFile);
   }
@@ -76,14 +74,14 @@ int main (int argc, char** argv)
   // read from source
   if((byte = read(sourceFile, buffer, source.st_size)) == ERROR)
   {
-    cout << "ERROR: while reading file: ";
+    cerr << "ERROR while reading source file: ";
     cout << strerror(errno) << endl;
     return closeFileWithError(sourceFile, destinationFile);
   }
   // write to destination
   if(write(destinationFile, buffer, byte) == ERROR)
   {
-    cout << "ERROR: while writing file: ";
+    cerr << "ERROR while writing destination file: ";
     cout << strerror(errno) << endl;
     return closeFileWithError(sourceFile, destinationFile);
   }
@@ -92,7 +90,7 @@ int main (int argc, char** argv)
   struct stat destination;
   if(fstat(destinationFile, &destination) == ERROR)
   {
-    cout << "ERROR: Getting Information of destination file failed: ";
+    cerr << "ERROR Getting Information of destination file failed: ";
     cout << strerror(errno) << endl;
     return closeFileWithError(sourceFile, destinationFile);
   }
@@ -100,7 +98,7 @@ int main (int argc, char** argv)
   //if size of source and destination mismatch
   if(source.st_size != destination.st_size)
   {
-    cout << "ERROR: source and destination file size mismatch" << endl;
+    cerr << "ERROR: source and destination file size mismatch" << endl;
     return closeFileWithError(sourceFile, destinationFile);
   }
 
