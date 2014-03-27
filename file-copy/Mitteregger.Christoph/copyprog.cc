@@ -13,6 +13,7 @@
 using namespace std;
 #define ERROR -1
 #define READWRITE 0600
+#define BUFFERSIZE 2048
 
 int closeFileWithError(int source, int destination);
 
@@ -37,7 +38,8 @@ int main (int argc, char** argv)
   int sourceFile = open(argv[1], O_RDONLY);
   if(sourceFile == ERROR)
   {
-    cerr << "ERROR while opening source file: " << strerror(errno) << endl;
+    cerr << "ERROR while opening source file: ";
+    cout << strerror(errno) << endl;
     return EXIT_FAILURE;
   }
 
@@ -47,60 +49,33 @@ int main (int argc, char** argv)
   int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, READWRITE);
   if(destinationFile == ERROR)
   {
-    cerr << "ERROR while opening destination file: " << strerror(errno) << endl;
+    cerr << "ERROR while opening destination file: ";
+    cout << strerror(errno) << endl;
     close(sourceFile);
     return EXIT_FAILURE;
   }
 
-  // filling struct with information of destination file
-  // e.g. total size, in bytes; needed for buffer size
-  struct stat source;
-  if(fstat(sourceFile, &source) == ERROR)
-  {
-    cerr << "ERROR getting Information of source file failed: ";
-    cout << strerror(errno) << endl;
-    return closeFileWithError(sourceFile, destinationFile);
-  }
-
-  // if the source file is empty, a warning will be displayed
-  if(source.st_size == 0)
-  {
-    cout << "WARNING: source file is empty so ";
-    cout << "destination file will be empty too ;-)" << endl;
-  }
   ssize_t byte = 0;
-  char buffer[source.st_size];
+  char buffer[BUFFERSIZE];
 
-  // read from source
-  if((byte = read(sourceFile, buffer, source.st_size)) == ERROR)
-  {
-    cerr << "ERROR while reading source file: ";
-    cout << strerror(errno) << endl;
-    return closeFileWithError(sourceFile, destinationFile);
-  }
-  // write to destination
-  if(write(destinationFile, buffer, byte) == ERROR)
-  {
-    cerr << "ERROR while writing destination file: ";
-    cout << strerror(errno) << endl;
-    return closeFileWithError(sourceFile, destinationFile);
-  }
-
-  //filling struct with information of destination file
-  struct stat destination;
-  if(fstat(destinationFile, &destination) == ERROR)
-  {
-    cerr << "ERROR Getting Information of destination file failed: ";
-    cout << strerror(errno) << endl;
-    return closeFileWithError(sourceFile, destinationFile);
-  }
-
-  //if size of source and destination mismatch
-  if(source.st_size != destination.st_size)
-  {
-    cerr << "ERROR: source and destination file size mismatch" << endl;
-    return closeFileWithError(sourceFile, destinationFile);
-  }
+  // read from source file
+  while((byte = read(sourceFile, buffer, BUFFERSIZE)))
+      {
+        // if read returns an error
+        if(byte == ERROR)
+        {
+          cerr << "ERROR while reading source file: ";
+          cout << strerror(errno) << endl;
+          return closeFileWithError(sourceFile, destinationFile);
+        }
+        // write to destination file
+        if(write(destinationFile, buffer, byte) == ERROR)
+         {
+           cerr << "ERROR while writing destination file: ";
+           cout << strerror(errno) << endl;
+           return closeFileWithError(sourceFile, destinationFile);
+         }
+      }
 
   close(sourceFile);
   close(destinationFile);
