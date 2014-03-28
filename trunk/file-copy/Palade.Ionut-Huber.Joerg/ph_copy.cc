@@ -11,20 +11,36 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	
-	int fo = open(argv[1], O_RDONLY);
-	printf("FileOpen: %i\n",fo);
+	int fos = open(argv[1], O_RDONLY);
+	printf("FileOpen Source: %i\n",fos);
+	
+	int fod = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY);
+	printf("FileOpen Destination: %i\n",fos);
 	
 	char buf[1024] = "";
 	ssize_t rd = 0;
 	
+	//file write result
+	int fw;
+	
 	while (true ) {
-		rd= read(fo, buf, sizeof(*buf));
+		rd= read(fos, buf, sizeof(*buf));
 		
 		//check for read errors
 		if (rd < 0 )
 		{
 			printf("%s", buf);
 			break;
+		}
+			
+		//try to write to file
+		fw = write(fod, buf, sizeof(*buf));
+		
+		//check for file write error
+		if ( fw < 0 )
+		{
+			printf("\nfile write error");
+			break;		
 		}
 		
 		//check for end of file
@@ -34,11 +50,11 @@ int main(int argc, char** argv)
 			break;		
 		}
 		
-		//try to write to file
-
-		
 		printf("%s", buf);
 	}
+	
+	close(fos);
+	close(fod);
 	
 	return 0;
 }
