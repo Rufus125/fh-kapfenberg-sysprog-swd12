@@ -32,8 +32,6 @@ int copy(char* source, char* target, int fileMode);
 const int ERROR = 1;
 const int SUCCESS = 0;
 
-int fileMode = 0644; // rw-r--r--
-
 int main(int argc, char** argv)
 {
 	if(checkArguments(argc, argv) == ERROR)
@@ -112,6 +110,10 @@ int copy(char* source, char* target, int fileMode)
 
 	close(sourceHandle);
 	close(destHandle);
+
+	if(result == SUCCESS){
+		cout << "Successfully copied!" << endl;	
+	}
 
 	return result;
 }
