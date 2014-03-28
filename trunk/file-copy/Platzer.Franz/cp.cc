@@ -26,15 +26,13 @@ using namespace std;
 
 int checkArguments(int argc, char** argv);
 void outputOpenFileError(int errorNr);
-int setFileInfos(char* path);
-char* getFilecontent(char* path);
-int writeFilecontent(char* target, char* content);
+int getFileMode(char* path);
+int copy(char* source, char* target, int fileMode);
 
 const int ERROR = 1;
 const int SUCCESS = 0;
 
-int fileSize = 0;
-int fileMode = 0664;
+int fileMode = 0644; // rw-r--r--
 
 int main(int argc, char** argv)
 {
@@ -43,30 +41,16 @@ int main(int argc, char** argv)
 		return ERROR;
 	}
 	
-	if(setFileInfos(argv[1]) == ERROR){
+	int fileMode = getFileMode(argv[1]);
+
+	if(fileMode == ERROR){
 		return ERROR;	
 	}
 
-	char* filecontent = getFilecontent(argv[1]);
-
-	if(!filecontent){
-		return ERROR;
-	}
-
-	int writeResult = writeFilecontent(argv[2], filecontent);
-	free(filecontent);	
-
-	if(writeResult == ERROR){
-		return ERROR;	
-	}
-
-	cout << "Successfully copied!" << endl;
-
-    return SUCCESS;
+	return copy(argv[1], argv[2], fileMode);
 }
 
-
-int setFileInfos(char* path)
+int getFileMode(char* path)
 {
 	struct stat* fileInfo = (struct stat*) malloc(sizeof(struct stat));
 	int statReturn = stat(path, fileInfo);
@@ -77,58 +61,59 @@ int setFileInfos(char* path)
 		return ERROR;
 	}
 
-	fileSize = fileInfo->st_size;
+	int fileMode = 0644; // rw-r--r--
 	fileMode = fileInfo->st_mode;
 	free(fileInfo);
 
-	return SUCCESS;
+	return fileMode;
 }
 
-char* getFilecontent(char* path)
+int copy(char* source, char* target, int fileMode)
 {
 	errno = 0;
-	int sourceHandle = open(path, O_RDONLY);
+	int sourceHandle = open(source, O_RDONLY);
 
-	if(sourceHandle == -1){
+	if(sourceHandle < 0){
 		outputOpenFileError(errno);
 		close(sourceHandle);
-		return NULL;
+		return ERROR;
 	}
 
-	char* sourceFileContent = (char*) malloc(sizeof(char)*fileSize);
-	
-	int readResult = read(sourceHandle, sourceFileContent, fileSize);
-	if(readResult < 0)
-	{
-		cerr << "read file failed with: " << strerror(readResult) << endl;
-		free(sourceFileContent);
-		close(sourceHandle);
-		return NULL;
-	}
-
-	close(sourceHandle);
-	return sourceFileContent;
-}
-
-int writeFilecontent(char* target, char* content)
-{
-	int destHandle = open(target, O_WRONLY | O_TRUNC | O_CREAT, fileMode);
+	int destHandle = open(target, O_WRONLY | O_EXCL | O_CREAT, fileMode);
 	
 	if(destHandle < 0){
 		outputOpenFileError(errno);
+		close(sourceHandle);
 		close(destHandle);
 		return ERROR;
 	}
 
-	int writeResult = write(destHandle, content, fileSize);
-	if(writeResult < 0){
-		cerr << "write file failed with: " << strerror(writeResult) << endl;
-		close(destHandle);
-		return ERROR;	
+	int result = SUCCESS;
+	
+	int bufferSize = 2048;
+	char buffer[bufferSize];
+
+	int readResult = 0;	
+
+	while((readResult = read(sourceHandle, buffer, bufferSize)) != 0) // 0 = EOF
+	{
+		if(read < 0){
+			result = ERROR;
+			cerr << "Read failed!" << endl;
+			break;
+		}
+
+		if(write(destHandle, buffer, readResult) <= 0){
+			result = ERROR;
+			cerr << "Write failed!" << endl;
+			break;
+		}
 	}
 
+	close(sourceHandle);
 	close(destHandle);
-	return SUCCESS;
+
+	return result;
 }
 
 int checkArguments(int argc, char** argv)
