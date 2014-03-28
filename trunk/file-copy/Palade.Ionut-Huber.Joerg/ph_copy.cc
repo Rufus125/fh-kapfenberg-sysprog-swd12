@@ -4,32 +4,47 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+using namespace std;
+
+const int err_arguments = -1;
+const int err_openfile = -2;
+const int err_writefile = -3;
+const int err_readfile = -4;
+
 int main(int argc, char** argv)
 {
 	if(argc != 3){
-		printf("Error! User 2 arguments!\n");
-		return 1;
+		cout << "Error! Use 2 arguments!\n";
+		return err_arguments;
 	}
 	
 	int fos = open(argv[1], O_RDONLY);
 	printf("FileOpen Source: %i\n",fos);
+	if(fos < 0){
+		cerr << "Error! Couldn't open source file: " << argv[1] << endl;
+		return err_openfile;
+	}
 	
 	int fod = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY);
 	printf("FileOpen Destination: %i\n",fos);
+	if(fod < 0){
+		cerr << "Error! Couldn't open destination file: " << argv[2] << endl;
+		return err_openfile;
+	}
 	
 	char buf[1024] = "";
 	ssize_t rd = 0;
 	
 	//file write result
 	int fw;
-	
+	int err_while_read_write = 0;
 	while (true ) {
-		rd= read(fos, buf, sizeof(*buf));
+		rd = read(fos, buf, sizeof(*buf));
 		
 		//check for read errors
 		if (rd < 0 )
 		{
-			printf("%s", buf);
+			err_while_read_write = err_readfile;
 			break;
 		}
 			
@@ -39,7 +54,7 @@ int main(int argc, char** argv)
 		//check for file write error
 		if ( fw < 0 )
 		{
-			printf("\nfile write error");
+			err_while_read_write = err_writefile;
 			break;		
 		}
 		
@@ -56,5 +71,5 @@ int main(int argc, char** argv)
 	close(fos);
 	close(fod);
 	
-	return 0;
+	return err_while_read_write;
 }
