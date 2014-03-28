@@ -19,31 +19,33 @@ int main(int argc, char** argv)
 	}
 	
 	int fos = open(argv[1], O_RDONLY);
-	printf("FileOpen Source: %i\n",fos);
 	if(fos < 0){
 		cerr << "Error! Couldn't open source file: " << argv[1] << endl;
 		return err_openfile;
 	}
 	
 	int fod = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY);
-	printf("FileOpen Destination: %i\n",fos);
 	if(fod < 0){
 		cerr << "Error! Couldn't open destination file: " << argv[2] << endl;
 		return err_openfile;
 	}
 	
+	
 	char buf[1024] = "";
 	ssize_t rd = 0;
-	
-	//file write result
 	int fw;
 	int err_while_read_write = 0;
+	
+	//read from source file and write do dest file
 	while (true ) {
+		
+		//read byts from file in buffer
 		rd = read(fos, buf, sizeof(*buf));
 		
 		//check for read errors
 		if (rd < 0 )
 		{
+			cerr << "Error! Couldn't read from source file: " << argv[1] << endl;
 			err_while_read_write = err_readfile;
 			break;
 		}
@@ -54,6 +56,7 @@ int main(int argc, char** argv)
 		//check for file write error
 		if ( fw < 0 )
 		{
+			cerr << "Error! Couldn't not write to destination file: " << argv[2] << endl;
 			err_while_read_write = err_writefile;
 			break;		
 		}
@@ -61,15 +64,29 @@ int main(int argc, char** argv)
 		//check for end of file
 		if (rd == 0)
 		{
-			printf("\nread end buf value %s", buf);
 			break;		
 		}
 		
-		printf("%s", buf);
+		#ifdef DEBUG
+			//print buffer value in debug modus
+			printf("%s", buf);
+		#endif
 	}
 	
+	//close files
 	close(fos);
 	close(fod);
 	
-	return err_while_read_write;
+	if (err_while_read_write != 0)
+	{
+		printf("error while executing %d\n", err_while_read_write);
+		return err_while_read_write;
+	}
+	else
+	{
+		printf("file copy succed\n");
+		return 0;
+	}
+	
+
 }
