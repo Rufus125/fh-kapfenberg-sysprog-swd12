@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 		return err_openfile;
 	}
 	
-	int fod = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY);
+	int fod = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, S_IRUSR | S_IXUSR);
 	if(fod < 0){
 		cerr << "Error! Couldn't open destination file: " << argv[2] << endl;
 		return err_openfile;
