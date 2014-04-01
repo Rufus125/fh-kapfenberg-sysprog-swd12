@@ -31,13 +31,13 @@ int main(int argc, char** argv)
 	else if (dest < 0 || !dest) {
 		cerr << "No such file: " << argv[2] << endl;
 		close(source);
-    	close(dest);
+		close(dest);
 		return 1;
 	}
 	else {
 		int *buffer[size];
-    	int bytes = read(source, buffer, size);
-    	if(bytes != write(dest, buffer, bytes)) {
+		int bytes = read(source, buffer, size);
+		if(bytes != write(dest, buffer, bytes)) {
 			cerr << "Could not write to file: " << argv[2] << endl;
 			close(source);
 			close(dest);
@@ -47,5 +47,5 @@ int main(int argc, char** argv)
 	cout << "Data successfully written to: " << argv[2] << endl;
 	close(source);
 	close(dest);
-    return 0;
+	return 0;
 }
