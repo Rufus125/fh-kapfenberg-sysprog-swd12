@@ -3,8 +3,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 using namespace std;
+
+const int size = 2048;
 
 int main(int argc, char** argv)
 {
@@ -16,27 +20,32 @@ int main(int argc, char** argv)
     cout << "Source: " << argv[1] << endl;
     cout << "Destination: " << argv[2] << endl;
     
-    int c;
-    FILE *source, *dest;
+    int source = open(argv[1], O_RDONLY);
+    int dest = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  S_IRUSR);
     
-    source = fopen(argv[1], "r");
-    dest = fopen(argv[2], "w");
-    
-    if (source == NULL || !source) {
+    if (source < 0 || !source) {
 		cerr << "No such file: " << argv[1] << endl;
-		return 0;
+		close(source);
+		return 1;
 	}
-	else if (dest == NULL || !dest) {
+	else if (dest < 0 || !dest) {
 		cerr << "No such file: " << argv[2] << endl;
-		return 0;
+		close(source);
+    	close(dest);
+		return 1;
 	}
 	else {
-		while ((c=getc(source))!=EOF)
-			putc(c,dest);
-			
-		fclose(source);
-		fclose(dest);
+		int *buffer[size];
+    	int bytes = read(source, buffer, size);
+    	if(bytes != write(dest, buffer, bytes)) {
+			cerr << "Could not write to file: " << argv[2] << endl;
+			close(source);
+			close(dest);
+			return 1;
+		}
 	}
 	cout << "Data successfully written to: " << argv[2] << endl;
+	close(source);
+	close(dest);
     return 0;
 }
