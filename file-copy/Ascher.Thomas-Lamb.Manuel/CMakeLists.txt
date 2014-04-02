@@ -1,5 +1,5 @@
 # the project's name
-PROJECT(hello-project-monolithic)
+PROJECT(yacp)
 
 # we build an executable out of a single source file
 ADD_EXECUTABLE(yacp yacp.cc)

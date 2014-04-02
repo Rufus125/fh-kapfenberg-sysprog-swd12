@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 {
     if (argc != 3)
     {
-    	cerr << "Usage: yacp <source> <destination>" << endl;
+    	cout << "Usage: yacp <source> <destination>" << endl;
     	return EXIT_SUCCESS;
     }
 
@@ -25,10 +25,10 @@ int main(int argc, char** argv)
     	return EXIT_FAILURE;
     }
 
-    int fdOut = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fdOut = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
     if (fdOut < 0)
     {
-    	cerr << "Could not open destination" << endl;
+    	cerr << "Could not create destination" << endl;
     	close(fdIn);
     	return EXIT_FAILURE;
     }
