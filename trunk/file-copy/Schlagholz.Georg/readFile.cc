@@ -3,6 +3,7 @@
 // simple out- and input
 #include <iostream>
 #include <stdlib.h>
+#include <stdio.h>
 
 // close/read/write
 #include <unistd.h>
@@ -30,26 +31,33 @@ int main(int argc, char** argv)
     else {
     	int source = open(argv[1], O_RDONLY);
     	if(source < 0){
-    		cerr << "Could not open source" <<  argv[1] << endl;
-    		close(source);
-    		return 2;
+    		perror("Could not open source");
     	}
     	int destination = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  S_IRUSR);
     	if(destination < 0){
     	    		cerr << "destination: " << argv[2] <<" already exists"<< endl;
     	    		close(source);
-    	    		close(destination);
     	    		return 3;
     	    	}
     	int *buffer[2048];
-    	int numbytes = read(source,buffer,2048);
-    	if(numbytes != write(destination,buffer, numbytes)){
-    		cerr << "Write did not work out"<< endl;
-    		close(source);
-				close(destination);
-				return 4;
+    	int numbytes = -1;
+    	while((numbytes = read(source,buffer,2048)) !=0){
+    		if(numbytes < 0){
+    			perror("Read did not work out");
+    								close(source);
+    								close(destination);
+    								return 5;
+    		}
+				if(numbytes != write(destination,buffer, numbytes)){
+					cerr << "Write did not work out"<< endl;
+					close(source);
+					close(destination);
+					return 4;
+				}
     	}
-    	cout << "Finished: wrote "<< numbytes << " Bytes from " << argv[1]<< " to "<< argv[2] <<endl;
+			#ifdef DEBUG
+						cerr << "Finished: wrote "<< numbytes << " Bytes from " << argv[1]<< " to "<< argv[2] <<endl;
+			#endif
     	close(destination);
     	close(source);
     	return 0;
