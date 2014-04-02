@@ -8,7 +8,7 @@
 
 #define BUF_SIZ 4096
 
-int writeFile(int source, int dest, ssize_t infile, ssize_t outfile, char buffer[]);
+int copyFile(int source, int dest, ssize_t infile, ssize_t outfile, char buffer[]);
 
 int main(int argc, char** argv) {
 
@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
 	char buffer[BUF_SIZ];
 	ssize_t infile = read(fo, buffer, BUF_SIZ);
 	ssize_t outfile = 0;
-	writeFile(fo, fw, infile, outfile, buffer);
+	copyFile(fo, fw, infile, outfile, buffer);
 
 	close(fo);
 	close(fw);
