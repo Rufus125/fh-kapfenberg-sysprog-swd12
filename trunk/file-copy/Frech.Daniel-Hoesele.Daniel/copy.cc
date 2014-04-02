@@ -1,4 +1,4 @@
-// Daniel Hösele - 1210418031 - SWD12
+// Daniel Hoesele - Daniel Frech - SWD12
 
 #include <iostream>
 #include <stdio.h>
