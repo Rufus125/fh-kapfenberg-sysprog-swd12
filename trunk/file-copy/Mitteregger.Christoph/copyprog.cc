@@ -22,15 +22,15 @@ int main (int argc, char** argv)
   // checking whether input was in right format
   if(argc != 3)
   {
-    cout << "Wrong Input, Please use:" << endl;
-    cout << "./copyprog <source file> <destination file>" << endl;
+    cerr << "Wrong Input, Please use:" << endl;
+    cerr << "./copyprog <source file> <destination file>" << endl;
     return EXIT_SUCCESS;
   }
 
   // if source file is same as destination file
   if(string(argv[1]) == string(argv[2]))
   {
-    cout << "source file cannot be the same as destination file: try again" << endl;
+    cerr << "source file cannot be the same as destination file: try again" << endl;
     return EXIT_SUCCESS;
   }
 
@@ -38,8 +38,7 @@ int main (int argc, char** argv)
   int sourceFile = open(argv[1], O_RDONLY);
   if(sourceFile == ERROR)
   {
-    cerr << "ERROR while opening source file: ";
-    cout << strerror(errno) << endl;
+    perror("ERROR while opening source file");
     return EXIT_FAILURE;
   }
 
@@ -49,8 +48,7 @@ int main (int argc, char** argv)
   int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC | O_EXCL, READWRITE);
   if(destinationFile == ERROR)
   {
-    cerr << "ERROR while opening destination file: ";
-    cout << strerror(errno) << endl;
+    perror("ERROR while opening destination file");
     close(sourceFile);
     return EXIT_FAILURE;
   }
@@ -64,17 +62,15 @@ int main (int argc, char** argv)
         // if read returns an error
         if(byte == ERROR)
         {
-          cerr << "ERROR while reading source file: ";
-          cout << strerror(errno) << endl;
+          perror("ERROR while reading source file");
           return closeFileWithError(sourceFile, destinationFile);
         }
         // write to destination file
         if(write(destinationFile, buffer, byte) == ERROR)
-         {
-           cerr << "ERROR while writing destination file: ";
-           cout << strerror(errno) << endl;
-           return closeFileWithError(sourceFile, destinationFile);
-         }
+        {
+          perror("ERROR while writing destination file");
+          return closeFileWithError(sourceFile, destinationFile);
+        }
       }
 
   close(sourceFile);
