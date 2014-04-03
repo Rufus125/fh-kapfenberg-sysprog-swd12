@@ -6,7 +6,7 @@ int main(int argc, char** argv)
 {
   if(argc < 3)
   {
-    printf("usage: cpy SOURCEFILE DESTINATIONFILE");
+    printf("usage: cpy SOURCEFILE DESTINATIONFILEßn");
     return EXIT_FAILURE;
   }
 
