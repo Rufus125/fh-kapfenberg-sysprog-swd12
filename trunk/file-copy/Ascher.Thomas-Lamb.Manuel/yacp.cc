@@ -3,10 +3,8 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <iostream>
+#include <stdio.h>
 #include <stdlib.h>
-
-using namespace std;
 
 #define READ_BUFFER_SIZE 4096
 
@@ -14,21 +12,21 @@ int main(int argc, char** argv)
 {
     if (argc != 3)
     {
-    	cerr << "Usage: yacp <source> <destination>" << endl;
+    	fprintf(stderr, "Usage: yacp <source> <destination>\n");
     	return EXIT_FAILURE;
     }
 
     int fdIn = open(argv[1], O_RDONLY);
     if (fdIn < 0)
     {
-    	cerr << "Could not open source" << endl;
+    	perror("Could not open source");
     	return EXIT_FAILURE;
     }
 
     int fdOut = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
     if (fdOut < 0)
     {
-    	cerr << "Could not create destination" << endl;
+    	perror("Could not create destination");
     	close(fdIn);
     	return EXIT_FAILURE;
     }
@@ -42,14 +40,14 @@ int main(int argc, char** argv)
     {
     	if (bytes < 0)
     	{
-    		cerr << "Read failed" << endl;
+    		perror("Read failed");
     		result = EXIT_FAILURE;
     		break;
     	}
 
     	if (write(fdOut, buffer, bytes) < 0)
     	{
-    		cerr << "Write failed" << endl;
+    		perror("Write failed");
     		result = EXIT_FAILURE;
     		break;
     	}
