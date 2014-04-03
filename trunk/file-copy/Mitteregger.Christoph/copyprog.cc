@@ -46,7 +46,7 @@ int main (int argc, char** argv)
   // open file to write to
   // mode is used for O_CREAT, if file doesn't exist it will be created with
   // read && write permissions
-  int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, READWRITE);
+  int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC | O_EXCL, READWRITE);
   if(destinationFile == ERROR)
   {
     cerr << "ERROR while opening destination file: ";
