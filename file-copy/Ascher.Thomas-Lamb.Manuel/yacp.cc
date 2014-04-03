@@ -14,8 +14,8 @@ int main(int argc, char** argv)
 {
     if (argc != 3)
     {
-    	cout << "Usage: yacp <source> <destination>" << endl;
-    	return EXIT_SUCCESS;
+    	cerr << "Usage: yacp <source> <destination>" << endl;
+    	return EXIT_FAILURE;
     }
 
     int fdIn = open(argv[1], O_RDONLY);
