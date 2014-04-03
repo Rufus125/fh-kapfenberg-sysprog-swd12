@@ -111,10 +111,6 @@ int copy(char* source, char* target, int fileMode)
 	close(sourceHandle);
 	close(destHandle);
 
-	if(result == SUCCESS){
-		cout << "Successfully copied!" << endl;	
-	}
-
 	return result;
 }
 
@@ -135,7 +131,6 @@ int checkArguments(int argc, char** argv)
 		return ERROR;
 	}
 
-	cout << "Source: " << argv[1] << "\nDestination: " << argv[2] << endl;
 	return SUCCESS;
 }
 
