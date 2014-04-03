@@ -2,12 +2,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include <unstd.h>
+#include <unistd.h>
 #include <fcntl.h>
 
 using namespace std;
-
-const int SIZE 2048;
 
 int main(int argc, char** argv)
 {
@@ -38,10 +36,10 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	
-	int *buffer[SIZE];
-	int bytes = read(source, buffer, size);
+	int *buffer[2048];
+	int bytes = read(source, buffer, 2048);
 	
-	if (bytes != write(dest, buffer, bytes))
+	if (bytes != write(target, buffer, bytes))
 	{
 		cerr << "Unable to write data to file " << argv[2] << endl;
 		close(source);
