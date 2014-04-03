@@ -5,10 +5,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
+#include <string.h>
 
 using namespace std;
 
-const int size = 2048;
+const int size = 4096;
 
 int main(int argc, char** argv)
 {
@@ -21,15 +23,17 @@ int main(int argc, char** argv)
     cout << "Destination: " << argv[2] << endl;
     
     int source = open(argv[1], O_RDONLY);
-    int dest = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  S_IRUSR);
+    int dest = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  S_IRWXU);
     
-    if (source < 0 || !source) {
-		cerr << "No such file: " << argv[1] << endl;
+    if (source == -1 || !source) {
+		cerr << "Failed to open file: " << argv[1] << endl;
+		cerr << strerror(errno) << endl;
 		close(source);
 		return 1;
 	}
-	else if (dest < 0 || !dest) {
-		cerr << "No such file: " << argv[2] << endl;
+	else if (dest == -1 || !dest) {
+		cerr << "Failed to open file: " << argv[2] << endl;
+		cerr << strerror(errno) << endl;
 		close(source);
 		close(dest);
 		return 1;
@@ -39,6 +43,7 @@ int main(int argc, char** argv)
 		int bytes = read(source, buffer, size);
 		if(bytes != write(dest, buffer, bytes)) {
 			cerr << "Could not write to file: " << argv[2] << endl;
+			cerr << strerror(errno) << endl;
 			close(source);
 			close(dest);
 			return 1;
