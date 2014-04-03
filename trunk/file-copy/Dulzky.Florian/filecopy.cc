@@ -27,9 +27,9 @@ int main(int argc, char** argv)
         cin >> dest;
     }
     else {
-        cout << "Bitte Source eingeben:" << endl;
+	cout << "Bitte Source eingeben:" << endl;
         cin >> source;
-        cout << "Bitte Destination eingeben:" << endl;
+	cout << "Bitte Destination eingeben:" << endl;
         cin >> dest;
     }
     
@@ -41,9 +41,9 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
     
-    int fileDest = open(dest.c_str(), O_WRONLY);
+    int fileDest = open(dest.c_str(), O_WRONLY | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
     if(fileDest < 0){
-	perror("Destination nicht gefunden: ");
+	perror("Destination kann nicht erstellt werden: ");
         close(fileSrc);
         return EXIT_FAILURE;
     }
