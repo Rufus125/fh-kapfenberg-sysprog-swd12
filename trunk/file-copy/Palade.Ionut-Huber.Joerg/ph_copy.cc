@@ -6,10 +6,17 @@
 
 using namespace std;
 
-const int err_arguments = -1;
-const int err_openfile = -2;
-const int err_writefile = -3;
-const int err_readfile = -4;
+const int err_arguments = 1;
+const int err_openfile = 2;
+const int err_writefile = 3;
+const int err_readfile = 4;
+
+//TODO:
+//immer exit code 1 retur geben bei fehler
+//perror implementieren
+//"Wenn SOURCE existiert und DESTINATION nicht extistiert kopiert es...
+// O_EXCL in den open Command implementieren
+// permission 0666
 
 int main(int argc, char** argv)
 {
