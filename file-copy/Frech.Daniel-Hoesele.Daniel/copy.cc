@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int size = 4096;
+const int SIZE = 4096;
 
 int main(int argc, char** argv)
 {
@@ -39,8 +39,8 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	else {
-		int *buffer[size];
-		int bytes = read(source, buffer, size);
+		int *buffer[SIZE];
+		int bytes = read(source, buffer, SIZE);
 		if(bytes != write(dest, buffer, bytes)) {
 			cerr << "Could not write to file: " << argv[2] << endl;
 			cerr << strerror(errno) << endl;
