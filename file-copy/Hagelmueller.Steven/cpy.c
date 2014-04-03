@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 
   int dfd;
 
-  if((dfd = open(argv[2], O_WRONLY | O_CREAT | O_EXCL)) == -1)
+  if((dfd = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)) == -1)
   {
     perror("destination file open");
     close(sfd);
