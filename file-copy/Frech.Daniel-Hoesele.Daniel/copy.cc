@@ -11,12 +11,13 @@
 using namespace std;
 
 const int SIZE = 4096;
+const int FAILURE = 1;
 
 int main(int argc, char** argv)
 {
     if (argc != 3) {
         cerr << "Program need exactly 2 arguments" << endl;
-        return 1;
+        exit(FAILURE);
     }
     
     cout << "Source: " << argv[1] << endl;
@@ -29,14 +30,14 @@ int main(int argc, char** argv)
 		cerr << "Failed to open file: " << argv[1] << endl;
 		cerr << strerror(errno) << endl;
 		close(source);
-		return 1;
+		exit(FAILURE);
 	}
 	else if (dest == -1 || !dest) {
 		cerr << "Failed to open file: " << argv[2] << endl;
 		cerr << strerror(errno) << endl;
 		close(source);
 		close(dest);
-		return 1;
+		exit(FAILURE);
 	}
 	else {
 		int *buffer[SIZE];
@@ -46,7 +47,7 @@ int main(int argc, char** argv)
 			cerr << strerror(errno) << endl;
 			close(source);
 			close(dest);
-			return 1;
+			exit(FAILURE);
 		}
 	}
 	cout << "Data successfully written to: " << argv[2] << endl;
