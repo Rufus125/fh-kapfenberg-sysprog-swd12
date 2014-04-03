@@ -16,7 +16,7 @@ const int FAILURE = 1;
 int main(int argc, char** argv)
 {
     if (argc != 3) {
-        cerr << "Program need exactly 2 arguments" << endl;
+        cerr << "Program needs exactly 2 arguments" << endl;
         exit(FAILURE);
     }
     
@@ -24,7 +24,7 @@ int main(int argc, char** argv)
     cout << "Destination: " << argv[2] << endl;
     
     int source = open(argv[1], O_RDONLY);
-    int dest = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  S_IRWXU);
+    int dest = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  0666);
     
     if (source == -1 || !source) {
 		cerr << "Failed to open file: " << argv[1] << endl;
