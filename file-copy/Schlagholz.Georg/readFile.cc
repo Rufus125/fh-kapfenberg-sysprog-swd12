@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     	if(source < 0){
     		perror("Could not open source");
     	}
-    	int destination = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  S_IRUSR);
+    	int destination = open (argv[2], O_WRONLY | O_CREAT | O_EXCL,  0666);//rw everybody
     	if(destination < 0){
     	    		cerr << "destination: " << argv[2] <<" already exists"<< endl;
     	    		close(source);
