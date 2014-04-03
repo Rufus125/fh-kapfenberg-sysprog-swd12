@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     string source;
     string dest;
     if(argc > 3){
-        cerr << "Nur 2 Argumente möglich" << endl;
+	perror("Nur 2 Argumente möglich: ");
         return EXIT_FAILURE;
     }
     if (argc > 2) {
@@ -37,13 +37,13 @@ int main(int argc, char** argv)
     
     int fileSrc = open(source.c_str(), O_RDONLY);
     if(fileSrc < 0){
-        cerr << "File nicht gefunden" << endl;
+	perror("file nicht gefunden: ");
         return EXIT_FAILURE;
     }
     
     int fileDest = open(dest.c_str(), O_WRONLY);
     if(fileDest < 0){
-        cerr << "Destination nicht gefunen" << endl;
+	perror("Destination nicht gefunden: ");
         close(fileSrc);
         return EXIT_FAILURE;
     }
@@ -56,13 +56,13 @@ int main(int argc, char** argv)
     {
         if (bytes < 0)
         {
-            cerr << "Fehler beim lesen des Files" << endl;
+	    perror("Fehler beim lesen des Files: ");
             return EXIT_FAILURE;
         }
         
         if (write(fileDest, buffer, bytes) < 0)
         {
-            cerr << "Fehler beim schreiben des Files" << endl;
+	    perror("Fehler beim schreiben des Files: ");
             return EXIT_FAILURE;
         }
     }
