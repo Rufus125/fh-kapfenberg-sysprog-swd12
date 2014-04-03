@@ -23,7 +23,8 @@ int main(int argc, char** argv)
     	return EXIT_FAILURE;
     }
 
-    int fdOut = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
+	int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+    int fdOut = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, mode);
     if (fdOut < 0)
     {
     	perror("Could not create destination");
