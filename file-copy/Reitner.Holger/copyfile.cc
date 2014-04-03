@@ -66,7 +66,8 @@ int main(int argc, char** argv) {
     printf("Tyring to create file '%s'...\n", targetFile);
 
     // create a file with special options
-    targetFileHandle = open(targetFile, O_WRONLY | O_CREAT | O_TRUNC,S_IRUSR | S_IWUSR);
+    targetFileHandle = open(targetFile, O_WRONLY | O_CREAT | O_TRUNC,
+                            S_IRUSR | S_IWUSR);
     if (targetFileHandle == -1) {
       fprintf(stderr, "   Error creating file '%s' with error code: %d\n",targetFile,errno);
       close(sourceFileHandle);
@@ -77,6 +78,7 @@ int main(int argc, char** argv) {
     //read/write process
     do {
       //hint: when first entry, Bytes alread read
+//        cerr << "Bytes read: " << sourceNoOfBytes << "..." << endl;
       printf("Bytes read: %d...\n", sourceNoOfBytes);
 
       printf("Writing to '%d' to '%s'\n", sourceNoOfBytes, targetFile);
