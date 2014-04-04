@@ -20,7 +20,7 @@ Die "Challenge" dabei ist, open() zu verstehen, und da vor allem das
 Bedeutung von {{{O_CREAT}}}. Machen Sie die Fehlerbehandlung ungefähr
 so, wie im Kurs erläutert wurde.
 
- Bitte halten Sie sich an die Unix-Gebräuche,
+Bitte halten Sie sich an die Unix-Gebräuche:
 
  * Geben Sie keine Meldungen auf {{{stdout}}} aus, die dort nicht hingehören. Dort gehören nur Sachen hin, die mittels einer Pipe ins nächste Programm übergeben werden sollen --- das sind *keine* Fehler-, Status- und Debugmessages.
  * Geben Sie dem Benutzer im Fehlerfall _sämtliche_ Information, die Sie haben. Insbesondere achten Sie bitte darauf, ihm die textuelle Information zur {{{errno}}} Variable zu präsentieren.
@@ -42,6 +42,7 @@ genügen.
  * {{{SOURCE}}} und {{{DESTINATION}}} sind danach identisch
  * Keine Ausgabe auf {{{stdout}}}
  * Die Permissions von {{{DESTINATION}}} sind nach erfolgreicher Operation die gleichen, die auch das Command {{{touch DESTINATION}}} vergeben würde.
+ * {{{valgrind ./yacp SOURCE DESTINATION}}} beschwert sich nicht.
 
 == Abgabe ==
 
