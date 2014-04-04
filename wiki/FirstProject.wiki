@@ -22,14 +22,8 @@ so, wie im Kurs erläutert wurde.
 
  Bitte halten Sie sich an die Unix-Gebräuche,
 
- * Geben Sie keine Meldungen aud {{{stdout}}} aus, was dort nicht
-   hingehört. Dort gehören nur Sachen hin, die mittels einer Pipe ins
-   nächste Programm übergeben werden sollen --- das sind *keine*
-   Fehler-, Status- und Debugmessages.
-
- * Geben Sie dem Benutzer im Fehlerfall _sämtliche_ Information, die
-   Sie haben. Insbesondere achten Sie bitte darauf, ihm die textuelle
-   Information zur {{{errno}}} Variable zu präsentieren.
+ * Geben Sie keine Meldungen auf {{{stdout}}} aus, die dort nicht hingehören. Dort gehören nur Sachen hin, die mittels einer Pipe ins nächste Programm übergeben werden sollen --- das sind *keine* Fehler-, Status- und Debugmessages.
+ * Geben Sie dem Benutzer im Fehlerfall _sämtliche_ Information, die Sie haben. Insbesondere achten Sie bitte darauf, ihm die textuelle Information zur {{{errno}}} Variable zu präsentieren.
 
 Bitte legen Sie sich eigene Arbeitsbereiche in
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/file-copy
@@ -43,15 +37,11 @@ genügen.
 
 == Testfälle ==
 
- * Bricht ab, wenn {{{DESTINATION}}} bereits existiert. {{{errno}}}
-   ist in diesem Fall {{{EEXIST}}} (mit der zugehörigen Message "File
-   exists").
+ * Bricht ab, wenn {{{DESTINATION}}} bereits existiert. {{{errno}}} ist in diesem Fall {{{EEXIST}}} (mit der zugehörigen Message "File exists").
  * Kopiert auch große Files als ganzes
  * {{{SOURCE}}} und {{{DESTINATION}}} sind danach identisch
  * Keine Ausgabe auf {{{stdout}}}
- * Die Permissions von {{{DESTINATION}}} sind nach erfolgreicher
-   Operation die gleichen, die auch das Command {{{touch
-   DESTINATION}}} vergeben würde.
+ * Die Permissions von {{{DESTINATION}}} sind nach erfolgreicher Operation die gleichen, die auch das Command {{{touch DESTINATION}}} vergeben würde.
 
 == Abgabe ==
 
