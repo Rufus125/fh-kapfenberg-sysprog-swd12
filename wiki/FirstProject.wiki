@@ -47,5 +47,7 @@ genügen.
 == Abgabe ==
 
 Als Abgabeordner fungiert der obige Arbeitsbereich, ein
-Directory. Stichtag, sagen wir 3.April, bei unserer nächsten
-Veranstaltung.
+Directory.
+
+ * Stichtag, sagen wir 3.April, bei unserer nächsten Veranstaltung.
+ * Nachfrist wegen unzureichend präziser Aufgabenstellung: 10.4.2014
