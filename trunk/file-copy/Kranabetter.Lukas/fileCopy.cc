@@ -40,12 +40,13 @@ int main(int argc, char** argv)
 	char* destination = argv[2];
 
 	// open system call returns a integer value which is used to refer to it and close it when processing is done
+	// This integer represents the file descriptor, shell default file descriptors 0 stdin, 1 stdout, 2 stderr, shell pipe use 1 | 0
 	// See http://codewiki.wikidot.com/c:system-calls:open for informations about the oflags and mode parameters
 	// int open(const char *path, int oflags, mode_t mode);
 	int openSource = open(source, O_RDONLY);
 	if(openSource == -1)
 	{
-		// You can use strerror() to get a human-readable string for the error number
+		// You can use strerror() to get a human readable string for the error number
 		cerr << "Error opening source file: " << strerror(errno) << endl;
 		return -1;
 	}
@@ -64,7 +65,7 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	cout << "Copy file " << source << " to " << destination << endl;
+	cerr << "Copy file " << source << " to " << destination << endl;
 
 	// Define read buffer
 	char buffer[BUFFER_SIZE];
@@ -93,7 +94,7 @@ int main(int argc, char** argv)
 
 		// Show progress, use carriage return "\r" to display it always in the same output line
 		bytesProgress = bytesProgress + bytesDestination;
-		cout << "Processed " << bytesProgress << " bytes from " << bytesTotal << "\r";
+		cerr << "Processed " << bytesProgress << " bytes from " << bytesTotal << "\r";
 
 		// Read further byte blocks into buffer
 		bytesSource = read(openSource, buffer, BUFFER_SIZE);
@@ -107,8 +108,9 @@ int main(int argc, char** argv)
 	// Close the opened files with their file handles
 	close(openSource);
 	close(openDestination);
-	// cout is standard output stream, write copy finished with a endl before to be sure its a separated output line
-	cout << endl << "Finished" << endl;
+	// cout is standard output stream, don't write messages to it because this is also the pipe output
+	// Write copy finished with a endl before to be sure its a separated output line
+	cerr << endl << "Finished" << endl;
 
 	return 0;
 }
