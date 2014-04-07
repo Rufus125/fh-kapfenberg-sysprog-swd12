@@ -20,18 +20,21 @@ int main (int argc,char** argv )
 
 	int source = open(argv[1], O_RDONLY); //File Descriptor
 	if (source == -1){
-		fprintf(stderr, "Fehler beim Lesen - Fehlernummer: %d\n",errno);
+		perror("Fehler beim Lesen");
+		fprintf(stderr, "Fehlernummer: %d\n",errno);
 			close(source);
 			return 0;
 
 	}
 
-	int target = open(argv[2],O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+	int mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
+	int target = open(argv[2],O_WRONLY | O_CREAT | O_EXCL, mode);
 
 	if (target == -1){
-			fprintf(stderr, "Fehler beim Schreiben - Fehlernummer:  %d\n",errno);
+			perror("Fehler beim Schreiben");
+			fprintf(stderr,"Fehlernummer:  %d\n",errno);
 				close(source);
-				return 0;
+				return -1;
 	}
 
 	ssize_t bytes = 0;
@@ -43,14 +46,16 @@ int main (int argc,char** argv )
 
 		if (bytes <= 0){
 			if (bytes == -1){
-				fprintf(stderr, "Fehler beim Lesen - Fehlernummer:  %d\n",errno);
+				perror("Fehler beim Lesen: ");
+				fprintf(stderr, "Fehlernummer:  %d\n",errno);
 			}
 
 			break;
 		}
 	save = write(target, buffer, bytes);
 	if (save == -1){
-			fprintf(stderr, "Fehler beim Lesen - Fehlernummer:  %d\n",errno);
+			perror("Fehler beim Lesen");
+			fprintf(stderr, "Fehlernummer:  %d\n",errno);
 		}
 	}
 
