@@ -49,11 +49,11 @@ int main(int argc, char** argv) {
     /* Open destination file for writing purposes (permissions: rw-r--r--). If the file doesn't exist, create it.
        Note: Upon failure the ingoing file descriptor has to be closed to free up ressources.
      */
-    int fdOut = open(argv[2], O_CREAT | O_WRONLY, 0666);
+    int fdOut = open(argv[2], O_CREAT | O_WRONLY | O_EXCL, 0666);
 
     if (fdOut == -1) {
       cerr << "Failed to open destination file due to: " << strerror(errno) << endl;
-      
+
       close(fdIn);
 
       return EXIT_FAILURE;
