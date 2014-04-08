@@ -1,6 +1,7 @@
 /* Fritz Eva - Schuberth Jürgen */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -14,7 +15,7 @@ int main (int argc,char** argv )
 	if (argc != 3) {
 
 		fprintf(stderr, "Zu wenig Argumente");
-		return 0;
+		return EXIT_FAILURE;
 
 	}
 
@@ -23,7 +24,7 @@ int main (int argc,char** argv )
 		perror("Fehler beim Lesen");
 		fprintf(stderr, "Fehlernummer: %d\n",errno);
 			close(source);
-			return 0;
+			return EXIT_FAILURE;
 
 	}
 
@@ -34,7 +35,7 @@ int main (int argc,char** argv )
 			perror("Fehler beim Schreiben");
 			fprintf(stderr,"Fehlernummer:  %d\n",errno);
 				close(source);
-				return -1;
+				return EXIT_FAILURE;
 	}
 
 	ssize_t bytes = 0;
@@ -63,6 +64,6 @@ int main (int argc,char** argv )
 
 	close(source);
 	close(target);
-   return 0;
+   return EXIT_SUCCESS;
 }
 
