@@ -23,26 +23,21 @@ int closeFilesAndReturn(int fdIn, int fdOut, int returnValue);
 
 int main(int argc, char** argv) {
 
-	/* Verify if user input is correct (i.e. number of args must be 3). 
-	   Note: Since the usage is incorrect but no execution error occurred, we don't log it directly to error.
-	*/
+	/* Verify if user input is correct (i.e. number of args must be 3). */
     if (argc != 3) {
-    	cout << "Incorrect usage of program. Try out:" << endl;
-    	cout << "filecopy <source> <destination>" << endl;
+    	cerr << "Incorrect usage of program. Try out:" << endl << "filecopy <source> <destination>" << endl;
 
-    	return EXIT_SUCCESS;
+    	return EXIT_FAILURE;
     }
 
-    /* Verify that source file and destination file are not the same. We simply don't need to perform this useless operation.
-       Note: Since the usage is incorrect but no execution error occurred, we don't log it directly to error.
-     */
+    /* Verify that source file and destination file are not the same. */
     if (string(argv[1]).compare(string(argv[2])) == 0) {
-    	cout << "Incorrect usage of program. Source file and destination file need to be different!" << endl;
+    	cerr << "Incorrect usage of program. Source file and destination file need to be different!" << endl;
 
-    	return EXIT_SUCCESS;
+    	return EXIT_FAILURE;
     }
 
-    /* Try to open source file with readOnly-Access and exit upon failure. We save the file descriptor to close it later. */
+    /* Try to open source file with readOnly-Access and exit upon failure. */
     int fdIn = open(argv[1], O_RDONLY);
 
     if (fdIn == -1) {
@@ -51,11 +46,10 @@ int main(int argc, char** argv) {
       return EXIT_FAILURE; 	
     }
 
-    /* Open destination file for writing purposes. If the files doesn't exist, create it. If the files exists already, truncate the length to 0.
-       The destination file will be created with read and write access rights.
+    /* Open destination file for writing purposes (permissions: rw-r--r--). If the file doesn't exist, create it.
        Note: Upon failure the ingoing file descriptor has to be closed to free up ressources.
      */
-    int fdOut = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fdOut = open(argv[2], O_CREAT | O_WRONLY, 0666);
 
     if (fdOut == -1) {
       cerr << "Failed to open destination file due to: " << strerror(errno) << endl;
