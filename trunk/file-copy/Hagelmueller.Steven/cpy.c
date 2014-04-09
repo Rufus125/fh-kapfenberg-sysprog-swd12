@@ -16,7 +16,7 @@ int main(int argc, char** argv)
   int sfd;
   if((sfd = open(argv[1], O_RDONLY)) == -1)
   {
-    perror("source file open");
+    perror("sourcefile open");
     return EXIT_FAILURE;
   }
 
@@ -31,13 +31,21 @@ int main(int argc, char** argv)
   int dfd;
   if((dfd = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, sfd_stat.st_mode & 0777)) == -1)
   {
-    perror("destination file open");
+    perror("destinationfile open");
     close(sfd);
     return EXIT_FAILURE;
   }
 
   blksize_t block_size = sfd_stat.st_blksize;
-  char* buff = (char*)calloc(1, sizeof(char) * block_size);
+  char* buff;
+  if(!(buff = (char*)calloc(1, sizeof(char) * block_size)))
+  {
+    perror("calloc");
+    close(sfd);
+    close(dfd);    
+    return EXIT_FAILURE;
+  }
+
   int linesRead;
   while(linesRead = read(sfd, buff, block_size))
   {
