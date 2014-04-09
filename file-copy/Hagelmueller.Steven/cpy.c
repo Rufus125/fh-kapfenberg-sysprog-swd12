@@ -46,10 +46,10 @@ int main(int argc, char** argv)
     return EXIT_FAILURE;
   }
 
-  int linesRead;
-  while(linesRead = read(sfd, buff, block_size))
+  int nBytes;
+  while(nBytes = read(sfd, buff, block_size))
   {
-    if(linesRead == -1 || write(dfd, buff, linesRead) == -1)
+    if(nBytes == -1 || write(dfd, buff, nBytes) == -1)
     {
       perror("read/write");
       close(sfd);
