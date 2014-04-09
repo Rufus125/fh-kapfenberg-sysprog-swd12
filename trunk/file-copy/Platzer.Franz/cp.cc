@@ -59,7 +59,7 @@ int getFileMode(char* path)
 		return ERROR;
 	}
 
-	int fileMode = 0644; // rw-r--r--
+	int fileMode = 0666; // rw-rw-rw-
 	fileMode = fileInfo->st_mode;
 	free(fileInfo);
 
@@ -136,7 +136,7 @@ int checkArguments(int argc, char** argv)
 
 void outputOpenFileError(int errorNr)
 {
-	cerr << "open() failed with error: " << strerror(errorNr) << endl;
+	cerr << "failed with error: " << strerror(errorNr) << endl;
 }
 
 
