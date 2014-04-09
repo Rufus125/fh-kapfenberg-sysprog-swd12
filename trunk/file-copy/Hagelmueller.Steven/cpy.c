@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 
   blksize_t block_size = sfd_stat.st_blksize;
   char* buff;
-  if(!(buff = (char*)calloc(1, sizeof(char) * block_size)))
+  if(!(buff = (char*)calloc(1, block_size)))
   {
     perror("calloc");
     close(sfd);
