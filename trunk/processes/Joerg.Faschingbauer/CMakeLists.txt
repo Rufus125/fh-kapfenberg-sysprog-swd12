@@ -3,11 +3,11 @@ INCLUDE_DIRECTORIES(
 )
 
 ADD_EXECUTABLE(
-    Joerg.Faschingbauer.sensortests
-    sensortests.cpp
+    Joerg.Faschingbauer.sensor-tests
+    sensor-tests.cpp
 )
 TARGET_LINK_LIBRARIES(
-    Joerg.Faschingbauer.sensortests
+    Joerg.Faschingbauer.sensor-tests
     sensors
 )
 
