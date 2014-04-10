@@ -12,7 +12,7 @@
 
 using namespace std;
 #define ERROR -1
-#define READWRITE 0600
+#define FILEPERMISSION 0644
 #define BUFFERSIZE 2048
 
 int closeFileWithError(int source, int destination);
@@ -44,8 +44,8 @@ int main (int argc, char** argv)
 
   // open file to write to
   // mode is used for O_CREAT, if file doesn't exist it will be created with
-  // read && write permissions
-  int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC | O_EXCL, READWRITE);
+  // read && write permissions for user and read permission for group & other
+  int destinationFile = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC | O_EXCL, FILEPERMISSION);
   if(destinationFile == ERROR)
   {
     perror("ERROR while opening destination file");
@@ -58,20 +58,21 @@ int main (int argc, char** argv)
 
   // read from source file
   while((byte = read(sourceFile, buffer, BUFFERSIZE)))
-      {
-        // if read returns an error
-        if(byte == ERROR)
-        {
-          perror("ERROR while reading source file");
-          return closeFileWithError(sourceFile, destinationFile);
-        }
-        // write to destination file
-        if(write(destinationFile, buffer, byte) == ERROR)
-        {
-          perror("ERROR while writing destination file");
-          return closeFileWithError(sourceFile, destinationFile);
-        }
-      }
+  {
+    // if read returns an error
+    if(byte == ERROR)
+    {
+      perror("ERROR while reading source file");
+      return closeFileWithError(sourceFile, destinationFile);
+    }
+
+    // write to destination file
+    if(write(destinationFile, buffer, byte) == ERROR)
+    {
+      perror("ERROR while writing destination file");
+      return closeFileWithError(sourceFile, destinationFile);
+    }
+  }
 
   close(sourceFile);
   close(destinationFile);
