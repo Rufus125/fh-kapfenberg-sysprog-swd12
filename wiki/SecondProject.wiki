@@ -1,18 +1,24 @@
 #summary Second Project, playing with processes
-= Spielen mit den Prozessen =
+= Spielen mit den Prozessen: Temperatursensoren =
 
-== Alternative 1 ==
+Man stelle sich Hardware-Temperatursensoren vor, die wir auslesen
+wollen. Beim nächsten Übungsbeispiel wollen wir ein wenig in die
+Breite gehen und unter anderem I2C-Temperatursensoren mit einem
+Raspberry-Pi auslesen. Einstweilen muss folgendes Gedankenbeispiel
+genügen ...
+
+http://code.google.com/p/fh-kapfenberg-sysprog-swd12/wiki/sensors.png
 
  * Sensoren
    * Thermometer Interface
    * HangThermometer
    * CrashingThermometer
 
+
+= Organisatorisches =
+
  * *Arbeitsbereiche* ....
-
  * Testfälle
-
-   ... 
- 
-== Abgabe ==
+ * Abgabe
+ * ... 
 
