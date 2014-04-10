@@ -13,7 +13,7 @@
 using namespace std;
 #define ERROR -1
 #define FILEPERMISSION 0644
-#define BUFFERSIZE 2048
+#define BUFFERSIZE 4096
 
 int closeFileWithError(int source, int destination);
 
