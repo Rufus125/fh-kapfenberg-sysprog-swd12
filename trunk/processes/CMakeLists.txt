@@ -5,3 +5,4 @@ ADD_SUBDIRECTORY(sensors)
 
 ADD_SUBDIRECTORY(Joerg.Faschingbauer)
 ADD_SUBDIRECTORY(Kamper.Manuel)
+ADD_SUBDIRECTORY(Ascher.Thomas)
