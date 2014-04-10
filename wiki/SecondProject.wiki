@@ -9,11 +9,22 @@ genügen ...
 
 http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/processes/sensors/sensors.png
 
- * Sensoren
-   * Thermometer Interface
-   * HangThermometer
-   * CrashingThermometer
+Zwei von diesen Sensor-Implementationen haben ein Problem:
+ 
+ * {{{HangThermometer}}} lässt sich mitunter zu lange Zeit, sodass eine verwendende Datenloggerapplikation, die 100e Sensoren betreut, Probleme hätte.
+ * {{{CrashThermometer}}} stürzt gar ab.
 
+Schreiben Sie eine Thermometer-Klasse SafeThermometer,
+
+http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/processes/sensors/safe-thermometer.png
+
+{{{SafeThermometer}}} _besitzt_ ein (instabiles) Thermometer, das es
+benutzt, um die Temperatur zu messen. Um sich und die Umwelt von der
+Instabilität zu schützen, macht seine Implementation von
+{{{get_temperature()}}} folgendes:
+
+ * Jeden Aufruf von {{{get_temperature()}}} des instabilen Thermometers führt es in einem eigenen Adressraum durch ({{{fork()}}}).
+ * Um ein Timeout zu implementieren, wird im Child-Prozess {{{alarm()}}} benutzt. Bitte lesen Sie {{{man 2 alarm}}}, um die Semantik zu erfahren, bzw. lesen Sie dazu [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/Joerg.Faschingbauer/alarm-test.cpp das Testprogramm]
 
 = Organisatorisches =
 
