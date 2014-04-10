@@ -1,5 +1,5 @@
 #summary Second Project, playing with processes
-= Spielen mit dem Prozessen =
+= Spielen mit den Prozessen =
 
 == Alternative 1 ==
 
