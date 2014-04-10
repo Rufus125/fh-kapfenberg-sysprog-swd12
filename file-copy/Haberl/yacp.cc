@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
-    int targetFd = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, 0666);
+    int targetFd = open(argv[2], O_WRONLY | O_CREAT | O_EXCL, 0644);
     if (targetFd < 0) {
         cerr << "error while retrieving the target file descriptor: " << argv[2] << endl;
         cerr << strerror(errno) << endl;
