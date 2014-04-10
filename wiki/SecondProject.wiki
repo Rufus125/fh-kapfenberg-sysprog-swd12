@@ -1,0 +1,18 @@
+#summary Second Project, playing with processes
+= Spielen mit dem Prozessen =
+
+== Alternative 1 ==
+
+ * Sensoren
+   * Thermometer Interface
+   * HangThermometer
+   * CrashingThermometer
+
+ * *Arbeitsbereiche* ....
+
+ * Testfälle
+
+   ... 
+ 
+== Abgabe ==
+
