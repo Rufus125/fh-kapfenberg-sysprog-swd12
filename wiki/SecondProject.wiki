@@ -7,7 +7,7 @@ Breite gehen und unter anderem I2C-Temperatursensoren mit einem
 Raspberry-Pi auslesen. Einstweilen muss folgendes Gedankenbeispiel
 genügen ...
 
-http://code.google.com/p/fh-kapfenberg-sysprog-swd12/wiki/sensors.png
+http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/processes/sensors/sensors.png
 
  * Sensoren
    * Thermometer Interface
