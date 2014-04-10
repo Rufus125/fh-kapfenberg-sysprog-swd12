@@ -1,3 +1,3 @@
-PROJECT(copy_haberl)
+PROJECT(yacp)
 
-ADD_EXECUTABLE(copy_haberl, copy_haberl.cc)
+ADD_EXECUTABLE(yacp, yacp.cc)
