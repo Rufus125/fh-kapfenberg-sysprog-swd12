@@ -6,14 +6,16 @@
 class SafeThermometer : public Thermometer
 {
 public:
-	SafeThermometer(Thermometer* unsafe_thermometer);
+	SafeThermometer(Thermometer* unstable_thermometer, unsigned int timeout = 2);
 
 	virtual ~SafeThermometer();
 
     virtual double get_temperature() const;
     
 private:
-	Thermometer* _unsafe_thermometer;
+	Thermometer* _unstable_thermometer;
+	
+	unsigned int _timeout;
 };
 
 #endif
