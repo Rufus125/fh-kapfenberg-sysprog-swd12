@@ -1,4 +1,4 @@
-#include "crash_thermometer.h"
+#include "safe_thermometer.h"
 
 double SafeThermometer::get_temperature() const
 {

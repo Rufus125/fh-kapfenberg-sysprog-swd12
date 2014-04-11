@@ -3,19 +3,11 @@ INCLUDE_DIRECTORIES(
 )
 
 ADD_EXECUTABLE(
-    Joerg.Faschingbauer.sensor-tests
-    sensor-tests.cpp
+    Ascher.Thomas-Lamb.Manuel.safe_thermometer
+    safe_thermometer.cpp
+    safe-tests.cpp
 )
 TARGET_LINK_LIBRARIES(
-    Joerg.Faschingbauer.sensor-tests
+    Ascher.Thomas-Lamb.Manuel.safe_thermometer
     sensors
-)
-
-ADD_EXECUTABLE(
-    Joerg.Faschingbauer.alarm-test
-    alarm-test.cpp
-)
-ADD_EXECUTABLE(
-    Joerg.Faschingbauer.pipe-test
-    safe-tests.cpp
 )
