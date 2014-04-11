@@ -23,17 +23,17 @@ int main(int argc, char** argv)
         dest = argv[2];
     }else if(argc > 1){
         source = argv[1];
-        cout << "Bitte Destination eingeben:" << endl;
+        cerr << "Bitte Destination eingeben:" << endl;
         cin >> dest;
     }
     else {
-	cout << "Bitte Source eingeben:" << endl;
+	cerr << "Bitte Source eingeben:" << endl;
         cin >> source;
-	cout << "Bitte Destination eingeben:" << endl;
+	cerr << "Bitte Destination eingeben:" << endl;
         cin >> dest;
     }
     
-    cout << "Kopiere File von '" << source << "' nach '" << dest << "'" << endl;
+    cerr << "Kopiere File von '" << source << "' nach '" << dest << "'" << endl;
     
     int fileSrc = open(source.c_str(), O_RDONLY);
     if(fileSrc < 0){
