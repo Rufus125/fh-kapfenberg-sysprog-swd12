@@ -8,6 +8,8 @@ class SafeThermometer : public Thermometer
 public:
 	SafeThermometer(Thermometer* unsafe_thermometer);
 
+	virtual ~SafeThermometer();
+
     virtual double get_temperature() const;
     
 private:
