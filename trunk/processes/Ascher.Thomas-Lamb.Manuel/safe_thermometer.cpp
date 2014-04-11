@@ -6,6 +6,11 @@ SafeThermometer::SafeThermometer(Thermometer* unsafe_thermometer)
 
 }
 
+SafeThermometer::~SafeThermometer()
+{
+	delete _unsafe_thermometer;
+}
+
 double SafeThermometer::get_temperature() const
 {
 	return _unsafe_thermometer->get_temperature();
