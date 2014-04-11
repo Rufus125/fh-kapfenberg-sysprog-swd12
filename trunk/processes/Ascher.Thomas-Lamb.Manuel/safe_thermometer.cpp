@@ -39,7 +39,7 @@ double SafeThermometer::get_temperature() const
 		temperature = _unsafe_thermometer->get_temperature();
 		sprintf(temperature_chars, "%f", temperature);
 	
-		ssize_t written = write(pipe_fd[1], temperature_chars, strlen(temperature_chars) * sizeof(char));
+		ssize_t written = write(pipe_fd[1], temperature_chars, (strlen(temperature_chars) + 1) * sizeof(char));
 		if (written == -1)
 		{
 			abort();
@@ -59,7 +59,11 @@ double SafeThermometer::get_temperature() const
 		{
 			throw ThermometerException("could not read temperature from pipe");
 		}
+		else
+		{
+			temperature = atof(temperature_chars);
+		}
     }	
 	
-	return _unsafe_thermometer->get_temperature();
+	return temperature;
 }
