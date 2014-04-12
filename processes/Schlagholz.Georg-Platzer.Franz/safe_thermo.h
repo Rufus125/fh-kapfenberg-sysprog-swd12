@@ -1,6 +1,7 @@
 #include "thermometer.h"
 #include <unistd.h>
 #include <string>
+#include <iostream>
 
 class SafeThermometer : public Thermometer
 {
