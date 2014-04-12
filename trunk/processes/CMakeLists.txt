@@ -4,7 +4,6 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0 FATAL_ERROR)
 ADD_SUBDIRECTORY(sensors)
 
 ADD_SUBDIRECTORY(Joerg.Faschingbauer)
-ADD_SUBDIRECTORY(Mein.Zweites.Ich)
 ADD_SUBDIRECTORY(Kamper.Manuel)
 ADD_SUBDIRECTORY(Ascher.Thomas-Lamb.Manuel)
 ADD_SUBDIRECTORY(Schlagholz.Georg-Platzer.Franz)
