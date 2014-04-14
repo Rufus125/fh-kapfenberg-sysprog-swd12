@@ -8,6 +8,9 @@
 #include <iostream>
 using namespace std;
 
+#define DOUBLE_SIZE sizeof(double)*8
+
+
 SafeThermometer::SafeThermometer(Thermometer* thermometer):thermometer(thermometer){}
 
 SafeThermometer::~SafeThermometer() {
@@ -38,11 +41,11 @@ double SafeThermometer::get_temperature() const
         
         //load temperature from real sensor
         double tempValue = thermometer->get_temperature();
-        char tempChar[sizeof(double)*8];
+        char tempChar[DOUBLE_SIZE];
         sprintf(tempChar,"%f",tempValue);
         
         //read data to parent process
-        ssize_t pipeWrite = write(pipe_fd[1], tempChar, sizeof(double)*8); 
+        ssize_t pipeWrite = write(pipe_fd[1], tempChar, DOUBLE_SIZE); 
         if (pipeWrite < 0)
         {
 			perror("pipe write error");
@@ -64,8 +67,8 @@ double SafeThermometer::get_temperature() const
 
         if (childState == 0)
         {
-			char doubleBuffer[sizeof(double)*8];
-			ssize_t pipeRead = read(pipe_fd[0], doubleBuffer, sizeof(double)*8);
+			char doubleBuffer[DOUBLE_SIZE];
+			ssize_t pipeRead = read(pipe_fd[0], doubleBuffer, DOUBLE_SIZE);
 			if(pipeRead > 0)
 			{
 				return atof(doubleBuffer);	
