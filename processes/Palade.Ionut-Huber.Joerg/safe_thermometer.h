@@ -3,16 +3,19 @@
 
 #include "thermometer.h"
 
-class SafeThermometer :Thermometer 
+class SafeThermometer : public Thermometer 
 {
 public:
-  // Constructor for class X
-  SafeThermometer(Thermometer* thermometer);
-  
-  virtual double get_temperature() const = 0;
-      
-  // Destructor for class X
-  ~SafeThermometer();
+	// Constructor for class X
+	SafeThermometer(Thermometer* thermometer);
+	
+	// Destructor for class X
+	virtual ~SafeThermometer();
+	
+	virtual double get_temperature() const;
+	
+private:
+	Thermometer* thermometer;
 };
 
 #endif

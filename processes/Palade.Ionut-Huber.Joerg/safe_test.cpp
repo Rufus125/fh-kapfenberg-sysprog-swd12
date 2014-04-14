@@ -1,4 +1,7 @@
-#include "fixed_thermometer.h"
+#include <fixed_thermometer.h>
+#include <hang_thermometer.h>
+#include <random_thermometer.h>
+#include <crash_thermometer.h>
 #include "safe_thermometer.h"
 #include <iostream>
 using namespace std;
