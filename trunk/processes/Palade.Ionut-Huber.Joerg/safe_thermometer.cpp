@@ -71,7 +71,7 @@ double SafeThermometer::get_temperature() const
 				return atof(doubleBuffer);	
 			} else
 			{
-				perror("read from sensor error");
+				perror("read from sensor");
 				throw ThermometerException("ThermometerException");
 			}
 			
@@ -79,27 +79,8 @@ double SafeThermometer::get_temperature() const
 		{
 			throw ThermometerException("ThermometerException");
 		}
-           
 
-        
-        
-        for (;;) {
-            char readbuf[3];
-            ssize_t nread = read(pipe_fd[0], readbuf, sizeof(readbuf)*8);
-            if (nread > 0) {
-                cout << nread << ':';
-                cout.write(readbuf, nread);
-                cout << endl;
-            }
-            else if (nread == 0) {
-                cerr << "\n<<< END OF INPUT" << endl;
-                break;
-            }
-            else {
-                perror("read");
-                abort();
-            }
-        }
     }
-            return 0;
+    
+    return 0;
 }
