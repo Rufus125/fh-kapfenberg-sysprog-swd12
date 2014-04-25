@@ -1,0 +1,1 @@
+/usr/bin/c++   -g    CMakeFiles/Fritz.Eva-Schuberth.Juergen.safe_thermometer.dir/safe_thermometer.cpp.o CMakeFiles/Fritz.Eva-Schuberth.Juergen.safe_thermometer.dir/safe-tests.cpp.o  -o Fritz.Eva-Schuberth.Juergen.safe_thermometer -rdynamic ../sensors/libsensors.a 
