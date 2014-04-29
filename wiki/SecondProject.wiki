@@ -41,12 +41,14 @@ einzelne darauf achtet, funktionierenden Code einzuchecken.
 
 Die Thermometer-Implementationen aus dem UML-Diagramm liegen in
 [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/sensors/ einem eigenen Subdirectory], das von allen Arbeitsbereihen als Library
-gelinkt wird.
+gelinkt wird. Hier sollte keine Änderung nötig sein (ausser Bugfixes vielleicht), alles sollte sich in den Arbeitsbereichen abspielen.
 
-== Testfälle ==
+== Kriterien ==
 
+ * In jedem Arbeitsbereich befinden sich
+   * Ein .h File und ein .cpp (.cc, oder wie man auch immer C++ Files benennt), die das Thermometer beinhalten.
+   * Ein Testprogramm, das das Thermometer instanziiert, von ihm die Temperatur erfragt, und auf {{{stdout}}} ausgibt.
  * Keine Ausgaben auf {{{stdout}}}, ausser der Temperatur
- * 
 
 == Abgabe ==
 
