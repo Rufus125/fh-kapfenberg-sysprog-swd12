@@ -26,12 +26,30 @@ Instabilität zu schützen, macht seine Implementation von
  * Jeden Aufruf von {{{get_temperature()}}} des instabilen Thermometers führt es in einem eigenen Adressraum durch ({{{fork()}}}).
  * Um ein Timeout zu implementieren, wird im Child-Prozess {{{alarm()}}} benutzt. Bitte lesen Sie {{{man 2 alarm}}}, um die Semantik zu erfahren, bzw. lesen Sie dazu [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/Joerg.Faschingbauer/alarm-test.cpp das Testprogramm]
  * {{{SafeThermometer}}} verwendet {{{waitpid()}}}, um den Exitstatus des Child zu inspizieren. Auf einen fehlerhaften Exitcode reagiert der Parent mit einer entsprechenden Exception (siehe dazu die [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/sensors/thermometer.h Definition der Basisklasse]).
- * Bei erfolgreichem Lesen der Temperatur wird eine vom Parent ans Child vererbt Pipe verwendet, um die Temperatur an den eigentlichen Aufrufer zu kommunizieren. Siehe dazu [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/Joerg.Faschingbauer/pipe-test.cpp das entsprechende Testprogramm].
+ * Bei erfolgreichem Lesen der Temperatur wird eine vom Parent ans Child vererbte Pipe verwendet, um die Temperatur an den eigentlichen Aufrufer zu kommunizieren. Siehe dazu [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/Joerg.Faschingbauer/pipe-test.cpp das entsprechende Testprogramm].
 
 = Organisatorisches =
 
- * *Arbeitsbereiche* ....
- * Testfälle
- * Abgabe
- * ... 
+== Arbeitsbereiche ==
 
+Das Projekt-Rootdirectory ist
+[http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/
+hier]. Darunter liegen die Arbeitsbereiche; jeder Arbeitsbereich wird
+mit dem Gesamtprojekt *mitgebaut* --- was unter Umständen zu
+Anfeindungen unter den Mitgliedern führen wird, wenn nicht jeder
+einzelne darauf achtet, funktionierenden Code einzuchecken.
+
+Die Thermometer-Implementationen aus dem UML-Diagramm liegen in
+[http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/sensors/
+einem eigenen Subdirectory], das von allen Arbeitsbereihen als Library
+gelinkt wird.
+
+== Testfälle ==
+
+ * Keine Ausgaben auf {{{stdout}}}, ausser der Temperatur
+ * 
+
+== Abgabe ==
+
+ * Als Abgabeordner fungiert der obige Arbeitsbereich, ein Directory.
+ * Abgabetermin ist 5.5.2014. Zu diesem Zeitpunkt sollten alle Fragen geklärt und alle Files eingecheckt sein.
