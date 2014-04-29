@@ -33,15 +33,14 @@ Instabilität zu schützen, macht seine Implementation von
 == Arbeitsbereiche ==
 
 Das Projekt-Rootdirectory ist
-[http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/
-hier]. Darunter liegen die Arbeitsbereiche; jeder Arbeitsbereich wird
+[http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/ hier].
+Darunter liegen die Arbeitsbereiche; jeder Arbeitsbereich wird
 mit dem Gesamtprojekt *mitgebaut* --- was unter Umständen zu
 Anfeindungen unter den Mitgliedern führen wird, wenn nicht jeder
 einzelne darauf achtet, funktionierenden Code einzuchecken.
 
 Die Thermometer-Implementationen aus dem UML-Diagramm liegen in
-[http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/sensors/
-einem eigenen Subdirectory], das von allen Arbeitsbereihen als Library
+[http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/sensors/ einem eigenen Subdirectory], das von allen Arbeitsbereihen als Library
 gelinkt wird.
 
 == Testfälle ==
