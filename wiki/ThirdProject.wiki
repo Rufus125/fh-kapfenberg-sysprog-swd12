@@ -1,0 +1,16 @@
+#summary Second Project, free programming
+= Programmieren nach Wahl =
+
+Unser drittes Projekt wird von Ihnen bestimmt werden. Sie bestimmen,
+was Sie programmieren werden, solange es nur etwas mit systemnaher
+Programmierung zu tun hat (ist ohnehin ein sehr dehnbarer
+Begriff). Wir werden am Freitag dem 9.Mai neben etwas Stoff
+hauptsächlich Ideen sammeln, konkretisieren und definieren.
+
+Nach der Größe einer Idee wird sich die Größe der Gruppe richten. Ist
+ein Projekt klar definiert, können Teilaufgaben und Integrationspunkte
+definiert werden.
+
+= Organisatorisches =
+
+ * 9.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
