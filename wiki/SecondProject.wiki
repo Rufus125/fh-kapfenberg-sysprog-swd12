@@ -54,3 +54,4 @@ gelinkt wird. Hier sollte keine Änderung nötig sein (ausser Bugfixes vielleich
 
  * Als Abgabeordner fungiert der obige Arbeitsbereich, ein Directory.
  * Abgabetermin ist 8.5.2014. Zu diesem Zeitpunkt sollten alle Fragen geklärt und alle Files eingecheckt sein.
+ * Weiter Verlängerung wegen Stress: 15.5.2014
