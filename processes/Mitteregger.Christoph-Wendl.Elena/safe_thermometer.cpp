@@ -73,7 +73,12 @@ double SafeThermometer::get_temperature() const
      close(pipe_fd[1]);
 
      int status = 0;
-     waitpid(pid, &status, 0);
+
+     if (waitpid(pid, &status, 0) == ERROR)
+     {
+      close(pipe_fd[0]);
+      throw ThermometerException("could not query thermometer state");
+     }
 
      if(!WIFEXITED(status))
      {
