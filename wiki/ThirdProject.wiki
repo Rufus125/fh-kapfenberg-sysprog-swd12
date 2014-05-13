@@ -37,6 +37,11 @@ Wenn die Zeit reicht, werde ich das Programm um eine ein/aus Funktion
 erweitern, also wenn die Ampel aus ist, ist sie auf gelb blinkend,
 ansonsten durchläuft sie das Programm.
 
+*Anmerkung* (Jörg Faschingbauer): einen Taster kann man entweder
+pollen (unsportlich und deppert) _oder aber_ über einen als
+Input/Interrupt konfigurierten Pin als Event empfangen (sportlich und
+gscheit).
+
 = Organisatorisches =
 
  * 9.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
