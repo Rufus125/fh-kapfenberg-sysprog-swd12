@@ -44,7 +44,21 @@ double SafeThermometer::get_temperature() const
       }
       else
       {
-        throw ThermometerException("could not receive temperature, child process failed");
+	if(WIFSIGNALED(status))
+	{
+	  if(WTERMSIG(status) == 14)
+          {
+            throw ThermometerException("Timeout");
+          }
+	  else if(WTERMSIG(status) == 11)
+	  {
+	    throw ThermometerException("could not receive temperature, child process failed");
+	  }
+	  else
+	  {
+	    throw ThermometerException("Unknown error");
+	  }
+	}
       }
     }
 }
