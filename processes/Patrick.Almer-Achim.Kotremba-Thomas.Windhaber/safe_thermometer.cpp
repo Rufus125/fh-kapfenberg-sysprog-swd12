@@ -1,4 +1,4 @@
-#include "safe_thermo.h"
+#include "safe_thermometer.h"
 using namespace std;
 
 SafeThermometer::SafeThermometer(Thermometer* unstableThermometer,
