@@ -1,4 +1,4 @@
-#include "safe_thermo.h"
+#include "safe_thermometer.h"
 #include "fixed_thermometer.h"
 #include "hang_thermometer.h"
 #include "random_thermometer.h"
