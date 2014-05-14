@@ -1,14 +1,12 @@
 #include "safe_thermometer.h"
 #include <string>
+#include <string.h>
 #include <unistd.h>
 #include <stdio.h>
 
 SafeThermometer::SafeThermometer(Thermometer& th) : thermometer(th)
 {
-  action.sa_handler = SafeThermometer::sig_handler;
-  sigemptyset(&action.sa_mask);
-  action.sa_flags = 0;
-  sigaction(SIGALRM, &action, NULL);
+
 }
 
 double SafeThermometer::get_temperature() const
@@ -28,7 +26,7 @@ double SafeThermometer::get_temperature() const
     else if (pid == 0) 
     {
       close(pipe_fd[0]);
-      alarm(5);
+      alarm(2);
       double temp = this->thermometer.get_temperature();
       write(pipe_fd[1], &temp, sizeof(double));
       exit(EXIT_SUCCESS);
@@ -46,7 +44,7 @@ double SafeThermometer::get_temperature() const
       }
       else
       {
-        throw ThermometerException("child process failed");
+        throw ThermometerException("could not receive temperature, child process failed");
       }
     }
 }
