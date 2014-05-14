@@ -15,12 +15,6 @@ public:
     virtual double get_temperature() const;
 
 private:
-    struct sigaction action;
-    static void sig_handler(int sig)
-    {
-      throw ThermometerException("Timeout");
-    }
-
     Thermometer& thermometer;
 };
 
