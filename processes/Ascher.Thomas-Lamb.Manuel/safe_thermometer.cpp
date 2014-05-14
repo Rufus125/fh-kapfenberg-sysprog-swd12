@@ -62,8 +62,8 @@ double SafeThermometer::get_temperature() const
 		
 		if (!WIFEXITED(status))
 		{
+			close(pipe_fd[0]);			
 			throw ThermometerException("could not query temperature due to crash or timeout");
-			close(pipe_fd[0]);
 		}
 
 		ssize_t nread = read(pipe_fd[0], temperature_chars, sizeof(temperature_chars));
