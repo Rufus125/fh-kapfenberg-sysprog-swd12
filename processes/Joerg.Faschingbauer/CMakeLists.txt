@@ -1,5 +1,5 @@
 INCLUDE_DIRECTORIES(
-    ${CMAKE_SOURCE_DIR}/sensors
+    ../sensors
 )
 
 ADD_EXECUTABLE(

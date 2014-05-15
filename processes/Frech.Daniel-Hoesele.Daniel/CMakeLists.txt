@@ -1,5 +1,12 @@
-# the project's name
-PROJECT(SafeThermometer)
-
-# we build an executable out of a single source file
-ADD_EXECUTABLE(SafeThermometer SafeThermometer.cpp)
+INCLUDE_DIRECTORIES(
+    ${CMAKE_SOURCE_DIR}/sensors
+)
+ADD_EXECUTABLE(
+    Frech.Daniel-Hoesele.Daniel.SafeThermometer
+    SafeThermometer.cpp
+    SafeThermometerTest.cpp
+)
+TARGET_LINK_LIBRARIES(
+    Frech.Daniel-Hoesele.Daniel.SafeThermometer
+    sensors
+)
