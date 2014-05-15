@@ -15,15 +15,14 @@ SafeThermometer::~SafeThermometer() {
 double SafeThermometer::get_temperature() const {
 
 	int pipe_fd[2];
+	
 	int err = pipe(pipe_fd);
-
 	if (err == -1) {
 		perror("pipe");
 		abort();
 	}
 	
 	pid_t pid = fork();
-
 	if (pid == -1) {
 		perror("fork");
 		abort();
