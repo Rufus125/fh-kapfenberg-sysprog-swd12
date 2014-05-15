@@ -6,7 +6,7 @@ INCLUDE_DIRECTORIES(
 ADD_EXECUTABLE(
   Bojan.Tot.safe_thermometer
 	safe_thermometer.cc
-	safe_thermometer-test.cc
+	safe_thermometer_test.cc
 )
 
 TARGET_LINK_LIBRARIES(
