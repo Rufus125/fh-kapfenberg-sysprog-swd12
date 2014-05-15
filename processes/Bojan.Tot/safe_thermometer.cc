@@ -53,5 +53,5 @@ double SafeThermometer::get_temperature() const {
 
 	}
 
-	return temperature;
+	return tmp;
 }
