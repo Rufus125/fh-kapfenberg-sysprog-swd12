@@ -2,12 +2,10 @@
 
 = Introduction =
 
-Add your content here.
+Ansteuerung einer LED am Raspberry Pi mittels Socket Verbindung.
+Als Programmiersprache wird C# mit Verbindung von MONO verwendet.
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Teammitglieder: Palade Ionut, Huber Jörg
