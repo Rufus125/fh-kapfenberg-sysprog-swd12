@@ -28,6 +28,8 @@ Instabilität zu schützen, macht seine Implementation von
  * {{{SafeThermometer}}} verwendet {{{waitpid()}}}, um den Exitstatus des Child zu inspizieren. Auf einen fehlerhaften Exitcode reagiert der Parent mit einer entsprechenden Exception (siehe dazu die [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/sensors/thermometer.h Definition der Basisklasse]).
  * Bei erfolgreichem Lesen der Temperatur wird eine vom Parent ans Child vererbte Pipe verwendet, um die Temperatur an den eigentlichen Aufrufer zu kommunizieren. Siehe dazu [http://code.google.com/p/fh-kapfenberg-sysprog-swd12/source/browse/trunk/processes/Joerg.Faschingbauer/pipe-test.cpp das entsprechende Testprogramm].
 
+http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/docs/fork-pipe.jpg
+
 = Organisatorisches =
 
 == Arbeitsbereiche ==
