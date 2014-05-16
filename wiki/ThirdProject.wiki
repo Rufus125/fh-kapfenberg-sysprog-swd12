@@ -16,7 +16,7 @@ definiert werden.
 Hier eine Liste an Themen, ungeordnet bis wir alles unter Dach und
 Fach haben.
 
-== Thomas Ascher, Julia Viehberger, Manuel Lamb ==
+== Time Server (Thomas Ascher, Julia Viehberger, Manuel Lamb) ==
 
 Unser Projekt trägt den Namen SimpleTimeServer und umfasst einen
 Deamon (STD - SimpleTimeDeamon) und einen Client. Der Dienst liefert
@@ -25,7 +25,7 @@ die aktuelle Serverzeit zurück.
 Serverdesign: Jeder Request wird in einem eigens dafür geforkten Child
 abgehandelt.
 
-== Kamper Manuel: Ampel ==
+== Ampel (Kamper Manuel) ==
 
 Ich baue ein kleines Board, das eine Kreuzung simulieren soll (volle
 Ampel rot/gelb/grün für jede Fahrtrichtung und rot/grün Fußgänger),
