@@ -67,7 +67,8 @@ $ build-alarm 192.168.2.34 off # alarm aus
 
 Am Buildserver gibts meistens keine Möglichkeit, IO zu schalten (wie
 generell PCs nicht für sowas gedacht sind), deswegen wird ein
-Raspberry als Alarmlichtserver abgestellt.
+Raspberry als Alarmlichtserver abgestellt und ist z.B. unter
+192.168.2.34 erreichbar.
 
 Aufgaben:
 
