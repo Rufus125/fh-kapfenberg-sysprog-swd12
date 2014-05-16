@@ -53,6 +53,31 @@ pollen (unsportlich und deppert) _oder aber_ über einen als
 Input/Interrupt konfigurierten Pin als Event empfangen (sportlich und
 gscheit).
 
+== Idee (Egon Teiniker) ==
+
+Continuous Integration (CI) mit Alarm-Lampe.
+
+Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein-
+bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
+
+{{{
+$ build-alarm 192.168.2.34 on # alarm ein
+$ build-alarm 192.168.2.34 off # alarm aus
+}}}
+
+Am Buildserver gibts meistens keine Möglichkeit, IO zu schalten (wie
+generell PCs nicht für sowas gedacht sind), deswegen wird ein
+Raspberry als Alarmlichtserver abgestellt.
+
+Aufgaben:
+
+ * Hardwarebasteln am Raspi
+ * Ansteuern des IO am Server
+ * Netzwerkprogrammierung
+  * Server
+  * Client
+ * Jenkins-Administration
+
 = Organisatorisches =
 
  * 9.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
