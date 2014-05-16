@@ -27,24 +27,7 @@ abgehandelt.
 
 == Ampel (Kamper Manuel) ==
 
-Ich baue ein kleines Board, das eine Kreuzung simulieren soll (volle
-Ampel rot/gelb/grün für jede Fahrtrichtung und rot/grün Fußgänger),
-welches ich versuche mit dem Raspi anzusteuern. Es soll dabei einfach
-ein zeitgesteuerter Programmablauf werden, wo die Fahrtrichtungen und
-Fußgängerampeln koordiniert geschalten werden. Wenn ich genügend IO
-Ports habe mache ich auch einen Taster, damit Fußgänger ihr "grün"
-extra anfordern können/müssen, sonst läuft das im Programm einfach
-koordiniert mit. Sollte nicht sonderlich schwer sein, so lange der
-Raspi alle LEDs aushält (sind ja nie alle auf einmal, sollte also
-gehen).
- 
-soll dann ca so aussehen...
-
-http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/docs/Kamper.Manuel-Kreuzung.png
-
-Wenn die Zeit reicht, werde ich das Programm um eine ein/aus Funktion
-erweitern, also wenn die Ampel aus ist, ist sie auf gelb blinkend,
-ansonsten durchläuft sie das Programm.
+Siehe http://www.manuelkamper.com/ampel.php
 
 *Sprache*: C#/Mono
 
