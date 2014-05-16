@@ -81,6 +81,10 @@ Aufgaben:
    * Client
  * Jenkins-Administration
 
+== Idee (Jörg Faschingbauer) ==
+
+Siehe TempSensorNetworkLED
+
 = Organisatorisches =
 
  * 16.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
