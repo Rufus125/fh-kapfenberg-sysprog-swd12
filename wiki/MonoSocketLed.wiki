@@ -9,3 +9,5 @@ Als Programmiersprache wird C# mit Verbindung von MONO verwendet.
 = Details =
 
 Teammitglieder: Palade Ionut, Huber Jörg
+
+nähere Details folgen :)
