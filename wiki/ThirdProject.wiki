@@ -83,7 +83,7 @@ Aufgaben:
 
 == Idee (Jörg Faschingbauer) ==
 
-Siehe TempSensorNetworkLED
+[TempSensorNetworkLED Näheres siehe hier]
 
 = Organisatorisches =
 
