@@ -53,9 +53,7 @@ pollen (unsportlich und deppert) _oder aber_ über einen als
 Input/Interrupt konfigurierten Pin als Event empfangen (sportlich und
 gscheit).
 
-== Idee (Egon Teiniker) ==
-
-Continuous Integration (CI) mit Alarm-Lampe.
+== Idee: Continuous Integration (CI) mit Alarm-Lampe (Egon Teiniker) ==
 
 Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein-
 bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
@@ -81,7 +79,7 @@ Aufgaben:
    * Client
  * Jenkins-Administration
 
-== Idee (Jörg Faschingbauer) ==
+== Idee: Temperatur Messen und Anzeigen über Netzwerk (Jörg Faschingbauer) ==
 
 [TempSensorNetworkLED Näheres siehe hier]
 
