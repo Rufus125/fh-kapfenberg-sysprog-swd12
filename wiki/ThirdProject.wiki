@@ -71,7 +71,7 @@ Raspberry als Alarmlichtserver abgestellt.
 
 Aufgaben:
 
- * Hardwarebasteln am Raspi
+ * Hardwarebasteln am Raspi (siehe [http://www.mikrocontroller.net/articles/Relais_mit_Logik_ansteuern#Schaltstufe_f.C3.BCr_kleine_Lasten Schaltstufe für kleine Lasten]. BC337 (links im Bild) ist getestet, erhältlich z.B. bei Conrad)
  * Ansteuern des IO am Server
  * Netzwerkprogrammierung
   * Server
@@ -80,4 +80,4 @@ Aufgaben:
 
 = Organisatorisches =
 
- * 9.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
+ * 16.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
