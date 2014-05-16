@@ -70,6 +70,8 @@ Am Buildserver gibts meistens keine Möglichkeit, IO Pins zu schalten
 Raspberry als Alarmlichtserver abgestellt und ist z.B. unter
 192.168.2.34 erreichbar.
 
+http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/docs/fork-pipe.jpg
+
 Aufgaben:
 
  * Hardwarebasteln am Raspi (siehe [http://www.mikrocontroller.net/articles/Relais_mit_Logik_ansteuern#Schaltstufe_f.C3.BCr_kleine_Lasten hier, "Schaltstufe für kleine Lasten"]. BC337 (links im Bild) ist getestet, erhältlich z.B. bei Conrad)
