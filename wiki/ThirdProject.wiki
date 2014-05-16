@@ -66,8 +66,6 @@ Aufgaben:
 
 [TempSensorNetworkLED Näheres siehe hier]
 
-[BlaBla blabla]
-
 = Organisatorisches =
 
  * 16.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
