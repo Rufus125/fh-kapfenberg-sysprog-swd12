@@ -70,7 +70,7 @@ Am Buildserver gibts meistens keine Möglichkeit, IO Pins zu schalten
 Raspberry als Alarmlichtserver abgestellt und ist z.B. unter
 192.168.2.34 erreichbar.
 
-http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/docs/fork-pipe.jpg
+http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/docs/jenkins-alarm.jpg
 
 Aufgaben:
 
