@@ -1,4 +1,4 @@
-#summary Second Project, free programming
+#summary Third Project, free programming
 = Programmieren nach Wahl =
 
 Unser drittes Projekt wird von Ihnen bestimmt werden. Sie bestimmen,
@@ -65,6 +65,10 @@ Aufgaben:
 == Idee: Temperatur Messen und Anzeigen über Netzwerk (Jörg Faschingbauer) ==
 
 [TempSensorNetworkLED Näheres siehe hier]
+
+== CPU Info (Georg Schlagholz, Franz Platzer) ==
+see [CPUInfo]
+
 
 = Organisatorisches =
 
