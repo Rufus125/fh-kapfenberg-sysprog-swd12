@@ -8,5 +8,6 @@ and servers it via network.
 
 = Details =
 
-see: cat /sys/class/thermal/thermal_zone0/temp 
+see: cat /sys/class/thermal/thermal_zone0/temp
+
 see: cat /proc/cpuinfo
