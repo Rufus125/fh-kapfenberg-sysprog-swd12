@@ -1,7 +1,7 @@
 #summary Home Automation Project by Daniel Hösele and Daniel Frech
 Siri2Pi (Home Automation)
 
-Team: Daniel Hösele - Daniel Frech
+Team: Daniel Hösele - Daniel Frech - 17.05.2014
 
 = Introduction =
 
@@ -24,13 +24,17 @@ Siri-API, Squid Proxy, Python3
 
 1. Siri-API is set up and running.
 
+Custom Python-Code can be placed in the commands.py
+(<a href="https://www.dropbox.com/sh/55my4fng760r4mf/AADJhhRVreorhhOob8xQSzIoa/SS2014/SysProg/ex3/commands.py">link</a>)
+
 2. Scripting:
 
 *First Script*
 
 Voice Command: "Google Siri Server"
+
 I have another pi running as a webserver.
-A cronjob is set up to call autoscript.sh every 60 sec to save data regarding the system (cpu usuage, mem, clockrate ...) into seperate files.
+A cronjob is set up to call autoscript.sh (<a href="https://www.dropbox.com/sh/55my4fng760r4mf/AABMDvZiju7J3yX35SS-Ob5Ya/SS2014/SysProg/ex3/autoscript.sh">link</a>) every 60 sec to save data regarding the system (cpu usuage, mem, clockrate ...) into seperate files.
 The python-function which is called from Siri-API reads this data and presents it well formatted to the user.
 
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAALNzuoTjTj8830fwq7tS2-a/SS2014/SysProg/ex3/thumbnails/1.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
@@ -39,6 +43,7 @@ https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAAznjFL9j9jacsWLr7U7N3Aa/S
 *Second Script*
 
 Voice Command: "Google Siri Wohnung"
+
 As I have a NinjaBlocks (http://ninjablocks.com/collections/ninja-blocks) set up in my apartment, I can easily gather data from its sensors and even actuate remote control outlets (Funksteckdosen).
 The second script presents the current temperature and humidity of my bedroom to the user.
 
@@ -48,6 +53,7 @@ https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAD-DoxESC4ZUlrvrfVGPuuSa/S
 *Third Script*
 
 Voice Command: "Google Siri Licht an"
+
 It triggers the remote control outlet of the LEDs behind my TV.
 This actually happens over a "webhook" which triggers a rule to send an 433MHz Hex-Code to the outlet.
 
