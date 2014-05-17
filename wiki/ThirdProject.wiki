@@ -69,6 +69,8 @@ Aufgaben:
 == CPU Info (Georg Schlagholz, Franz Platzer) ==
 see [CPUInfo]
 
+== Siri 2 Pi (Daniel Hösele, Daniel Frech) ==
+see [Siri2Pi]
 
 = Organisatorisches =
 
