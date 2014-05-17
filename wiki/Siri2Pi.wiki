@@ -26,7 +26,7 @@ The python-function which is called from Siri-API reads this data and presents i
 *Second Script*
 
 Voice Command: "Google Siri Wohnung"
-As I have a NinjaBlock (http://ninjablocks.com/collections/ninja-blocks) set up in my apartment, I can easily gather data from its sensors and even actuate remote control outlets (Funksteckdosen).
+As I have a NinjaBlocks (http://ninjablocks.com/collections/ninja-blocks) set up in my apartment, I can easily gather data from its sensors and even actuate remote control outlets (Funksteckdosen).
 The second script presents the current temperature and humidity of my bedroom to the user.
 
 *Third Script*
