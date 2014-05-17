@@ -42,11 +42,17 @@ Voice Command: "Google Siri Wohnung"
 As I have a NinjaBlocks (http://ninjablocks.com/collections/ninja-blocks) set up in my apartment, I can easily gather data from its sensors and even actuate remote control outlets (Funksteckdosen).
 The second script presents the current temperature and humidity of my bedroom to the user.
 
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AABOkUly_HZEUmkJJgSvAcmRa/SS2014/SysProg/ex3/thumbnails/3.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAD-DoxESC4ZUlrvrfVGPuuSa/SS2014/SysProg/ex3/thumbnails/4.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
+
 *Third Script*
 
 Voice Command: "Google Siri Licht an"
 It triggers the remote control outlet of the LEDs behind my TV.
 This actually happens over a "webhook" which triggers a rule to send an 433MHz Hex-Code to the outlet.
 
-Screenshots:
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAALAyzTOZmSdpBZ2Roov_tla/SS2014/SysProg/ex3/thumbnails/5.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AADfY7Ikq0k5RYgVubFuOFyBa/SS2014/SysProg/ex3/thumbnails/6.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
+
+FullRes-Screenshots:
 https://www.dropbox.com/sh/55my4fng760r4mf/AABf98OkhpHf7BxQejAac1lxa/SS2014/SysProg/ex3
