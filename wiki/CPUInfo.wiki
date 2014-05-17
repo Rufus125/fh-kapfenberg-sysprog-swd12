@@ -1,4 +1,4 @@
-CPU Info project by Georg Schlagholz and Franz Platzer
+#summary CPU Info project by Georg Schlagholz and Franz Platzer
 
 = Introduction =
 
