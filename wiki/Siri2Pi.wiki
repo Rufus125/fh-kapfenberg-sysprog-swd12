@@ -1,0 +1,36 @@
+Siri2Pi (Home Automation)
+Team: Daniel Hösele - Daniel Frech
+
+= Introduction =
+
+Run custom python code on a Rasbpi with voice commands using Siri-API.
+
+Siri-API is a tool which opens Siri for your own wishes WITHOUT the requirement of a Jailbreak. Basically it is like GoogolPlex but it is much more flexible since you can host it on your own computer. You just say Google and your keyword, by default "Siri" and everything what you say after your keyword will be redirected to the API. Of course, using Google without the keyword is still possible.
+
+You need a Linux running computer (tested on Raspberry Pi) and a Squid Proxy version compiled with SSL support. These versions aren't available from official package sources, so you have to compile it by yourself. You can follow the instructions in the documentation.
+https://github.com/HcDevel/Siri-API
+
+= Details =
+
+1. Siri-API is set up and running.
+
+2. Scripting:
+
+*First Script*
+Voice Command: "Google Siri Server"
+I have another pi running as a webserver.
+A cronjob is set up to call autoscript.sh every 60 sec to save data regarding the system (cpu usuage, mem, clockrate ...) into seperate files.
+The python-function which is called from Siri-API reads this data and presents it well formatted to the caller.
+
+*Second Script*
+Voice Command: "Google Siri Wohnung"
+As I have a NinjaBlock set up in my apartment, I can easily gather data from its sensors and even actuate remote control outlets (Funksteckdosen).
+The second script presents the current temperature and humidity of my bedroom to the user.
+
+*Third Script*
+Voice Command: "Google Siri Licht an"
+It triggers the remote control outlet of the LEDs behind my TV.
+This actually happens over a "webhook" which includes a rule to send an 433MHz Hex-Code to the outlet.
+
+Screenshots:
+https://www.dropbox.com/sh/55my4fng760r4mf/AABf98OkhpHf7BxQejAac1lxa/SS2014/SysProg/ex3
