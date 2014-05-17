@@ -1,4 +1,6 @@
+#summary Home Automation Project by Daniel Hösele and Daniel Frech
 Siri2Pi (Home Automation)
+
 Team: Daniel Hösele - Daniel Frech
 
 = Introduction =
