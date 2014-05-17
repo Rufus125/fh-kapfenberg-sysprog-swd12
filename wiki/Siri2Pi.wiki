@@ -22,14 +22,13 @@ Siri-API, Squid Proxy, Python3
 
 = Progress =
 
-1. Siri-API is set up and running.
+Siri-API is set up and running.
 
 Custom Python-Code can be placed in the commands.py
 (<a href="https://www.dropbox.com/sh/55my4fng760r4mf/AADJhhRVreorhhOob8xQSzIoa/SS2014/SysProg/ex3/commands.py">link</a>)
 
-2. Scripting:
 
-*First Script*
+*--Snip--Snap--Snip--*
 
 Voice Command: "Google Siri Server"
 
@@ -40,7 +39,7 @@ The python-function which is called from Siri-API reads this data and presents i
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAALNzuoTjTj8830fwq7tS2-a/SS2014/SysProg/ex3/thumbnails/1.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAAznjFL9j9jacsWLr7U7N3Aa/SS2014/SysProg/ex3/thumbnails/2.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
 
-*Second Script*
+*--Snip--Snap--Snip--*
 
 Voice Command: "Google Siri Wohnung"
 
@@ -50,7 +49,7 @@ The second script presents the current temperature and humidity of my bedroom to
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AABOkUly_HZEUmkJJgSvAcmRa/SS2014/SysProg/ex3/thumbnails/3.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAD-DoxESC4ZUlrvrfVGPuuSa/SS2014/SysProg/ex3/thumbnails/4.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
 
-*Third Script*
+*--Snip--Snap--Snip--*
 
 Voice Command: "Google Siri Licht an"
 
@@ -59,6 +58,15 @@ This actually happens over a "webhook" which triggers a rule to send an 433MHz H
 
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAALAyzTOZmSdpBZ2Roov_tla/SS2014/SysProg/ex3/thumbnails/5.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
 https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AADfY7Ikq0k5RYgVubFuOFyBa/SS2014/SysProg/ex3/thumbnails/6.png?token_hash=AAEGT990IOuh6Z_J7XjHc62KMOETg1BBfqh8pchGuoO7xA&expiry=1400344470
+
+*--Snip--Snap--Snip--*
+
+Voice Command: "Google Siri Computer an"
+
+This command uses the os.system-function of python and calls the console-program "wakeonlan" with the mac-address of my pc.
+
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAADsw2EYXR-vCnMMGKrSs66a/SS2014/SysProg/ex3/thumbnails/7.png?token_hash=AAHpopqzOFrNZ2-5VLKc8wyXFACl-sNTnxj007jYDYqW-Q&expiry=1400346293
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAB0hitueqL_K1r3gj2IyKcda/SS2014/SysProg/ex3/thumbnails/8.png?token_hash=AAHpopqzOFrNZ2-5VLKc8wyXFACl-sNTnxj007jYDYqW-Q&expiry=1400346293
 
 FullRes-Screenshots:
 https://www.dropbox.com/sh/55my4fng760r4mf/AABf98OkhpHf7BxQejAac1lxa/SS2014/SysProg/ex3
