@@ -33,7 +33,7 @@ The second script presents the current temperature and humidity of my bedroom to
 
 Voice Command: "Google Siri Licht an"
 It triggers the remote control outlet of the LEDs behind my TV.
-This actually happens over a "webhook" which includes a rule to send an 433MHz Hex-Code to the outlet.
+This actually happens over a "webhook" which triggers a rule to send an 433MHz Hex-Code to the outlet.
 
 Screenshots:
 https://www.dropbox.com/sh/55my4fng760r4mf/AABf98OkhpHf7BxQejAac1lxa/SS2014/SysProg/ex3
