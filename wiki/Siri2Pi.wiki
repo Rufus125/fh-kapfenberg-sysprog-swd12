@@ -15,13 +15,10 @@ https://github.com/HcDevel/Siri-API
 = Details =
 
 Hardware: 
-2 Raspberry Pi (both on Raspbian)
-1 Ninja Blocks
+2 Raspberry Pi (both on Raspbian), 1 Ninja Blocks, several Sensors and Actuators
 
 Software:
-Siri-API
-Squid Proxy
-Python3
+Siri-API, Squid Proxy, Python3
 
 = Progress =
 
