@@ -33,6 +33,8 @@ I have another pi running as a webserver.
 A cronjob is set up to call autoscript.sh every 60 sec to save data regarding the system (cpu usuage, mem, clockrate ...) into seperate files.
 The python-function which is called from Siri-API reads this data and presents it well formatted to the user.
 
+https://dl.dropboxusercontent.com/sh/55my4fng760r4mf/AAB45gLRuiav5XoM2CVejArwa/SS2014/SysProg/ex3/2.png?token_hash=AAGXThCIdw9wmY6qHr2RycEosGcgXJ_RsQxB5RiGhwSOVg&expiry=1400344227
+
 *Second Script*
 
 Voice Command: "Google Siri Wohnung"
