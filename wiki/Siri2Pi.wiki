@@ -5,7 +5,7 @@ Team: Daniel Hösele - Daniel Frech
 
 = Introduction =
 
-Run custom python code on a Rasbpi with voice commands using Siri-API.
+Run custom python code on a raspi with voice commands using Siri-API.
 
 Siri-API is a tool which opens Siri for your own wishes WITHOUT the requirement of a Jailbreak. Basically it is like GoogolPlex but it is much more flexible since you can host it on your own computer. You just say Google and your keyword, by default "Siri" and everything what you say after your keyword will be redirected to the API. Of course, using Google without the keyword is still possible.
 
@@ -13,6 +13,17 @@ You need a Linux running computer (tested on Raspberry Pi) and a Squid Proxy ver
 https://github.com/HcDevel/Siri-API
 
 = Details =
+
+Hardware: 
+2 Raspberry Pi (both on Raspbian)
+1 Ninja Blocks
+
+Software:
+Siri-API
+Squid Proxy
+Python3
+
+= Progress =
 
 1. Siri-API is set up and running.
 
