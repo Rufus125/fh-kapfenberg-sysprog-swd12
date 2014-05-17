@@ -31,7 +31,7 @@ Siri-API, Squid Proxy, Python3
 Voice Command: "Google Siri Server"
 I have another pi running as a webserver.
 A cronjob is set up to call autoscript.sh every 60 sec to save data regarding the system (cpu usuage, mem, clockrate ...) into seperate files.
-The python-function which is called from Siri-API reads this data and presents it well formatted to the caller.
+The python-function which is called from Siri-API reads this data and presents it well formatted to the user.
 
 *Second Script*
 
