@@ -1,5 +1,5 @@
 #summary One-sentence summary of this page.
-Giesskanne (File-Distributor)
+Gießkanne (File-Distributor)
 
 Team: Christoph Mitteregger, Philipp Temmel, Elena Wendl
 
