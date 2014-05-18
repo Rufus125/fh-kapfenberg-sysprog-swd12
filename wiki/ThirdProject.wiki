@@ -72,6 +72,9 @@ see [CPUInfo]
 == Siri2Pi (Daniel Hösele, Daniel Frech) ==
 see [Siri2Pi]
 
+== Gießkanne (Philipp Temmel, Christoph Mitteregger, Elena Wendel) ==
+see [Giesskanne]
+
 = Organisatorisches =
 
  * 16.Mai in Kapfenberg: Diskussion und Entscheidungsfindung
