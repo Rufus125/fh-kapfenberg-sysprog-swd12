@@ -1,5 +1,5 @@
+#summary Alarm-Lampe
 #labels Alarm-Lampe
-Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein- bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
 
 Projektmitglieder:
 
@@ -10,6 +10,7 @@ REITNER, Holger
 
 = Introduction =
 
+Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein- bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
 
 = Details =
 
