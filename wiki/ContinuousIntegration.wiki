@@ -7,9 +7,10 @@ MARCHER, Sandra
 REITNER, Holger
 
 
-= Introduction =
+= Einführung =
 
 Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein- bzw. ausschaltet, je nachdem, ob der Build erfolgreich war oder fehlgeschlagen ist.
+
 
 = Details =
 
@@ -17,3 +18,8 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+
+= Zusätzliche Informationen / Links =
+Jenkins Website: http://jenkins-ci.org/
+Jenkins Wiki: http://de.wikipedia.org/wiki/Jenkins_%28Software%29
