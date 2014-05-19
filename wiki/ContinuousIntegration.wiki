@@ -9,7 +9,7 @@ REITNER, Holger
 
 = Introduction =
 
-Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein- bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
+Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein- bzw. ausschaltet, je nachdem, ob der Build erfolgreich war oder fehlgeschlagen ist.
 
 = Details =
 
