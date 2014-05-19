@@ -1,0 +1,15 @@
+Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein- bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
+
+Projektmitglieder:
+MARCHER, Sandra 
+REITNER, Holger
+
+= Introduction =
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
