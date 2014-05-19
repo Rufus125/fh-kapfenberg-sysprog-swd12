@@ -18,6 +18,18 @@ Add your content here.  Format your content with:
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
 
+= Installation/Inbetriebnahme Jenkins (Fedora 19 VM) =
+
+Jenkins installieren
+  * `sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo`
+  * `sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key`
+  * `sudo yum install jenkins`
+Jenkins starten
+  * `sudo service jenkins start/stop/restart`
+  * `sudo chkconfig jenkins on`
+Jenkins Web-Oberfläche ist nun verfügbar
+  * http://localhost:8080
+
 
 = Zusätzliche Informationen / Links =
 
