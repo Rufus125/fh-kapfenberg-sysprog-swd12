@@ -1,6 +1,6 @@
 #summary Alarm-Lampe
 
-Projektmitglieder:
+== Projektmitglieder ==
 
 MARCHER, Sandra 
 
