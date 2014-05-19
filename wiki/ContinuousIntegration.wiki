@@ -2,9 +2,8 @@
 
 == Projektmitglieder ==
 
-MARCHER, Sandra 
-
-REITNER, Holger
+  * MARCHER, Sandra 
+  * REITNER, Holger
 
 
 = Einführung =
@@ -22,6 +21,5 @@ Add your content here.  Format your content with:
 
 = Zusätzliche Informationen / Links =
 
-Jenkins Website: http://jenkins-ci.org/
-
-Jenkins Wiki: http://de.wikipedia.org/wiki/Jenkins_%28Software%29
+  * Jenkins Website: http://jenkins-ci.org/
+  * Jenkins Wiki: http://de.wikipedia.org/wiki/Jenkins_%28Software%29
