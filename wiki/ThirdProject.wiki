@@ -19,7 +19,7 @@ Fach haben.
 == Ampel (Manuel Kamper, Lukas Kranabetter) ==
 
 Siehe http://www.manuelkamper.com/ampel.php
-<font Color="green">Status 80% finished!</font>
+*Status:* 80% finished!
 
 *Sprache*: C#/Mono
 
