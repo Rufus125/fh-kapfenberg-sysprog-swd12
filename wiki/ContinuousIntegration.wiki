@@ -5,8 +5,7 @@
   * MARCHER, Sandra 
   * REITNER, Holger
 
-
-= Einführung =
+= Idee =
 
 Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein-
 bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
@@ -31,13 +30,6 @@ Aufgaben:
    * Server
    * Client
  * Jenkins-Administration
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
 
 = Installation/Inbetriebnahme Jenkins (Fedora 19 VM) =
 
