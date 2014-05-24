@@ -1,5 +1,6 @@
 #summary CPU Info project by Georg Schlagholz, Michael Mayer and Franz Platzer
-
+==Parent==
+[ThirdProject]
 = Introduction =
 
 The application gets  CPU infos like processor type and temperature
