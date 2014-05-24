@@ -13,8 +13,8 @@ Jenkins ruft nach dem Build ein Programm auf, das ein Alarm-Licht ein-
 bzw. ausschaltet, je nachdem, ob der Build gut oder schlecht war.
 
 {{{
-$ build-alarm 192.168.2.34 on # alarm ein
-$ build-alarm 192.168.2.34 off # alarm aus
+$ build-alarm 192.168.2.34 1234 on # alarm ein
+$ build-alarm 192.168.2.34 1234 off # alarm aus
 }}}
 
 Am Buildserver gibts meistens keine Möglichkeit, IO Pins zu schalten
