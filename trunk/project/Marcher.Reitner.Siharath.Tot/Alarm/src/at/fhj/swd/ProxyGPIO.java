@@ -5,14 +5,14 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ClientGPIO implements GPIO {
+public class ProxyGPIO implements GPIO {
 
 	//Baut Socketverbindung auf und schickt "on" oder "off"
 	
 	private String host;
 	private int port;
 
-	public ClientGPIO(String host, int port) {
+	public ProxyGPIO(String host, int port) {
 		this.host = host;
 		this.port = port;
 	}
@@ -36,17 +36,17 @@ public class ClientGPIO implements GPIO {
 	@Override
 	public void on() {
 		// TODO Auto-generated method stub
-		System.out.println("ClientGPIO send ON");
+		System.out.println(" ClientGPIO sends: ON");
 		sendToSocket("on");
-		System.out.println("ON done!");
+		System.out.println(" Done!");
 	}
 
 	@Override
 	public void off() {
 		// TODO Auto-generated method stub
-		System.out.println("ClientGPIO send OFF");
+		System.out.println(" ClientGPIO sends: OFF");
 		sendToSocket("off");
-		System.out.println("OFF done!");
+		System.out.println(" Done!");
 	}
 
 }

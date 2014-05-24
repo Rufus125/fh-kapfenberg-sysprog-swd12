@@ -9,21 +9,18 @@ public class AlarmClient {
 		//Port: 2999
 		//State: on/off
 		
-		System.out.println("Start");
+		System.out.println("Client started");
 		
-		String host ="localhost";
-		int port = 2999;
+		printArgs(args);
 		
 		if (args.length == 3) {
-			System.out.println(args[0]);
-			host = args[0];
-			System.out.println(args[1]);
-			port = Integer.parseInt(args[1]);
-			System.out.println(args[2]);
+			String host = args[0];
+			int port = Integer.parseInt(args[1]);
+			String action = args[2].toLowerCase();
 			
-			ClientGPIO client = new ClientGPIO(host, port);
+			ProxyGPIO client = new ProxyGPIO(host, port);
 			
-			switch (args[2].toLowerCase()) {
+			switch (action) {
 			case "on":
 				client.on();
 				break;
@@ -31,10 +28,17 @@ public class AlarmClient {
 				client.off();
 			}
 		} else {
-			System.out.println("Invalid arguments!\nSyntax: AlarmClient [{HOST}] [{PORT}] [{STATE}]\nExample: AlarmClient 192.168.1.12 2999 on");
+			System.out.println("  Invalid arguments!\n  Syntax: AlarmClient [{HOST}] [{PORT}] [{STATE}]\n  Example: AlarmClient 192.168.1.12 2999 on");
 		}
 		
-		System.out.println("End");
+		System.out.println("Client ended");
+	}
+
+	private static void printArgs(String[] args) {
+		System.out.println("  Given parameters:");
+		for (int i = 0; i < args.length; i++) {
+			System.out.println("    param "+ Integer.toString(i) + ": "+ args[i]);
+		}
 	}
 
 }
