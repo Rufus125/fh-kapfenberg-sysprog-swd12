@@ -1,0 +1,6 @@
+PROJECT(sts)
+ADD_LIBRARY(sts sts.h sts.c)
+ADD_EXECUTABLE(std std.c)
+ADD_EXECUTABLE(stl stl.c)
+TARGET_LINK_LIBRARIES(std sts)
+TARGET_LINK_LIBRARIES(stl sts)
