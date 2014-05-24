@@ -3,12 +3,17 @@
 [ThirdProject]
 = Introduction =
 
-The application gets  CPU infos like processor type and temperature
+The application gets CPU infos like processor type and temperature
 and serves it via network.
-
+The client has a list of servers with their IP-Adresses and asks them parallel for their CPU temperature and outputs the servername and temperature to stdout.
 
 = Details =
 
 see: cat /sys/class/thermal/thermal_zone0/temp
 
 see: cat /proc/cpuinfo
+
+== Breakdown ==
+Mayer: Client
+Platzer: Network Server
+Schlagholz: read temperature 
