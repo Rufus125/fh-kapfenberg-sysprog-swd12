@@ -43,6 +43,8 @@ STL: Dies ist der StandardTimecLient, welcher als parameter den Hostnamen des Se
 
 STD: Der StandardTimeDeamon stellt die Server-Instanz des Zeitdiesntes dar. Nach dem Start "forked" sich der Deamon/Service vom Hauptprogramm weg und läuft so als eigener Prozess, sprich als Hintergrundservice, weiter, ohne das dabei die Shell blockiert wird. 
 
+SVN-Link: https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Ascher.Thomas-Lamb.Manuel-Viehberger.Julia
+
 == Continuous Integration (CI) mit Alarm-Lampe (Egon Teiniker) ==
 
 [ContinuousIntegration Näheres siehe hier]
