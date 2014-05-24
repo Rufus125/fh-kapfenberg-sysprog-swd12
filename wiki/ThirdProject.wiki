@@ -53,7 +53,7 @@ SVN-Link: https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/A
 
 [TempSensorNetworkLED Näheres siehe hier]
 
-== CPU Info (Georg Schlagholz, Franz Platzer) ==
+== CPU Info (Georg Schlagholz, Franz Platzer, Georg Schlagholz) ==
 see [CPUInfo]
 
 == Siri2Pi (Daniel Hösele, Daniel Frech) ==
