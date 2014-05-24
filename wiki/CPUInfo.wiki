@@ -12,6 +12,7 @@ The client has a list of servers with their IP-Adresses and asks them parallel f
 see: cat /sys/class/thermal/thermal_zone0/temp
 
 see: cat /proc/cpuinfo
+see: cat /etc/hostname
 
 == Breakdown ==
 Mayer: Client
