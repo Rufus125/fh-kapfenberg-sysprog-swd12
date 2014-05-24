@@ -2,8 +2,8 @@
 
 = Introduction =
 
-The application reads out CPU Infos like processor type and temperature
-and servers it via network.
+The application gets  CPU infos like processor type and temperature
+and serves it via network.
 
 
 = Details =
