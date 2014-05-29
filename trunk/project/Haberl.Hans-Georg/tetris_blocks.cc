@@ -91,3 +91,83 @@ Tetrimino* createRandomTetrimino() {
     Tetrimino_Type type = static_cast<Tetrimino_Type>(rand() % Z);
     return createTetrimino(type);
 }
+
+void setColorStyle(Tetris_Color_Style style) {
+    switch(style) {
+        case VADIM_GERASIMOV:
+            color_I = DARK_RED;
+            color_J = LIGHT_GRAY;
+            color_L = DARK_MAGENTA;
+            color_O = DARK_BLUE;
+            color_S = DARK_GREEN;
+            color_T = DARK_BROWN;
+            color_Z = DARK_CYAN;
+            return;
+        case MICROSOFT:
+            color_I = RED;
+            color_J = MAGENTA;
+            color_L = YELLOW;
+            color_O = CYAN;
+            color_S = BLUE;
+            color_T = LIGHT_GRAY;
+            color_Z = LIME;
+            return;
+        case SEGA:
+            color_I = RED;
+            color_J = BLUE;
+            color_L = ORANGE;
+            color_O = YELLOW;
+            color_S = MAGENTA;
+            color_T = CYAN;
+            color_Z = LIME;
+            return;
+        case THE_NEW_TETRIS:
+            color_I = CYAN;
+            color_J = BLUE_MAGENTA;
+            color_L = MAGENTA;
+            color_O = LIGHT_GRAY;
+            color_S = LIME;
+            color_T = YELLOW;
+            color_Z = RED;
+            return;
+        case THE_TETRIS_COMPANY:
+            color_I = CYAN;
+            color_J = BLUE;
+            color_L = ORANGE;
+            color_O = YELLOW;
+            color_S = LIME;
+            color_T = DARK_MAGENTA;
+            color_Z = RED;
+            return;
+        case ATARI:
+            color_I = RED;
+            color_J = YELLOW;
+            color_L = MAGENTA;
+            color_O = BLUE;
+            color_S = CYAN;
+            color_T = LIME;
+            color_Z = ORANGE;
+            return;
+        case TETRIS_THE_SOVIET_MIND_GAME:
+            color_I = RED;
+            color_J = ORANGE;
+            color_L = MAGENTA;
+            color_O = BLUE;
+            color_S = LIME;
+            color_T = OLIVE;
+            color_Z = CYAN;
+            return;
+        case GAMEBOY_COLOR:
+            color_I = ORANGE;
+            color_J = CYAN;
+            color_L = RED;
+            color_O = YELLOW;
+            color_S = MAGENTA;
+            color_T = LIME;
+            color_Z = AMBER;
+        default:
+            //todo log 
+            break;
+    }
+
+}
