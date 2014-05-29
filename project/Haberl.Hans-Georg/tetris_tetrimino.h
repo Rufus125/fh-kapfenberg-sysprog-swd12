@@ -2,99 +2,99 @@
 
 static const TetriminoBlocks I_BLOCKS[2] = {
     {{
-        {0,1,DARK_RED}, {1,1,DARK_RED}, {2,1,DARK_RED}, {3,1,DARK_RED}
+        {0,1,&color_I}, {1,1,&color_I}, {2,1,&color_I}, {3,1,&color_I}
     }},
     {{
-        {1,0,DARK_RED},
-        {1,1,DARK_RED},
-        {1,2,DARK_RED},
-        {1,3,DARK_RED}
+        {1,0,&color_I},
+        {1,1,&color_I},
+        {1,2,&color_I},
+        {1,3,&color_I}
     }}
 
 };
 static const TetriminoBlocks J_BLOCKS[4] = {
     {{
-        {0,1,LIGHT_GRAY}, {1,1,LIGHT_GRAY}, {2,1,LIGHT_GRAY},
-                                            {2,2,LIGHT_GRAY}
+        {0,1,&color_J}, {1,1,&color_J}, {2,1,&color_J},
+                                        {2,2,&color_J}
     }},
     {{
-                          {1,0,LIGHT_GRAY},
-                          {1,1,LIGHT_GRAY},
-        {0,2,LIGHT_GRAY}, {1,2,LIGHT_GRAY}
+                        {1,0,&color_J},
+                        {1,1,&color_J},
+        {0,2,&color_J}, {1,2,&color_J}
     }},
     {{
-        {0,0,LIGHT_GRAY},
-        {0,1,LIGHT_GRAY}, {1,1,LIGHT_GRAY}, {2,1,LIGHT_GRAY}
+        {0,0,&color_J},
+        {0,1,&color_J}, {1,1,&color_J}, {2,1,&color_J}
     }},
     {{
-                          {1,0,LIGHT_GRAY},
-                          {1,1,LIGHT_GRAY},
-        {0,2,LIGHT_GRAY}, {1,2,LIGHT_GRAY}
+                        {1,0,&color_J},
+                        {1,1,&color_J},
+        {0,2,&color_J}, {1,2,&color_J}
     }}
 };
 static const TetriminoBlocks L_BLOCKS[4] = {
     {{
-        {0,1,DARK_MAGENTA}, {1,1,DARK_MAGENTA}, {2,1,DARK_MAGENTA},
-        {0,2,DARK_MAGENTA}
+        {0,1,&color_Z}, {1,1,&color_Z}, {2,1,&color_Z},
+        {0,2,&color_Z}
     }},
     {{
-                            {1,0,DARK_MAGENTA},
-                            {1,1,DARK_MAGENTA},
-                            {1,2,DARK_MAGENTA}, {2,2,DARK_MAGENTA}
+                        {1,0,&color_Z},
+                        {1,1,&color_Z},
+                        {1,2,&color_Z}, {2,2,&color_Z}
     }},
     {{
-                                                {2,0,DARK_MAGENTA},
-        {0,1,DARK_MAGENTA}, {1,1,DARK_MAGENTA}, {2,1,DARK_MAGENTA}
+                                        {2,0,&color_Z},
+        {0,1,&color_Z}, {1,1,&color_Z}, {2,1,&color_Z}
     }},
     {{
-                            {1,0,DARK_MAGENTA},
-                            {1,1,DARK_MAGENTA},
-                            {1,2,DARK_MAGENTA}, {2,2,DARK_MAGENTA}
+                        {1,0,&color_Z},
+                        {1,1,&color_Z},
+                        {1,2,&color_Z}, {2,2,&color_Z}
     }}
 };
 static const TetriminoBlocks O_BLOCKS = {{
-    {0,0,DARK_BLUE}, {1,0,DARK_BLUE},
-    {0,1,DARK_BLUE}, {1,1,DARK_BLUE}
+        {0,0,&color_O}, {1,0,&color_O},
+        {0,1,&color_O}, {1,1,&color_O}
 }};
 static const TetriminoBlocks S_BLOCKS[2] = {
     {{
-                          {1,0,DARK_GREEN}, {2,0,DARK_GREEN},
-        {0,1,DARK_GREEN}, {1,1,DARK_GREEN}
+                        {1,0,&color_S}, {2,0,&color_S},
+        {0,1,&color_S}, {1,1,&color_S}
     }},
     {{
-        {0,0,DARK_GREEN}, 
-        {0,1,DARK_GREEN}, {1,1,DARK_GREEN}, 
-                          {1,2,DARK_GREEN}
+        {0,0,&color_S}, 
+        {0,1,&color_S}, {1,1,&color_S}, 
+                        {1,2,&color_S}
     }}
 };
 static const TetriminoBlocks T_BLOCKS[4] = {
     {{
-        {0,0,DARK_BROWN}, {1,0,DARK_BROWN}, {2,0,DARK_BROWN},
-                          {1,1,DARK_BROWN}
+        {0,0,&color_T}, {1,0,&color_T}, {2,0,&color_T},
+                        {1,1,&color_T}
     }},
     {{
-                          {1,0,DARK_BROWN}, 
-        {0,1,DARK_BROWN}, {1,1,DARK_BROWN},
-                          {1,2,DARK_BROWN}
+                        {1,0,&color_T}, 
+        {0,1,&color_T}, {1,1,&color_T},
+                        {1,2,&color_T}
     }},
     {{
-                          {1,0,DARK_BROWN},
-        {0,1,DARK_BROWN}, {1,1,DARK_BROWN}, {2,1,DARK_BROWN},
+                        {1,0,&color_T},
+        {0,1,&color_T}, {1,1,&color_T}, {2,1,&color_T},
     }},
     {{
-                          {1,0,DARK_BROWN}, 
-                          {1,1,DARK_BROWN}, {2,1,DARK_BROWN},
-                          {1,2,DARK_BROWN}
+                        {1,0,&color_T}, 
+                        {1,1,&color_T}, {2,1,&color_T},
+                        {1,2,&color_T}
     }}
 };
 static const TetriminoBlocks Z_BLOCKS[2] = {
     {{
-        {0,0,DARK_MAGENTA}, {1,0,DARK_MAGENTA},
-                            {1,1,DARK_MAGENTA}, {2,1,DARK_MAGENTA}
+        {0,0,&color_Z}, {1,0,&color_Z},
+                        {1,1,&color_Z}, {2,1,&color_Z}
     }},
     {{
-                                                {2,0,DARK_MAGENTA}, 
-                            {1,1,DARK_MAGENTA}, {2,1,DARK_MAGENTA}, 
-                            {1,2,DARK_MAGENTA}
+                                        {2,0,&color_Z}, 
+                        {1,1,&color_Z}, {2,1,&color_Z}, 
+                        {1,2,&color_Z}
     }}
 };
