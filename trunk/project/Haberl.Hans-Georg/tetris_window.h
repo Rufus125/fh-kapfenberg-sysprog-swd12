@@ -4,11 +4,10 @@
 
 class Window {
     public:
-    static Window* Instance(); 
-    ~Window();
-    SDL_Event getEvent();
-    private:
     Window();
+    ~Window();
+    SDL_Event* getEvent();
+    private:
     SDL_Event event;
 };
 
