@@ -1,0 +1,205 @@
+/**
+ * Gradle build file for raspery pi ampel project<br>
+ * Use gradle-msbuild-plugin to compile the projects by their corresponding *.csproj file<br>
+ * Deployment happens over an scp task which copies the exe to the remote raspery<br>  
+ * 
+ * @author Manuel Kamper, Lukas Kranabetter
+ */
+
+buildscript 
+{
+	repositories 
+	{
+		mavenCentral()
+	}
+
+	dependencies 
+	{
+		// Plugin for ms project compilation, https://github.com/Ullink/gradle-msbuild-plugin
+		classpath group: "com.ullink.gradle", name: "gradle-msbuild-plugin", version: "1.6"
+		// Libraries for ant scp
+		classpath group: "org.apache.ant", name: "ant-jsch", version: "1.7.1"
+		classpath group: "jsch", name: "jsch", version: "0.1.29"
+	}
+}
+
+/**
+ * Root project deploy task<br>
+ * Either get username and password for scp from a gradle.properties file or enter it over the console<br>
+ * The gradle.properties file is added by default, also properties can be added by command line -Pname=value<br>
+ */
+task deploy (description: "Set username and password for subprojects deploy tasks") <<
+{
+	// When usernam and password properties exists use them
+	if(project.hasProperty("username") &&	project.hasProperty("password"))
+	{
+		println "Got scp authentication properties from command line or gradle.properties file"
+		
+		rootProject.ext.scpUsername = username
+		rootProject.ext.scpPassword = password
+	}
+	else
+	{
+		// Get user and password from console input
+		def console = System.console()
+		rootProject.ext.scpUsername = console.readLine "%s: ", "\nPlease enter the username"
+		rootProject.ext.scpPassword = console.readPassword "%s: ", "\nPlease enter the password"
+	}
+	
+	// Get scp remote url
+	rootProject.ext.scpRemoteUrl = (project.hasProperty("scpRemoteUrl")) ? scpRemoteUrl : "kmpr.at:/tmp"
+}
+
+// Configure all sub projects for msbuild
+subprojects
+{
+	apply plugin: "msbuild"
+	
+	/**
+	 * Run before project configuration phase with beforeEvaluate<br>
+	 * Set msbuild projectFile and prepare *.csproj files for gradle compilation when nessaccary<br>
+	 * Because msbuild need <Project ToolsVersion="4.0"... we change it before compiling a project<br>
+	 */
+	beforeEvaluate { project ->
+										// Set default project file
+										project.msbuild.projectFile = project.msbuild.projectName + ".csproj"
+										
+										def csprojPath = project.projectDir.path + "/" + project.msbuild.projectFile
+										def csprojXml = new XmlParser().parse(file(csprojPath))
+										
+										if(csprojXml.@ToolsVersion != "4.0")
+										{
+											def csprojTempPath = project.projectDir.path + "/_" + project.msbuild.projectFile
+											
+											println "Must adapt tools version for project file: ${project.msbuild.projectFile}"
+											
+											// Change tool version and write file
+											csprojXml.@ToolsVersion = "4.0"
+											new File(csprojTempPath).withPrintWriter { writer ->
+																																	def printer = new XmlNodePrinter(writer)
+																																	// Preserver whitespace for well formed xml
+																																	printer.preserveWhitespace = true
+																																	printer.print csprojXml
+																																	// Close writer so msbuild task can use the file
+																																	writer.close()
+																																}
+											// Set the temporary adapted project file
+											project.msbuild.projectFile = "_" + project.msbuild.projectFile
+											// Delete temporary files after msbuild
+											project.msbuild.finalizedBy cleanup
+										}
+									}
+	
+	/**
+	 * Settings for the ms project build<br>
+	 * We define that *.csproj files always have the name of the project<br>
+	 */
+	msbuild
+	{
+		// Project file and name are project specific and are defined for each project
+		
+		// Mandatory
+		//projectFile = "RaspiAmpel.csproj"
+		
+		// MsBuild project name (/p:Project=...)
+		//projectName = "RaspiAmpel"
+		
+		// Verbosity (/v:detailed, by default uses gradle logging level)
+		verbosity = "detailed"
+		
+		// targets to execute (/t:Clean;Rebuild, no default)
+		targets = ["Clean", "Rebuild"]
+		
+		// Below values can override settings from the project file
+		
+		// Overrides project OutputPath
+		destinationDir = "bin/Debug"
+		
+		// Overrides project IntermediaryOutputPath
+		//intermediateDir = "obj"
+		
+		// Generates XML documentation file (from javadoc through custom DocLet)
+		//generateDoc = false
+		
+		// Other msbuild options can be set:
+		// loggerAssembly, generateDoc, debugType, optimize, debugSymbols, configuration, platform, defineConstants ...
+		
+		// You can also provide properties by name (/p:SomeProperty=Value)
+		//parameters.SomeProperty = "Value"
+	}
+	
+	/**
+	 * Deploy the distribution to raspery over scp<br>
+	 * Using ant scp task<br>
+	 * Must execute root project deploy for username and password properties<br>
+	 */
+	task deploy (description: "Deploy the distribution to raspery over scp", dependsOn: rootProject.deploy) <<
+	{
+		// Redefine scp Ant task, with the classpath property set to our newly defined sshAntTask configuration classpath
+		ant.taskdef name: "scp", 
+								classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",	
+								classpath: rootProject.buildscript.configurations.classpath.asPath
+		
+		def scp = { todir, password ->
+								// We need the trust true parameter to ignore known hosts file
+								ant.scp(todir: todir,
+												password: password,
+												verbose: "true",
+												trust: "true")
+								{
+									fileset(dir: project.msbuild.destinationDir)
+									{
+										include(name: "*.exe")
+									}
+								}
+							}						
+								
+		try
+		{
+			println "Deploy binaries to ${rootProject.ext.scpRemoteUrl}"
+			
+			// Invoke the scp Ant task, use gradle -i deploy to see the output of the Ant task
+			scp "${rootProject.ext.scpUsername as String}@${rootProject.ext.scpRemoteUrl}", rootProject.ext.scpPassword as String
+		}
+		catch(exeption)
+		{
+			println "ERROR: Can't deploy to remote directory because of ${exeption.toString()}"
+			println "Try to copy it as root user"
+			
+			def console = System.console()
+			def password = console.readPassword "%s: ", "\nPlease enter the root password"
+				
+			scp "root@${rootProject.ext.scpRemoteUrl}", password as String
+		}
+	}
+	
+	/**
+	 * Cleanup temporary files of the build<br>
+	 */
+	task cleanup (type: Delete)	<<
+	{
+		// Adapted *.csproj files for msbuild task can be deleted after task has been done
+		ant.delete
+		{
+			fileset(dir: file(project.projectDir.path), includes: "_*.csproj")
+		}
+	}
+}
+
+// Project specific settings
+
+project(":RaspiAmpel/RaspiAmpel")
+{
+	msbuild
+	{
+		projectName = "RaspiAmpel"
+	}
+}
+
+project(":RaspiGpioTest/RaspiGpioTest")
+{
+	msbuild
+	{
+		projectName = "RaspiGpioTest"
+	}
+}

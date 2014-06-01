@@ -1,0 +1,5 @@
+kompillieren und deployen
+gradlew msbuild deploy
+
+nur deployen
+gradlew deploy
