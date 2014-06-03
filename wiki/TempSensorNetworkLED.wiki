@@ -33,11 +33,11 @@ werden wir interfaces definieren.
 || *Visualisierer-Hierarchie* ||
 || http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/VisualizerHierarchy.png ||
 
-== Temperatursensor (LM73) ==
+== Temperatursensor (TMP36) ==
 
  * Projektmitglieder: 
  * Implementationsdetails
-   * [http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/LM73-Datasheet.pdf LM73 Datenblatt]
+   * [http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/Temperatursensor TMP36.pdf TMP36 Datenblatt]
    * *TODO*: SPI Erklärung ("Es ist alles ganz einfach!")
      * {{{spi-dev}}}: [https://www.kernel.org/doc/Documentation/spi/spi-summary Kernel Documentation], [https://www.kernel.org/doc/Documentation/spi/spidev SPI driver]
      * Protokoll (write "0", read 2 Bytes, Konvertierung in Temperatur lt. [http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/LM73-Datasheet.pdf Datenblatt])
