@@ -38,8 +38,8 @@ werden wir interfaces definieren.
  * Projektmitglieder: 
  * Implementationsdetails
    * [http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/LM73-Datasheet.pdf LM73 Datenblatt]
-   * *TODO*: I2C Erklärung ("Es ist alles ganz einfach!")
-     * {{{i2c-dev}}}: [https://www.kernel.org/doc/Documentation/i2c/dev-interface Kernel Documentation]
+   * *TODO*: SPI Erklärung ("Es ist alles ganz einfach!")
+     * {{{spi-dev}}}: [https://www.kernel.org/doc/Documentation/spi/spi-summary Kernel Documentation]
      * Protokoll (write "0", read 2 Bytes, Konvertierung in Temperatur lt. [http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/LM73-Datasheet.pdf Datenblatt])
    * *TODO*: Hardwareübergabe (Raspberry, LM73, Netzteil)
 
