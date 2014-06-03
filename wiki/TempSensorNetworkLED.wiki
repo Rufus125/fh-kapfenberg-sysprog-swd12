@@ -41,8 +41,7 @@ werden wir interfaces definieren.
    * [http://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/docs/ADConverterMCP3008.pdf MCP3008 Datenblatt]
    * *TODO*: SPI Erklärung ("Es ist alles ganz einfach!")
      * {{{spi-dev}}}: [https://www.kernel.org/doc/Documentation/spi/spi-summary Kernel Documentation], [https://www.kernel.org/doc/Documentation/spi/spidev SPI driver]
-     * Protokoll (write "0", read 2 Bytes, Konvertierung in Temperatur lt. [http://fh-kapfenberg-sysprog-itm12.googlecode.com/svn/trunk/docs/LM73-Datasheet.pdf Datenblatt])
-   * *TODO*: Hardwareübergabe (Raspberry, LM73, Netzteil)
+     * *TODO*: Hardwareübergabe (Raspberry, LM73, Netzteil)
 
 == Visualisierung mittels LED-Bar ==
 
