@@ -11,6 +11,6 @@ Also ein Wecker der erst aufhört zu läuten wenn man aufsteht :)
 
 Komponenten:
  - RaspberryPi<br>
- - LCD-Display
- - ADC (Analog to Digital converter): ADC PI v2.2
- - Gewichtssensor: PPSEN- 10245
+ - LCD-Display<br>
+ - ADC (Analog to Digital converter): ADC PI v2.2<br>
+ - Gewichtssensor: PPSEN- 10245<br>
