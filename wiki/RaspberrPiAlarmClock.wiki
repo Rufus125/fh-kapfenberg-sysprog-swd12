@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+Projekt von Florian Dulzky
+
+Am RaspberryPi wird ein Gewichtssensor (PPSEN-10245) über eine ADC (Analog to digital converter) angeschlossen.
+Des weiteren läuft am RaspberryPi ein Timer der einen Alarm auslöst (Wecker), der Alarm wird erst deaktiviert wenn der Gewichtssensor mindestens 30kg weniger misst.
+
+= Details =
+
+Komponenten:
+ - RaspberryPi
+ - LCD-Display
+ - ADC (Analog to Digital converter): ADC PI v2.2
+ - Gewichtssensor: PPSEN- 10245
