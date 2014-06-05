@@ -2,7 +2,7 @@ package at.fhj.swd;
 
 public class DummyGPIO implements GPIO {
 
-	public DummyGPIO() {
+	public DummyGPIO(int gpio) {
 		// TODO Auto-generated constructor stub
 	}
 

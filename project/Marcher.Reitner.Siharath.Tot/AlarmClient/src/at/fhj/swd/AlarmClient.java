@@ -3,41 +3,43 @@ package at.fhj.swd;
 public class AlarmClient {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//Parameter:
 		//IP: 192.168.2.34
 		//Port: 2999
+		//GPIO: 23
 		//State: on/off
 		
-		System.out.println("Client started");
+		Logger.log("Client started");
 		
 		printArgs(args);
 		
-		if (args.length == 3) {
+		if (args.length == 4) {
 			String host = args[0];
 			int port = Integer.parseInt(args[1]);
-			String action = args[2].toLowerCase();
+			int gpio = Integer.parseInt(args[2]);
+			String action = args[3].toLowerCase();
 			
-			ProxyGPIO client = new ProxyGPIO(host, port);
+			ProxyGPIO proxyGPIO = new ProxyGPIO(host, port, gpio);
 			
 			switch (action) {
 			case "on":
-				client.on();
+				proxyGPIO.on();
 				break;
 			case "off":
-				client.off();
+				proxyGPIO.off();
+				break;
 			}
 		} else {
-			System.out.println("  Invalid arguments!\n  Syntax: AlarmClient [{HOST}] [{PORT}] [{STATE}]\n  Example: AlarmClient 192.168.1.12 2999 on");
+			Logger.log("  Invalid arguments!\n  Syntax: AlarmClient [{HOST}] [{PORT}] [{GPIO}] [{STATE}]\n  Example: AlarmClient 192.168.1.12 2999 23 on");
 		}
 		
-		System.out.println("Client ended");
+		Logger.log("Client ended");
 	}
 
 	private static void printArgs(String[] args) {
-		System.out.println("  Given parameters:");
+		Logger.log("  Given parameters:");
 		for (int i = 0; i < args.length; i++) {
-			System.out.println("    param "+ Integer.toString(i) + ": "+ args[i]);
+			Logger.log("    param "+ Integer.toString(i) + ": "+ args[i]);
 		}
 	}
 
