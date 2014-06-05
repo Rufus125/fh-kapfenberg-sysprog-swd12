@@ -1,9 +1,11 @@
 package at.fhj.swd;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class ProxyGPIO implements GPIO {
 
@@ -11,42 +13,74 @@ public class ProxyGPIO implements GPIO {
 	
 	private String host;
 	private int port;
+	private int gpio;
 
-	public ProxyGPIO(String host, int port) {
+	public ProxyGPIO(String host, int port, int gpio) {
 		this.host = host;
 		this.port = port;
+		this.gpio = gpio;
 	}
 	
-	private void sendToSocket(String command) {
+	private String sendToSocket(String command) {
 		Socket socket = null;
-		try {
+		try
+		{
 			socket = new Socket(host, port);
-			OutputStream outstream = null;
-			outstream = socket.getOutputStream();
-			PrintWriter out = new PrintWriter(outstream);;
-			out.print(command+"\n");
+			Logger.log("    connect to " + socket);
+			
+			// send request
+			Logger.log("    send: '" + command + "'");
+			PrintWriter out = new PrintWriter(socket.getOutputStream());		
+			out.println(command+"\n");
 			out.flush();
+
+			// read response
+			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			String response = in.readLine();
+			
+			Logger.log("    receive: '"+ response +"'");
+			
+			in.close();
+			out.close();
 			socket.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
+			return response;
+		}
+		catch(UnknownHostException e)
+		{
 			e.printStackTrace();
 		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
     }
 
 	@Override
 	public void on() {
-		// TODO Auto-generated method stub
-		System.out.println(" ClientGPIO sends: ON");
-		sendToSocket("on");
-		System.out.println(" Done!");
+		String strGpio =  Integer.toString(gpio);
+		Logger.log(" ClientGPIO sends: ON for GPIO "+strGpio);
+		String command = new StringBuilder().append(strGpio).append(",").append("on").toString();
+		String response = sendToSocket(command);
+		if (response == null) {
+			Logger.log(" Error! There was no response: "+ response);
+		} else {
+			Logger.log(" Sending Successfull!");
+		}
 	}
 
 	@Override
 	public void off() {
-		// TODO Auto-generated method stub
-		System.out.println(" ClientGPIO sends: OFF");
-		sendToSocket("off");
-		System.out.println(" Done!");
+		String strGpio =  Integer.toString(gpio);
+		Logger.log(" ClientGPIO sends OFF for GPIO "+strGpio);
+		String command = new StringBuilder().append(strGpio).append(",").append("off").toString();
+		String response = sendToSocket(command);
+		if (response == null) {
+			Logger.log(" Error! There was no response: "+ response);
+		} else {
+			Logger.log(" Sending Successfull!");
+		}
 	}
 
 }
