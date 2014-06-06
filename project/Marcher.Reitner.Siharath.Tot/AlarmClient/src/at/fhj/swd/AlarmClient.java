@@ -19,6 +19,9 @@ public class AlarmClient {
 			int gpio = Integer.parseInt(args[2]);
 			String action = args[3].toLowerCase();
 			
+//			action = "on";
+//			action = "off";
+			
 			ProxyGPIO proxyGPIO = new ProxyGPIO(host, port, gpio);
 			
 			switch (action) {
