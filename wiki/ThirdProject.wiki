@@ -29,21 +29,29 @@ gscheit).
 
 [TimeServer Näheres siehe hier]
 
-== Continuous Integration (CI) mit Alarm-Lampe (Egon Teiniker) ==
+== Continuous Integration (CI) mit Alarm-Lampe ==
 
 [ContinuousIntegration Näheres siehe hier]
 
-== Idee: Temperatur Messen und Anzeigen über Netzwerk (Jörg Faschingbauer) ==
+== Temperatur Messen und Anzeigen über Netzwerk ==
 
 [TempSensorNetworkLED Näheres siehe hier]
 
-== CPU Info (Georg Schlagholz, Franz Platzer, Georg Schlagholz) ==
+== LED, gesteuert über Netzwerk ==
+
+[MonoSocketLed Näheres siehe hier]
+
+== Wecker mit Gewichtssensor ==
+
+[RaspberrPiAlarmClock Näheres siehe hier]
+
+== CPU Info ==
 see [CPUInfo]
 
-== Siri2Pi (Daniel Hösele, Daniel Frech) ==
+== Siri2Pi ==
 see [Siri2Pi]
 
-== Gießkanne (Philipp Temmel, Christoph Mitteregger, Elena Wendel) ==
+== Gießkanne ==
 see [Giesskanne]
 
 = Organisatorisches =
