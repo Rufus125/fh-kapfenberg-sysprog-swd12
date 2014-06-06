@@ -34,7 +34,7 @@ public class AlarmServer {
 		            	Logger.log("received: "+ action[0]+","+action[1]);
 		            	int gpio = Integer.parseInt(action[0]);
 		            	
-		            	RaspberryGPIO raspberryGPIO = new RaspberryGPIO(gpio);
+		            	RaspberryGPIO raspberryGPIO = new RaspberryGPIO(gpio, "out");
 		            	
 		            	switch (action[1]) {
 		        			case "on":
