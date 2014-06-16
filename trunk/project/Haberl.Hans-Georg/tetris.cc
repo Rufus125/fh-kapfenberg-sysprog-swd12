@@ -16,7 +16,18 @@ int main(int argc, char **argv) {
     bool running = true;
     do {
         Key key = input->getKey();
+        if(key == PAUSE) {
+            Key key2;
+            do {
+                key2 = input->getKey();
+                if(key2==ESC) {
+                    running = false;
+                    break;
+                }
+            } while(key2 != PAUSE);
+        }
         if(key == ESC) running = false;
+        if(!running) break;
         if(key == LEFT) {
             board->left();
         }
@@ -50,7 +61,7 @@ int main(int argc, char **argv) {
         
     } while (running);
 
-    std::cout<<"POINTS: board->points" << "\n";
+    std::cout<<"POINTS:" << board->points << "\n";
     delete (board);
     delete (input);
     delete (window);

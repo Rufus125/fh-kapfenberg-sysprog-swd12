@@ -156,6 +156,7 @@ bool Board::down() {
         for(int row=BOARD_BLOCKS_Y-1; row >= 0; row--) {
             if(checkRow(row)) {
                 deleteRow(row);    
+                row++;
             }
         }
         if(rows == 4) {

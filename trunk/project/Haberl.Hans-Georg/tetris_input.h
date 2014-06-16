@@ -1,7 +1,7 @@
 
 
 enum Key {
-    LEFT, UP, RIGHT, DOWN, SPACE, ENTER, ESC, NONE
+    LEFT, UP, RIGHT, DOWN, SPACE, ENTER, ESC, NONE, PAUSE
 };
 
 class Input {
