@@ -27,9 +27,9 @@ static const TetriminoBlocks J_BLOCKS[4] = {
         {0,1},  {1,1},  {2,1}
     }, &color_J},
     {{
-                {1,0},
+                {1,0},  {2,0},
                 {1,1},
-                {1,2},  {2,2}
+                {1,2}
     }, &color_J}
 };
 static const TetriminoBlocks L_BLOCKS[4] = {
@@ -47,9 +47,9 @@ static const TetriminoBlocks L_BLOCKS[4] = {
         {0,1},  {1,1},  {2,1}
     }, &color_Z},
     {{
-                {1,0},
+        {0,0},  {1,0},
                 {1,1},
-         {0,2}, {1,2}
+                {1,2}
     }, &color_Z}
 };
 
