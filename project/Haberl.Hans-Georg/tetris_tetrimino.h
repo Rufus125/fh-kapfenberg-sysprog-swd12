@@ -36,21 +36,21 @@ static const TetriminoBlocks L_BLOCKS[4] = {
     {{
         {0,1},  {1,1},  {2,1},
         {0,2}
-    }, &color_Z},
-    {{
-                {1,0},
-                {1,1},
-                {1,2},  {2,2}
-    }, &color_Z},
-    {{
-                        {2,0},
-        {0,1},  {1,1},  {2,1}
-    }, &color_Z},
+    }, &color_L},
     {{
         {0,0},  {1,0},
                 {1,1},
                 {1,2}
-    }, &color_Z}
+    }, &color_L},
+    {{
+                        {2,0},
+        {0,1},  {1,1},  {2,1}
+    }, &color_L},
+    {{
+                {1,0},
+                {1,1},
+                {1,2},  {2,2}
+    }, &color_L}
 };
 
 static Block blocks[TETRIMINO_BLOCK_NUM] = {

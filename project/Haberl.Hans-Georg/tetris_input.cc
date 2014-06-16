@@ -21,6 +21,8 @@ Key Input::getKey() {
                 return SPACE;
             case SDLK_RETURN:
                 return ENTER;
+            case SDLK_PAUSE:
+                return PAUSE;
             default:
                 return NONE;
         }   
