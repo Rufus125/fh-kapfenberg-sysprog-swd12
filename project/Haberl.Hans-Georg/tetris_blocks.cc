@@ -1,3 +1,4 @@
+#include "tetris_colors.h"
 #include "tetris_blocks.h"
 #include "tetris_tetrimino.h"
 #include <cstdlib>
