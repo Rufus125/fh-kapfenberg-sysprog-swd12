@@ -14,5 +14,6 @@ ADD_EXECUTABLE(
     tetris.cc
     tetris_window.cc
     tetris_blocks.cc
+    tetris_board.cc
     tetris_input.cc
 )

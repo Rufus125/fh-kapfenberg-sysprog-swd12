@@ -7,10 +7,14 @@ const char* TITLE = "Tetris - Hans-Georg Haberl - SWD12";
 Window::Window() {
     //setting up SDL
     SDL_Init(SDL_INIT_VIDEO);
-    SDL_Surface* screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_HWSURFACE | SDL_DOUBLEBUF);
+    this->screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_HWSURFACE | SDL_DOUBLEBUF);
     SDL_WM_SetCaption(TITLE, 0);
     
     this->event = event;
+}
+
+SDL_Surface* Window::getScreen() {
+    return this->screen;
 }
 
 SDL_Event* Window::getEvent() {
