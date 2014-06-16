@@ -87,23 +87,15 @@ Tetrimino* createTetrimino(Tetrimino_Type type) {
     }
 }
 
+static long additionalForMS = 0;
 Tetrimino* createRandomTetrimino() {
-    srand(time(NULL));
+    srand(time(NULL) + (additionalForMS++));
     Tetrimino_Type type = static_cast<Tetrimino_Type>(rand() % Z);
     return createTetrimino(type);
 }
 
 void setColorStyle(Tetris_Color_Style style) {
     switch(style) {
-        case VADIM_GERASIMOV:
-            color_I = DARK_RED;
-            color_J = LIGHT_GRAY;
-            color_L = DARK_MAGENTA;
-            color_O = DARK_BLUE;
-            color_S = DARK_GREEN;
-            color_T = DARK_BROWN;
-            color_Z = DARK_CYAN;
-            return;
         case MICROSOFT:
             color_I = RED;
             color_J = MAGENTA;
@@ -166,9 +158,16 @@ void setColorStyle(Tetris_Color_Style style) {
             color_S = MAGENTA;
             color_T = LIME;
             color_Z = AMBER;
+        case VADIM_GERASIMOV:
         default:
-            //todo log 
-            break;
+            color_I = DARK_RED;
+            color_J = LIGHT_GRAY;
+            color_L = DARK_MAGENTA;
+            color_O = DARK_BLUE;
+            color_S = DARK_GREEN;
+            color_T = DARK_BROWN;
+            color_Z = DARK_CYAN;
+            return;
     }
 
 }
