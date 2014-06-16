@@ -29,7 +29,7 @@ static const TetriminoBlocks J_BLOCKS[4] = {
     {{
                 {1,0},
                 {1,1},
-        {0,2},  {1,2}
+                {1,2},  {2,2}
     }, &color_J}
 };
 static const TetriminoBlocks L_BLOCKS[4] = {
@@ -49,9 +49,15 @@ static const TetriminoBlocks L_BLOCKS[4] = {
     {{
                 {1,0},
                 {1,1},
-                {1,2}, {2,2}
+         {0,2}, {1,2}
     }, &color_Z}
 };
+
+static Block blocks[TETRIMINO_BLOCK_NUM] = {
+        {1,2},  {2,2},
+        {1,3},  {2,3}
+};
+
 static const TetriminoBlocks O_BLOCKS = {{
         {1,2},  {2,2},
         {1,3},  {2,3}
