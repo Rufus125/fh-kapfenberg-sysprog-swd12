@@ -12,7 +12,7 @@
 using namespace std;
 
 void menu();
-void startGame();
+int startGame();
 
 int main(int argc, char **argv) {
     //suppress echo
@@ -43,9 +43,55 @@ void menu() {
 
         option = getchar();
 
+        int newHighscore = 0;
+        int points = 0;
+        char buffer[4] = {};
+        int gameId = -1;
         switch(option - 48) {
             case 1:
-                startGame();
+                while(true) {
+                    gameId = getNewId();
+                    if(gameId <= 0) {
+                        cout << "could not get a new game id, which is needed to save the highscore." << endl;
+                        cout << "without an id you cannot save your score, do you want to try again (Y/n)?" << endl;
+                        if(getchar() != 110) {
+                            continue;
+                        }
+                    }
+                    break;
+                }
+                points = startGame();
+                system("clear");
+                cout<<"SCORE: " << points << "\n\n";
+                if(gameId <= 0) {
+                    cout << "press any button to go back to the main menu." << endl;
+                    getchar();
+                    break;
+                }
+                cout<<"checking if you have achived a new highscore..." << endl;
+                while(1) {
+                    newHighscore = checkScore(points);
+                    if(newHighscore < 0) {
+                        cout << "error retrieving scores!" << endl;
+                        cout << "do you want to try again(Y/n)?.";
+                        if(getchar() != 110) {
+                            continue;
+                        }
+                    } 
+                    break;
+                }
+                if(newHighscore > 0) {
+                    system("clear");
+                    cout<<"Congratulations: Your score could be the new number " << newHighscore << "!" << endl;
+                    cout<<"Do you want to upload your score? (Y/n)" << endl;
+                    if(getchar() != 110) {
+                        while(sendScore(gameId, buffer, points) < 0) {
+                            cout << "error sending scores!" << endl;
+                            cout << "do you want to try again(Y/n)?.";
+                            if(getchar() == 110) break;
+                        }
+                    }
+                }
             break;
             case 2:
                 system("clear");
@@ -108,7 +154,7 @@ void menu() {
     } while (option != 27);
 }
 
-void startGame() {
+int startGame() {
 
     Window* window = new Window();
     Input* input = new Input(window->getEvent());
@@ -172,10 +218,10 @@ void startGame() {
         
     } while (running);
 
-    system("clear");
-    cout<<"HIGHSCORE:" << board->points << "\n";
+    int points = board->points;
     delete (board);
     delete (input);
     delete (window);
+    return points;
 }
 
