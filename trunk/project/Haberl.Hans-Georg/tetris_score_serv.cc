@@ -96,9 +96,24 @@ int createServerListener() {
                     cerr << "parsing scores failed!" << endl;
                     return -1;
                 }
-                cout << "new Score: " << buffer << endl;
-
-                write(new_socket, "OK", MSG_LEN);
+                int place = NUM_SCORES;
+                for(int i = 0; i < NUM_SCORES; i++) {
+                    if(newScore.score > scores[i].score) {
+                        place == i;
+                    }
+                }
+                if(place < NUM_SCORES) {
+                    for(int i = place; i < NUM_SCORES; i++) {
+                        memcpy(&scores[i+1], &scores[i], sizeof(Score));
+                    }
+                    memcpy(&scores[place], &newScore, sizeof(newScore));
+                }
+                sprintf(buffer, "OK");
+                if(send(new_socket, buffer, MSG_LEN, 0) < 0) {
+                    cerr << "could not send acknowledge: " << strerror(errno) << endl;
+                    return -1;
+                }
+                break;
             } else if(strcmp("exit", buffer) == 0) {
                 cout << "exit command retrieved..." << endl;
                 break;
