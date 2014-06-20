@@ -16,6 +16,7 @@ ADD_EXECUTABLE(
     tetris_blocks.cc
     tetris_board.cc
     tetris_input.cc
+    tetris_highscore.cc
 )
 
 ADD_EXECUTABLE(
