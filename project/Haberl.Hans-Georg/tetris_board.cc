@@ -26,6 +26,9 @@ Board::Board(SDL_Surface *window, int offsetX, int offsetY) {
     SDL_FillRect(this->window, &left, WHITE);
     SDL_FillRect(this->window, &right, WHITE);
     SDL_FillRect(this->window, &bottom, WHITE);
+    this->nextBlock.pos_x = 13;
+    this->nextBlock.pos_y = 8;
+    this->nextBlock.tetrimino = createRandomTetrimino();
     this->newTetrimino();
     SDL_Flip(this->window);
     for(int x = 0; x < BOARD_BLOCKS_X; x++) {
@@ -111,13 +114,22 @@ int Board::getSingleBlockY(int idx) {
 }
 
 void Board::newTetrimino() {
-    this->currentBlock.tetrimino = createRandomTetrimino();
+    this->drawTetrimino(this->nextBlock.tetrimino->getBlocks().blocks,
+            this->nextBlock.pos_x,
+            this->nextBlock.pos_y,
+            *BOARD_COLOR);
+    this->currentBlock.tetrimino = this->nextBlock.tetrimino;
     this->currentBlock.pos_x = 3;
     this->currentBlock.pos_y = -2;
     this->drawTetrimino(this->currentBlock.tetrimino->getBlocks().blocks,
             this->currentBlock.pos_x,
             this->currentBlock.pos_y,
             *this->getCurrentBlockColor());
+    this->nextBlock.tetrimino = createRandomTetrimino();
+    this->drawTetrimino(this->nextBlock.tetrimino->getBlocks().blocks,
+            this->nextBlock.pos_x,
+            this->nextBlock.pos_y,
+            *this->nextBlock.tetrimino->getBlocks().color);
 }
 
 bool Board::checkRow(int row) {
