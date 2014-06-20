@@ -6,19 +6,26 @@
 #include <cerrno>
 #include <string.h>
 #include <unistd.h>
+#include"tetris_server_client.h"
 using namespace std;
-#define ip_port 8880
-#define MSG_LEN 40
 
-static int id = 0;
+static int id = 10;
+static Score scores [NUM_SCORES];
 
 int createServerListener();
 
 int main(int argc, char **argv) {
+    for(int i=0; i<NUM_SCORES; i++) {
+        scores[i].id = i;
+        strcpy(scores[i].name, "AAA");
+        scores[i].score = 0;
+    }
     createServerListener();
 }
 
 int createServerListener() {
+
+
     int socket_desc = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
     if(socket_desc == -1) {
         cerr << "error creating socket" << endl;
@@ -66,30 +73,34 @@ int createServerListener() {
             if(strcmp("getScore", buffer) == 0) {
                 cout << "sending scores..." << endl; 
                 for(int i=0; i<10; i++) {
-                    sprintf(buffer, "id=[%d];name=[%s];score=[%d]", i, "AAA", 0);
+                    sprintf(buffer, "id=[%d];name=[%s];score=[%d]", scores[i].id, scores[i].name, scores[i].score);
                     cout << "sending: [" << buffer << "]..." << endl;
                     write(new_socket, buffer, MSG_LEN);
                 }
                 cout << "scores sent..." << endl;
-            } else if(strcmp("newScore", buffer) == 0) {
-                if(recv(new_socket, buffer, MSG_LEN, 0) < 0) {
-                    cerr << "could not retrieve new score!" << endl;
-                    break;
-                }
-                int newId = 0;
-                char newName[MSG_LEN] = "";
-                int newScore = 0;
-                
-                if(sscanf(buffer, "id=[%d];name=[%s];score=[%d]", &newId, newName, &newScore) < 0) {
-                    cerr << "invalid score recived!" << endl;
-                    break;
-                }
-                cout << "new score: " << newName << ": " << newScore << endl;
-                sprintf(buffer, "OK");
+            } else if(strcmp("getNewId", buffer) == 0) {
+                sprintf(buffer, "newId[%d]", id++);
                 write(new_socket, buffer, MSG_LEN);
-                
+            } else if(strcmp("uploadScore", buffer) == 0) {
+                if(recv(new_socket, buffer, MSG_LEN, 0) < 0) {
+                    cerr << "could not retrieve new score: " << strerror(errno) << endl;
+                    break;
+                }
+                Score newScore = {};
+                if(sscanf(buffer, "id=[%d];name=[%c%c%c];score=[%d]", 
+                        &newScore.id, 
+                        &newScore.name[0], 
+                        &newScore.name[1], 
+                        &newScore.name[2], 
+                        &newScore.score) < 0) {
+                    cerr << "parsing scores failed!" << endl;
+                    return -1;
+                }
+                cout << "new Score: " << buffer << endl;
+
+                write(new_socket, "OK", MSG_LEN);
             } else if(strcmp("exit", buffer) == 0) {
-                cout << "exit command retrieved...";
+                cout << "exit command retrieved..." << endl;
                 break;
             } else {
                 cerr << "invalid command: " << buffer << endl;

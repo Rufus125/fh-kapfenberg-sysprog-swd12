@@ -7,17 +7,8 @@
 #include<unistd.h>
 #include<iostream>
 #include<cstdlib>
+#include"tetris_server_client.h"
 using namespace std;
-#define ip_port 8880
-#define MSG_LEN 40
-#define NUM_SCORES 10
-#define ip_address "127.0.0.1"
- 
-struct Score {
-    int id;
-    char name[4];
-    int score;
-};
 
 class Client {
     public:
@@ -45,6 +36,48 @@ class Client {
         }
         return 0;
     }
+    int getNewId() {
+        if(this->connect2Server() < 0) {
+            return -1;
+        }
+        char buffer[MSG_LEN] = "getNewId";
+        if(send(this->socket_desc , buffer , MSG_LEN, 0) < 0) {
+            cerr << "error sending command [getNewId]: " << strerror(errno) << endl;
+            return -1;
+        }
+        if(recv(this->socket_desc, buffer, MSG_LEN, 0) < 0) {
+            cerr << "could not retrieve scores: " << strerror(errno) << endl;
+            return -1;
+        }
+        int newId = 0;
+        if(sscanf(buffer, "newId[%d]", &newId) < 0 || newId <= 0) {
+            cerr << "parsing new id failed" << endl;
+            return -1;
+        }
+        return newId;
+
+    }
+    int sendScore(int id, char* name, int score) {
+        if(this->connect2Server() < 0) {
+            return -1;
+        }
+        char buffer[MSG_LEN] = "uploadScore";
+        if(send(this->socket_desc , buffer , MSG_LEN, 0) < 0) {
+            cerr << "error sending command [uploadScore]: " << strerror(errno) << endl;
+            return -1;
+        }
+        sprintf(buffer, "id=[%d];name=[%s];score=[%d]", id, name, score);
+        write(this->socket_desc, buffer, MSG_LEN);
+        if(recv(this->socket_desc, buffer, MSG_LEN, 0)) {
+            cerr << "could not retrieve acknowledge" << endl;
+            return -1;
+        }
+        if(strcmp(buffer, "OK") != 0) {
+            cerr << "could not parse acknowledge" << endl;
+            return -1;
+        }
+        return 1;
+    }
     int retrieveScores() {
         if(this->connect2Server() < 0) {
             return -1;
@@ -71,6 +104,16 @@ class Client {
             }
         }
     }
+    int checkScore(int score) {
+        if(this->retrieveScores() < 0) {
+            return -1;
+        }
+        int newHighscore = 0;
+        for(int i = NUM_SCORES; i >= 0 && scores[i].score <= score; i--) {
+            newHighscore = i;
+        }
+        return newHighscore + 1;
+    }
     ~Client() {
         close(socket_desc);
     }
@@ -87,6 +130,20 @@ class Client {
 
 
 };
+
+int checkScore(int score) {
+    Client* client = new Client();    
+    int newHighScore = client->checkScore(score);
+    if(newHighScore < 0) {
+        delete(client);
+        return -1;
+    }
+    if(client->exit() < 0) {
+        return -1;
+    }
+    delete(client);
+    return newHighScore;
+}
 
 int printScores() {
     Client* client = new Client();    
@@ -106,3 +163,43 @@ int printScores() {
     return 1;
 }
 
+
+int getNewId() {
+    Client* client = new Client();    
+    int newId = client->getNewId();
+    if(newId < 0) {
+        delete(client);
+        return -1;
+    }
+    if(client->exit() < 0) {
+        return -1;
+    }
+    delete(client);
+    return newId;
+}
+
+int sendScore(char* name, int score) {
+    int id = -1;
+    for (int i = 0; i < 3; i++) {
+        Client* client = new Client();    
+        if(id < 0) {
+            id = client->getNewId();
+        }
+        if(id < 0) {
+            delete(client);
+            continue;
+        }
+        if (client->sendScore(id, name, score) < 0) {
+            delete(client);
+            continue;
+        }
+        if(client->exit() < 0) {
+            return -1;
+            continue;
+        }
+        delete(client);
+        return 1;
+    } while(id < 0);
+    return -1;
+
+}
