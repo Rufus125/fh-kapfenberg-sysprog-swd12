@@ -53,6 +53,7 @@ class Board {
     bool dirty;
     int* oldColors[BOARD_BLOCKS_X][BOARD_BLOCKS_Y];
     CurrentBlock currentBlock;
+    CurrentBlock nextBlock;
 };
 
 #endif
