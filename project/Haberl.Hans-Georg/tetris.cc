@@ -85,7 +85,18 @@ void menu() {
                     cout<<"Congratulations: Your score could be the new number " << newHighscore << "!" << endl;
                     cout<<"Do you want to upload your score? (Y/n)" << endl;
                     if(getchar() != 110) {
-                        while(sendScore(gameId, buffer, points) < 0) {
+                        system("clear");
+                        cout<<"Enter your 3 initials (a-zA-Z):"<<endl;
+                        for(int i=0; i<3; i++) {
+                            char c;
+                            do {
+                                c = getchar();
+                            } while (c < 65 || c > 90 && c < 97 || c > 122);
+                            buffer[i] = c;
+                            cout << c;  
+                        }
+                        cout << endl << endl;
+                        while(uploadScore(gameId, buffer, points) < 0) {
                             cout << "error sending scores!" << endl;
                             cout << "do you want to try again(Y/n)?.";
                             if(getchar() == 110) break;

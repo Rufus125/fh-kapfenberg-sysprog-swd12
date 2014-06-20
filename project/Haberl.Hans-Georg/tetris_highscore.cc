@@ -58,16 +58,17 @@ class Client {
 
     }
     int sendScore(int id, char* name, int score) {
+         cout<<"STAAAART"<<endl;
         if(this->connect2Server() < 0) {
             return -1;
         }
         char buffer[MSG_LEN] = "uploadScore";
-        if(send(this->socket_desc , buffer , MSG_LEN, 0) < 0) {
-            cerr << "error sending command [uploadScore]: " << strerror(errno) << endl;
+        write(this->socket_desc , buffer , MSG_LEN);
+        sprintf(buffer, "id=[%d];name=[%s];score=[%d]", id, name, score);
+        if(send(this->socket_desc, buffer, MSG_LEN, 0) < 0) {
+            cerr << "error sending score: " << strerror(errno) << endl;
             return -1;
         }
-        sprintf(buffer, "id=[%d];name=[%s];score=[%d]", id, name, score);
-        write(this->socket_desc, buffer, MSG_LEN);
         if(recv(this->socket_desc, buffer, MSG_LEN, 0)) {
             cerr << "could not retrieve acknowledge" << endl;
             return -1;
@@ -139,6 +140,7 @@ int checkScore(int score) {
         return -1;
     }
     if(client->exit() < 0) {
+        delete(client);
         return -1;
     }
     delete(client);
@@ -152,6 +154,7 @@ int printScores() {
         return -1;
     }
     if(client->exit() < 0) {
+        delete(client);
         return -1;
     }
     system("clear");
@@ -172,34 +175,23 @@ int getNewId() {
         return -1;
     }
     if(client->exit() < 0) {
+        delete(client);
         return -1;
     }
     delete(client);
     return newId;
 }
 
-int sendScore(char* name, int score) {
-    int id = -1;
-    for (int i = 0; i < 3; i++) {
-        Client* client = new Client();    
-        if(id < 0) {
-            id = client->getNewId();
-        }
-        if(id < 0) {
-            delete(client);
-            continue;
-        }
-        if (client->sendScore(id, name, score) < 0) {
-            delete(client);
-            continue;
-        }
-        if(client->exit() < 0) {
-            return -1;
-            continue;
-        }
+int uploadScore(int id, char* name, int score) {
+    Client* client = new Client();    
+    if (client->sendScore(id, name, score) < 0) {
         delete(client);
-        return 1;
-    } while(id < 0);
-    return -1;
-
+        return -1;
+    }
+    if(client->exit() < 0) {
+        delete(client);
+        return -1;
+    }
+    delete(client);
+    return 1;
 }
