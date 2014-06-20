@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <algorithm>
+#include "tetris_highscore.h"
 
 using namespace std;
 
@@ -88,7 +89,9 @@ void menu() {
                 }
             break;
             case 3:
-                //todo highscore server
+                printScores();
+                cout << "Press any button to go back to the main menu..." << endl << endl;
+                getchar();
             break;
             case 4:
                 system("clear");
