@@ -17,3 +17,9 @@ ADD_EXECUTABLE(
     tetris_board.cc
     tetris_input.cc
 )
+
+ADD_EXECUTABLE(
+    tetris_score_serv
+    tetris_score_serv.cc
+    tetris_highscore.cc
+)
