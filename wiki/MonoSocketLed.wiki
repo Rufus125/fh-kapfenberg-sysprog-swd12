@@ -10,6 +10,12 @@ Als Programmiersprache wird C# mit Verbindung von MONO verwendet.
 
 Teammitglieder: Palade Ionut, Huber Jörg
 
-nähere Details folgen :)
+Ziel ist es eine Gpio Pin über eine Socket Verbindung zu steuern.
+Als Client Anwendung wird eine WPF Applikation verwendet.
+
+Um eine typen sicher Übertragung über das Netzwerk zu bewerkstelligen kommt eine Command Objekt zum Einsatz. Dieses Objekt wird auf der Clientseite deserialisiert und anschließend über die Socket Verbindung übertragen.
+
+https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ClientClassDiagramm.png
+
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
