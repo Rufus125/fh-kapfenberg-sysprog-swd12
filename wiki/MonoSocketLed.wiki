@@ -2,38 +2,43 @@
 
 = Introduction =
 
-Ansteuerung einer LED am Raspberry Pi mittels Socket Verbindung.
-Als Programmiersprache wird C# mit Verbindung von MONO verwendet.
+Ansteuerung einer LED am Raspberry Pi mittels Socket-Verbindung.
+Als Programmiersprache wird C# in Verbindung mit MONO verwendet.
 
 
 = Details =
 
 Teammitglieder: Palade Ionut, Huber Jörg
 
-Ziel ist es eine Gpio Pin über eine Socket Verbindung zu steuern.
-Als Client Anwendung wird eine WPF Applikation verwendet. Die Programmiersprache ist sowahl am Client(Windows) sowie am Server(Linux)  C#. Die Ansteuerung der Pins am Raspberry erfolgt mit der Libaray raspberry-sharp-io.
+Ziel ist es, einen Gpio-Pin über eine Socket-Verbindung zu steuern.
+Als Client-Anwendung wird eine WPF-Applikation verwendet. Die Programmiersprache C# wird sowohl am Client (Windows) als auch am Server (Linux) verwendet. Die Ansteuerung der Pins am Raspberry erfolgt mit Hilfe der Library raspberry-sharp-io.
 
-Die Client Applikation dient zur Eingabe der Netzwerkdaten & zur Selektion des gewünschten Pins.
+
+CLIENT
+
+Die Client-Applikation dient zur Eingabe der Netzwerkdaten und zur Selektion des gewünschten Pins.
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/RaspberryControler.png
 
-Um eine typen sicher Übertragung über das Netzwerk zu bewerkstelligen kommt eine Command Objekt zum Einsatz. Dieses Objekt wird auf der Clientseite deserialisiert und anschließend über die Socket Verbindung übertragen.
+Um eine typensichere Übertragung über das Netzwerk zu erreichen, wird ein Command-Objekt eingesetzt. Dieses Objekt wird auf der Clientseite serialisiert und anschließend über die Socket Verbindung übertragen.
 
-  * der Client übergibt dem SocketClientRequestor eine Objekt das das Interface ISocketCommand implementiert
+  * der Client übergibt dem SocketClientRequestor ein Objekt, das das Interface ISocketCommand implementiert
   * der SocketClientRequestor serialisert das Objekt und übergibt es dem SocketClient
-  * SocketClient baut eine Verbindung zum SocketServer (Raspberry ) auf und übermittel das serialisierte Objekt
+  * SocketClient baut eine Verbindung zum SocketServer (Raspberry) auf und übermittelt das serialisierte Objekt
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ClientClassDiagramm.png
 
-Auf dem Raspberry läuft das mittels mono das gleiche C# Model und kennt daher die Interfaces und Klassen des Clients. Sobald eine Socket Verbindung geöffnet wurde verarbeitet er diese (in diesem Fall wird Pin4 gesetzt).
+
+SERVER
+
+Auf dem Raspberry läuft über MONO das gleiche C#-Model, daher sind die Interfaces und Klassen des Clients bekannt. Sobald eine Socket-Verbindung geöffnet wurde, werden die übertragenen Daten verarbeitet (in diesem Fall wird Pin4 gesetzt).
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/RaspberryConnector.png
 
-Der Raspberry 
   * der SocketServer wartet auf eingehende Verbindungen
-  * nach dem er eine Nachricht empfangen hat übergibt er diese dem SocketServerMsgHandler
-  * der SocketServerMsgHandler deserialsiert die Nachricht und erstellt ein Objekt welches das ISocketCommand Interface implementiert
-  * handelt es sich um eine SocketGpioCmd Command injeziert der SocketServerMsgHandler den GpioDriverHelper
-  * anschließend ruft der SocketServerMsgHandler die Execute Methode am ISocketCommand auf und der Pin ändert seinen Status
+  * nachdem er eine Nachricht empfangen hat, übergibt er diese dem SocketServerMsgHandler
+  * der SocketServerMsgHandler deserialsiert die Nachricht und erstellt ein Objekt, welches das ISocketCommand Interface implementiert
+  * handelt es sich um eine SocketGpioCmd-Kommando, injeziert der SocketServerMsgHandler den GpioDriverHelper
+  * anschließend ruft der SocketServerMsgHandler die Execute-Methode am ISocketCommand auf und der Pin ändert seinen Status
 
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
@@ -63,7 +68,7 @@ https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionu
 
 }}}
 
-Der GpioDriverHelper existiert nur am Raspberry und wird deshalb nicht übertragen sondern vom SocketServerMsgHandler am Client gesetzt
+Der GpioDriverHelper existiert nur am Raspberry und wird deshalb nicht übertragen, sondern vom SocketServerMsgHandler am Client gesetzt.
 
 {{{
     [Serializable]
