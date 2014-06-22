@@ -11,7 +11,7 @@ Als Programmiersprache wird C# mit Verbindung von MONO verwendet.
 Teammitglieder: Palade Ionut, Huber Jörg
 
 Ziel ist es eine Gpio Pin über eine Socket Verbindung zu steuern.
-Als Client Anwendung wird eine WPF Applikation verwendet.
+Als Client Anwendung wird eine WPF Applikation verwendet. Die Programmiersprache ist sowahl am Client(Windows) sowie am Server(Linux)  C#. Die Ansteuerung der Pins am Raspberry erfolgt mit der Libaray raspberry-sharp-io.
 
 Die Client Applikation dient zur Eingabe der Netzwerkdaten & zur Selektion des gewünschten Pins.
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/RaspberryControler.png
