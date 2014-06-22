@@ -54,12 +54,8 @@ see [Siri2Pi]
 == Gießkanne ==
 see [Giesskanne]
 
-== MonoSocketLed==
-see [MonoSocketLed]
-
 == Led Steuerung über Socket ==
-
-[RaspberrPiAlarmClock Näheres siehe hier]
+see [MonoSocketLed]
 
 = Organisatorisches =
 
