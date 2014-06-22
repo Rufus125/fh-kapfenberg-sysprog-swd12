@@ -19,17 +19,43 @@ https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionu
 Um eine typen sicher Übertragung über das Netzwerk zu bewerkstelligen kommt eine Command Objekt zum Einsatz. Dieses Objekt wird auf der Clientseite deserialisiert und anschließend über die Socket Verbindung übertragen.
 
   * der Client übergibt dem SocketClientRequestor eine Objekt das das Interface ISocketCommand implementiert
-  * der SocketClientRequestor deserialisert das Objekt und übergibt es dem SocketClient
-  * SocketClient baut eine Verbindung zum SocketServer (Raspberry ) auf und übermittel das deserialisierte Objekt
+  * der SocketClientRequestor serialisert das Objekt und übergibt es dem SocketClient
+  * SocketClient baut eine Verbindung zum SocketServer (Raspberry ) auf und übermittel das serialisierte Objekt
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ClientClassDiagramm.png
 
-Auf dem Raspberry läuft das mittels mono das gleiche C# Model. Der Socket Server am Raspberry wartet auf eine Verbindung. Sobald eine Socket Verbindung geöffnet wurde verarbeitet er diese (in diesem Fall wird Pin4 gesetzt).
+Auf dem Raspberry läuft das mittels mono das gleiche C# Model und kennt daher die Interfaces und Klassen des Clients. Sobald eine Socket Verbindung geöffnet wurde verarbeitet er diese (in diesem Fall wird Pin4 gesetzt).
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/RaspberryConnector.png
 
 Der Raspberry 
-  * 
+  * der SocketServer wartet auf eingehende Verbindungen
+  * nach dem er eine Nachricht empfangen hat übergibt er diese dem SocketServerMsgHandler
+  * der SocketServerMsgHandler deserialsiert die Nachricht und erstellt ein Objekt welches das ISocketCommand Interface implementiert
+  * handelt es sich um eine SocketGpioCmd Command injeziert der GpioDriverHelper die Gpio Connection
+  * anschließend ruft der SocketServerMsgHandler die Execute Methode am ISocketCommand auf und der Pin ändert seinen Status
+
+{{{
+
+    [Serializable]
+    public class SoCoGpioToggleCmd : SocketGpioCmd
+    {
+        public ConnectorPin ConnectorPin { get; set; }
+
+        public override void Execute()
+        {
+            DriverHelper.AllocatePin(ConnectorPin);
+
+            var state = DriverHelper.Driver.Read(ConnectorPin.ToProcessor());
+            Console.WriteLine("current state:" + state);
+
+            DriverHelper.Driver.Write(ConnectorPin.ToProcessor(), !state);
+
+            Console.WriteLine("new state:" + DriverHelper.Driver.Read(ConnectorPin.ToProcessor()));
+        }
+    }
+
+}}}
 
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
