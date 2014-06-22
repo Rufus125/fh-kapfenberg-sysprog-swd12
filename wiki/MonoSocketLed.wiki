@@ -11,3 +11,5 @@ Als Programmiersprache wird C# mit Verbindung von MONO verwendet.
 Teammitglieder: Palade Ionut, Huber Jörg
 
 nähere Details folgen :)
+
+https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
