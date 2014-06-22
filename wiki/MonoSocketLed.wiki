@@ -32,7 +32,7 @@ Der Raspberry
   * der SocketServer wartet auf eingehende Verbindungen
   * nach dem er eine Nachricht empfangen hat übergibt er diese dem SocketServerMsgHandler
   * der SocketServerMsgHandler deserialsiert die Nachricht und erstellt ein Objekt welches das ISocketCommand Interface implementiert
-  * handelt es sich um eine SocketGpioCmd Command injeziert der GpioDriverHelper die Gpio Connection
+  * handelt es sich um eine SocketGpioCmd Command injeziert der SocketServerMsgHandler den GpioDriverHelper
   * anschließend ruft der SocketServerMsgHandler die Execute Methode am ISocketCommand auf und der Pin ändert seinen Status
 
 
@@ -62,6 +62,8 @@ https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionu
     }
 
 }}}
+
+Der GpioDriverHelper existiert nur am Raspberry und wird deshalb nicht übertragen sondern vom SocketServerMsgHandler am Client gesetzt
 
 {{{
     [Serializable]
