@@ -13,6 +13,9 @@ Teammitglieder: Palade Ionut, Huber Jörg
 Ziel ist es eine Gpio Pin über eine Socket Verbindung zu steuern.
 Als Client Anwendung wird eine WPF Applikation verwendet.
 
+Die Client Applikation dient zur Eingabe der Netzwerkdaten & zur Selektion des gewünschten Pins.
+https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/RaspberryControler.png
+
 Um eine typen sicher Übertragung über das Netzwerk zu bewerkstelligen kommt eine Command Objekt zum Einsatz. Dieses Objekt wird auf der Clientseite deserialisiert und anschließend über die Socket Verbindung übertragen.
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ClientClassDiagramm.png
