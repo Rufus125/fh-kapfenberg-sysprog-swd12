@@ -54,8 +54,12 @@ see [Siri2Pi]
 == Gießkanne ==
 see [Giesskanne]
 
-== Arduino ==
-see [Arduino]
+== MonoSocketLed==
+see [MonoSocketLed]
+
+== Wecker mit Gewichtssensor ==
+
+[RaspberrPiAlarmClock Näheres siehe hier]
 
 = Organisatorisches =
 
