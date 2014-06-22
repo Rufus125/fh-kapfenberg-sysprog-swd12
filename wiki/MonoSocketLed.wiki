@@ -35,6 +35,10 @@ Der Raspberry
   * handelt es sich um eine SocketGpioCmd Command injeziert der GpioDriverHelper die Gpio Connection
   * anschließend ruft der SocketServerMsgHandler die Execute Methode am ISocketCommand auf und der Pin ändert seinen Status
 
+
+https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
+
+
 {{{
 
     [Serializable]
@@ -44,18 +48,17 @@ Der Raspberry
 
         public override void Execute()
         {
+            //allocatedthe pin if the pin is not allocated until now
             DriverHelper.AllocatePin(ConnectorPin);
 
+            //read the current state of the pin
             var state = DriverHelper.Driver.Read(ConnectorPin.ToProcessor());
             Console.WriteLine("current state:" + state);
 
+            //invert the state and write it to the pin
             DriverHelper.Driver.Write(ConnectorPin.ToProcessor(), !state);
-
             Console.WriteLine("new state:" + DriverHelper.Driver.Read(ConnectorPin.ToProcessor()));
         }
     }
 
 }}}
-
-
-https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
