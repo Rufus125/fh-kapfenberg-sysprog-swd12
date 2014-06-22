@@ -18,6 +18,8 @@ Um eine typen sicher Übertragung über das Netzwerk zu bewerkstelligen kommt ei
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ClientClassDiagramm.png
 
   * der Client übergibt dem SocketClientRequestor eine Objekt das das Interface ISocketCommand implementiert
+  * der SocketClientRequestor deserialisert das Objekt und übergibt es dem SocketClient
+  * SocketClient baut eine Verbindung zum SocketServer (Raspberry ) auf und übermittel das deserialisierte Objekt
 
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
