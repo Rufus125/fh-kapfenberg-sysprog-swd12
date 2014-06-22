@@ -57,7 +57,7 @@ see [Giesskanne]
 == MonoSocketLed==
 see [MonoSocketLed]
 
-== Wecker mit Gewichtssensor ==
+== Led Steuerung über Socket ==
 
 [RaspberrPiAlarmClock Näheres siehe hier]
 
