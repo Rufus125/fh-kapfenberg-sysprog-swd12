@@ -17,5 +17,7 @@ Um eine typen sicher Übertragung über das Netzwerk zu bewerkstelligen kommt ei
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ClientClassDiagramm.png
 
+* der Client übergibt dem SocketClientRequestor eine Objekt das das Interface ISocketCommand implementiert
+
 
 https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionut-Huber.Joerg/Images/ServerClassDiagramm.png
