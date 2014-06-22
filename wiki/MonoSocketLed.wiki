@@ -62,3 +62,15 @@ https://fh-kapfenberg-sysprog-swd12.googlecode.com/svn/trunk/project/Palade.Ionu
     }
 
 }}}
+
+{{{
+    [Serializable]
+    public abstract class SocketGpioCmd : ISocketCommand
+    {
+        [NonSerialized]
+        public GpioDriverHelper DriverHelper;
+
+        public abstract void Execute();
+
+    }
+}}}
