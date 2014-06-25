@@ -1,10 +1,10 @@
- #!/usr/bin/python3
+#!/usr/bin/python3
 # coding=UTF-8
-# Author: Georg Schlagholz
+# Author: Franz Platzer
 # Teammembers:Georg Schlagholz, Franz Platzer, Michael Mayer 
 import os
 
-class ServerInfo: 
+class ServerInfo:
     def getInfos(self):
       """returns hostname and temperature in celsius of the computer as a tuple"""
       p = '/sys/class/thermal/thermal_zone0/temp'
@@ -27,6 +27,7 @@ class ServerInfo:
         return (hostname,temp)
       else:
         raise Exception("Couldn't find temp files")
+
 if __name__ == "__main__":
   si = ServerInfo()
   hostname,temp = si.getInfos()
