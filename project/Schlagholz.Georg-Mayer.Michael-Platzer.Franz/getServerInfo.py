@@ -23,13 +23,10 @@ def call_servers():
     children = []
     for server in servers:
         r, w = os.pipe()  # these are file descriptors
-        wpid = os.fork()
-        if wpid < 0:
-          print("Couldn't fork",file=sys.stderr)
-          sys.exit(1)
+        wpid = os.fork()# If an error occurs OSError is raised.
         elif wpid == 0:
             """wpid is 0 means We are in Child_process"""
-            children.append(wpid)
+            children.append(wpid)#or os.getpid()?
             os.close(r)  #close the read pipe
             w = os.fdopen(w, 'w')  # turn w into a file object
             entry = call_server(server)  #call server to get server infos
