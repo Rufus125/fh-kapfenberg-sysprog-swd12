@@ -37,7 +37,7 @@ try:
                                    server_side=True,
                                    certfile='localhost.pem',
                                    ssl_version=ssl.PROTOCOL_TLSv1)
-    print("Starting server: "+ipaddr+":"+str(port))
+    print("Starting server: https://"+ipaddr+":"+str(port))
     httpd.serve_forever()
 
 except KeyboardInterrupt:
