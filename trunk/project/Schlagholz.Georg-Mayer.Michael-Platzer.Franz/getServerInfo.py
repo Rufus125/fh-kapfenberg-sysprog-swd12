@@ -2,7 +2,7 @@
 # coding=UTF-8
 # Author: Michael Mayer
 # Teammembers:Georg Schlagholz, Franz Platzer, Michael Mayer
-import os
+import os, sys
 import urllib.request
 
 def call_server(server):
@@ -19,12 +19,15 @@ def call_server(server):
 def call_servers():
     """ Iterates over each item in servers array and gets the server info"""
     #get serverlist
-    servers = ["192.168.178.89:4443"]
+    servers = ["192.168.0.13:4443"]
     children = []
     for server in servers:
         r, w = os.pipe()  # these are file descriptors
         wpid = os.fork()
-        if wpid == 0:
+        if wpid < 0:
+          print("Couldn't fork",file=sys.stderr)
+          sys.exit(1)
+        elif wpid == 0:
             """wpid is 0 means We are in Child_process"""
             children.append(wpid)
             os.close(r)  #close the read pipe
