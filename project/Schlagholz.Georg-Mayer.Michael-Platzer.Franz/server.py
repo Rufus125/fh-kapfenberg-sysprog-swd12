@@ -7,6 +7,7 @@ import http.server
 import ssl
 import socketserver
 import socket
+import sys
 #This class will handle any incoming request from
 #the browser
 
@@ -37,9 +38,9 @@ try:
                                    server_side=True,
                                    certfile='localhost.pem',
                                    ssl_version=ssl.PROTOCOL_TLSv1)
-    print("Starting server: https://"+ipaddr+":"+str(port))
+    print("Starting server: https://"+ipaddr+":"+str(port),file=sys.stderr)
     httpd.serve_forever()
 
 except KeyboardInterrupt:
     httpd.socket.close()
-    print(' received, shutting down the web server')
+    print(' received, shutting down the web server',file=sys.stderr)
