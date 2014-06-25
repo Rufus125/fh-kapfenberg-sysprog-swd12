@@ -2,7 +2,7 @@
 # coding=UTF-8
 # Author: Michael Mayer
 # Teammembers:Georg Schlagholz, Franz Platzer, Michael Mayer
-import os, sys
+import os, sys, signal
 import urllib.request
 
 def call_server(server):
@@ -24,9 +24,9 @@ def call_servers():
     for server in servers:
         r, w = os.pipe()  # these are file descriptors
         wpid = os.fork()# If an error occurs OSError is raised.
-        elif wpid == 0:
+        if wpid == 0:
             """wpid is 0 means We are in Child_process"""
-            children.append(wpid)#or os.getpid()?
+            signal.alarm(2)
             os.close(r)  #close the read pipe
             w = os.fdopen(w, 'w')  # turn w into a file object
             entry = call_server(server)  #call server to get server infos
@@ -35,14 +35,19 @@ def call_servers():
             w.close()  #close pipe file descriptor
             os._exit(0)  #exit child process
         elif wpid > 0:
+            children.append((wpid,r))
             os.close(w)  # use os.close() to close a file descriptor
-            r = os.fdopen(r)  # turn r into a file object
-            txt = r.read()  # read the input from child
-            print(txt)
-            for child in children:
-                #wait for finish, then output
-                os.waitpid(child, 0)
-                os._exit(0)
+    
+    for child in children:
+      pid, status = os.waitpid(child[0], 0)
+      if status == 0:
+        r = child[1]
+        r = os.fdopen(r)  # turn r into a file object
+        txt = r.read()  # read the input from child
+        print(txt)
+        os._exit(0)
+      else:
+        os._exit(1) #on error
 
 if __name__ == "__main__":
     call_servers()
