@@ -79,9 +79,11 @@ int createServerListener() {
                 }
                 cout << "scores sent..." << endl;
             } else if(strcmp("getNewId", buffer) == 0) {
+                cout << "sending new id..." << endl; 
                 sprintf(buffer, "newId[%d]", id++);
                 write(new_socket, buffer, MSG_LEN);
             } else if(strcmp("uploadScore", buffer) == 0) {
+                cout << "receive scores..." << endl;
                 if(recv(new_socket, buffer, MSG_LEN, 0) < 0) {
                     cerr << "could not retrieve new score: " << strerror(errno) << endl;
                     break;
@@ -96,22 +98,24 @@ int createServerListener() {
                     cerr << "parsing scores failed!" << endl;
                     return -1;
                 }
+                cout << "received score: " << buffer << endl;
                 int place = NUM_SCORES;
                 for(int i = 0; i < NUM_SCORES; i++) {
-                    if(newScore.score > scores[i].score) {
-                        place == i;
+                    if(newScore.score >= scores[i].score) {
+                        cout << "...which is " << i+1 << " place..." << endl;
+                        place = i;
+                        break;
                     }
                 }
                 if(place < NUM_SCORES) {
-                    for(int i = place; i < NUM_SCORES; i++) {
-                        memcpy(&scores[i+1], &scores[i], sizeof(Score));
+                    cout << " copy ... " << endl;
+                    for(int i = NUM_SCORES-1; i >= place; i--) {
+                        memcpy(&scores[i], &scores[i-1], sizeof(Score));
                     }
                     memcpy(&scores[place], &newScore, sizeof(newScore));
-                }
-                sprintf(buffer, "OK");
-                if(send(new_socket, buffer, MSG_LEN, 0) < 0) {
-                    cerr << "could not send acknowledge: " << strerror(errno) << endl;
-                    return -1;
+                    scores[place].id = newScore.id;
+                    strcpy(scores[place].name, newScore.name);
+                    scores[place].score = newScore.score;
                 }
                 break;
             } else if(strcmp("exit", buffer) == 0) {
