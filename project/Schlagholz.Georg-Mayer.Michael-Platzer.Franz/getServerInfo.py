@@ -37,10 +37,10 @@ def call_servers():
         elif wpid > 0:
             children.append((wpid,r))
             os.close(w)  # use os.close() to close a file descriptor
-    
+
     for child in children:
-      pid, status = os.waitpid(child[0], 0)
-      if status == 0:
+      pid, status = os.waitpid(child[0],0) #maybe save server IP too to say that it failed to connect to this one
+      if status == 0:#not necessary if waitpid(PID,0) should be changed for error handling
         r = child[1]
         r = os.fdopen(r)  # turn r into a file object
         txt = r.read()  # read the input from child

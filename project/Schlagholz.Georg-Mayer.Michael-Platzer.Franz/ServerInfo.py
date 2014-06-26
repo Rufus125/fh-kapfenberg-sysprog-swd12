@@ -21,10 +21,13 @@ class ServerInfo:
                 if not os.path.isfile(p):
                   p = '/sys/class/thermal/thermal_zone3/temp'
       if os.path.isfile(p):
-        temp = int(open(p, "r").read()) #get temp
-        temp /= 1000 #because value is in minicelsius
-        hostname = str(open("/etc/hostname", "r").read()).rstrip('\n') #get hostname
-        return (hostname,temp)
+        try:
+          temp = int(open(p, "r").read()) #get temp
+          temp /= 1000 #because value is in minicelsius
+          hostname = str(open("/etc/hostname", "r").read()).rstrip('\n') #get hostname
+          return (hostname,temp)
+        except ValueError:
+          raise Exception("Temperature file is corrupt "+p)
       else:
         raise Exception("Couldn't find temp files")
 
