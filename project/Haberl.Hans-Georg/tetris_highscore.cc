@@ -58,7 +58,6 @@ class Client {
 
     }
     int sendScore(int id, char* name, int score) {
-         cout<<"STAAAART"<<endl;
         if(this->connect2Server() < 0) {
             return -1;
         }
@@ -70,11 +69,7 @@ class Client {
             return -1;
         }
         if(recv(this->socket_desc, buffer, MSG_LEN, 0)) {
-            cerr << "could not retrieve acknowledge" << endl;
-            return -1;
-        }
-        if(strcmp(buffer, "OK") != 0) {
-            cerr << "could not parse acknowledge" << endl;
+            cerr << "could not retrieve acknowledge:" <<strerror(errno) << endl;
             return -1;
         }
         return 1;
