@@ -56,10 +56,10 @@ int main(int argc, char *argv[])
     perror("listen");
     close(sfd);
     return EXIT_FAILURE;
-	}
+  }
 
-	while ((cfd = accept(sfd, (struct sockaddr*) &server_addr, &server_addr_len)) != -1)
-	{
+  while ((cfd = accept(sfd, (struct sockaddr*) &server_addr, &server_addr_len)) != -1)
+  {
     pid_t pid;
     if((pid = fork()) == -1)
     {
@@ -67,15 +67,15 @@ int main(int argc, char *argv[])
     }
     else if(pid == 0) //child process
     {
-			close(sfd);
+      close(sfd);
       return child_main(cfd);
     }
     close(cfd);
     wait(NULL);
-	}
+  }
 
-	if(cfd == -1) 
-	{
+  if(cfd == -1) 
+  {
     perror("accept");
     close(sfd);
     return EXIT_FAILURE;            
