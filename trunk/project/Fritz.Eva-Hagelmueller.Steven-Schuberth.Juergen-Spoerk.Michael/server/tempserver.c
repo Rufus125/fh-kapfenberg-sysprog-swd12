@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
 
 	if((sfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 	{
-		perror("socket");
-		return EXIT_FAILURE;
+    perror("socket");
+    return EXIT_FAILURE;
 	}
 		      
 	memset(&server_addr, 0, server_addr_len);
