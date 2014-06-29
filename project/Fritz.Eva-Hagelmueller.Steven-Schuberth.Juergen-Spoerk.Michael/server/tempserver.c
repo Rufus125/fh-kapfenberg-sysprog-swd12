@@ -22,37 +22,37 @@ int rand_temp(int max_temp);
 
 int main(int argc, char *argv[])
 {
-	int sfd;
-	int cfd;
-	struct sockaddr_in server_addr;
-	socklen_t server_addr_len = sizeof(server_addr);
+  int sfd;
+  int cfd;
+  struct sockaddr_in server_addr;
+  socklen_t server_addr_len = sizeof(server_addr);
 
-	if((sfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
-	{
+  if((sfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+  {
     perror("socket");
     return EXIT_FAILURE;
-	}
+  }
 		      
-	memset(&server_addr, 0, server_addr_len);
-	server_addr.sin_family = AF_INET;
-	server_addr.sin_port = htons(server_port);      
-	server_addr.sin_addr.s_addr = INADDR_ANY;
+  memset(&server_addr, 0, server_addr_len);
+  server_addr.sin_family = AF_INET;
+  server_addr.sin_port = htons(server_port);      
+  server_addr.sin_addr.s_addr = INADDR_ANY;
 
-	int optval = 1;
-	if(setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int)) == -1)
-	{                                 
-		perror("setsockopt");
-	}             
+  int optval = 1;
+  if(setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int)) == -1)
+  {                                 
+    perror("setsockopt");
+  }             
 
-	if(bind(sfd, (struct sockaddr*)&server_addr, server_addr_len) == -1)
-	{
+  if(bind(sfd, (struct sockaddr*)&server_addr, server_addr_len) == -1)
+  {
     perror("bind");                  
     close(sfd);
     return EXIT_FAILURE;
-	}
+  }
         
-	if(listen(sfd, SOMAXCONN) == -1)
-	{
+  if(listen(sfd, SOMAXCONN) == -1)
+  {
     perror("listen");
     close(sfd);
     return EXIT_FAILURE;
