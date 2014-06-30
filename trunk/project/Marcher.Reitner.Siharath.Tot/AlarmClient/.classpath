@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="/Alarm"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/media/B63A537A3A533719/FH/SS_14/Systemnahe_Prg/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
