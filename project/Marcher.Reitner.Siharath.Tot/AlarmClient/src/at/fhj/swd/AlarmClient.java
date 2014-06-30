@@ -1,8 +1,9 @@
 package at.fhj.swd;
 
+
 public class AlarmClient {
 
-	public static void main(String[] args) {
+	public static void startClient(String[] args) {
 		//Parameter:
 		//IP: 192.168.2.34
 		//Port: 2999
@@ -13,11 +14,11 @@ public class AlarmClient {
 		
 		printArgs(args);
 		
-		if (args.length == 4) {
-			String host = args[0];
-			int port = Integer.parseInt(args[1]);
-			int gpio = Integer.parseInt(args[2]);
-			String action = args[3].toLowerCase();
+		if (args.length == 5) {
+			String host = args[1];
+			int port = Integer.parseInt(args[2]);
+			int gpio = Integer.parseInt(args[3]);
+			String action = args[4].toLowerCase();
 			
 //			action = "on";
 //			action = "off";
