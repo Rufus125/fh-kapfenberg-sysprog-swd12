@@ -81,7 +81,7 @@ double SafeThermometer::get_temperature() const {
       /* Close the read-fd prior throwing the exception so that the child-process gets notified without any delay. */
       close(pipeFd[0]);
 
-      throw new ThermometerException("Parent-process: Failed to retrieve thermometer status!");
+      throw ThermometerException("Parent-process: Failed to retrieve thermometer status!");
     }
 
     /* Check if the sensor crashed (alarm went of). */
@@ -89,7 +89,7 @@ double SafeThermometer::get_temperature() const {
       /* Close the read-fd prior throwing the exception so that the child-process gets notified without any delay. */
       close(pipeFd[0]);
 
-      throw new ThermometerException("Parent-process: The unsafe thermometer crashed!");
+      throw ThermometerException("Parent-process: The unsafe thermometer crashed!");
     }
 
     /* Read the measured temperature from the pipe. */
@@ -100,7 +100,7 @@ double SafeThermometer::get_temperature() const {
       /* Close the read-fd prior throwing the exception so that the child-process gets notified without any delay. */
       close(pipeFd[0]);
 
-      throw new ThermometerException("Parent-process: Failed to read the measured temperature from the pipe!");
+      throw ThermometerException("Parent-process: Failed to read the measured temperature from the pipe!");
     }
 
     /* Close read-fd after successfully reading the measured temperature from the pipe. */
