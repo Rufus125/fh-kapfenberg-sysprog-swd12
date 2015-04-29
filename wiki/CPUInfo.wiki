@@ -1,4 +1,4 @@
-#summary CPU Info project by Georg Schlagholz, Michael Mayer and Franz Platzer
+#summary CPU Info project
 ==Parent==
 [ThirdProject]
 = Introduction =
@@ -13,10 +13,3 @@ see: cat /sys/class/thermal/thermal_zone0/temp
 
 see: cat /proc/cpuinfo
 see: cat /etc/hostname
-
-== Breakdown ==
-Mayer: Client  
-
-Platzer: Network Server  
-
-Schlagholz: read temperature   
